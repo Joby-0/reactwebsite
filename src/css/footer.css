@@ -1,0 +1,43 @@
+#footerOrder1{
+    order: 1;
+}
+#footerOrder2{
+    order: 2;
+}
+#footerOrder3{
+    order: 3;
+}
+#footerOrder4{
+    order: 4;
+}
+@media only screen and (max-width: 1020px) {
+    
+}
+
+/* // Small devices (landscape phones, 576px and down) */
+@media (max-width: 576px) { 
+    #footerOrder1,#footerOrder2,#footerOrder3,#footerOrder4{
+        order: 0;
+    }
+    
+ }
+
+/* // Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) { 
+    
+ }
+
+/* // Large devices (desktops, 992px and down) */
+@media (max-width: 992px) { 
+
+ }
+
+/* // X-Large devices (large desktops, 1200px and down) reklam gone */ 
+@media (max-width: 1200px) { 
+    
+ }
+
+/* // XX-Large devices (larger desktops, 1400px and down) */
+@media (max-width: 1400px) { 
+    
+ }

@@ -1,0 +1,39 @@
+.divider {
+    width: 100%;
+    height: 5rem;
+  }
+  
+  
+  #popularProductRRow {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    position: relative;
+  }
+  
+  .items-prev,
+  .item-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    display: none;
+  }
+  .items-prev{
+    left: 0;
+  }
+  .item-next{
+    right: 2rem;
+  }
+  #popularProductRRow:hover .item-next{
+    display: block;
+  }
+  #productBox{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  #productBox:hover{
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
