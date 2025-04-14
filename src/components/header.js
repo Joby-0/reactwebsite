@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function Header() {
+export default function Header(props) {
+  const [darkMode, setDarkMode] = useState(false);
+  const [modeText, setModeText] = useState("Dark mode")
+
+  const changeMode = () => {
+    const newMode = !darkMode;
+    props.switchmode(newMode);
+    setDarkMode(newMode);
+    if (newMode == true) {
+      setModeText("light mode")
+    }
+    else {
+      setModeText("dark mode")
+    }
+
+  }
+  const handleModal = (value) => {
+    props.handleModal(value)
+  };
   return (
     <div className="container">
       <nav>
         <ul className="nav">
+          <li>
+            <button onClick={changeMode} className="btn btn-secondary">
+              {modeText}
+            </button>
+          </li>
           <li>
             <div className="btn-group">
               <button
@@ -153,24 +176,24 @@ export default function Header() {
 
         <ul className="nav nav-pills text-body">
           <li className="nav-item">
-            <a href="#" className="nav-link text-white">
+            <a href="#" className="nav-link ">
               Categories
             </a>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link text-white">
+            <a href="#" className="nav-link ">
               Pricing
             </a>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link text-white">
+            <a href="#" className="nav-link ">
               About
             </a>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link active btn" aria-current="page">
-              Sign in
-            </a>
+            <button className="btn btn-primary" onClick={() => handleModal(true)}>
+              Sign In
+            </button>
           </li>
         </ul>
       </header>
