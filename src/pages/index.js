@@ -5,19 +5,24 @@ import Itemscarusal from '../components/itemscarusal'
 import Bigsponsorpart from '../components/bigsponsorpart'
 import Shortabout from '../components/shortabout'
 import Newletterpart from '../components/newletterpart'
+import Divider from '../components/divider'
 
 
-export default function Index() {
+export default function Index(props) {
+  
   return (
     <>
       <Heroindex />
       <Categories />
+      <Divider height = {50}/>
       <div className="container">
-        <Itemscarusal catName="Popular phones" />
-        <Itemscarusal catName="others" />
+        <Itemscarusal data = {props.data} catName="Popular phones" />
+        <Itemscarusal data = {props.data} catName="others" />
         <Bigsponsorpart />
-        <Itemscarusal catName="more others" />
+        <Itemscarusal data = {props.data} catName="more others" />
+        <Divider height = {100}/>
         <Shortabout/>
+        <Divider height = {100}/>
         <Newletterpart/>
         
       </div>

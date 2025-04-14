@@ -3,75 +3,8 @@ import '../css/itemcarusal.css'
 
 export default function Itemscarusal(props) {
   //ändra till props later
-  const products = [
-    {
-      id: 1,
-      category: 'Phones',
-      name: 'iPhone 16 Pro Max, 256GB',
-      image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
-      rating: 542,
-      price: '16090 sek',
-      url: '/categorys/product.html'
-    },
-    {
-      id: 2,
-      category: 'Phones',
-      name: 'Samsung Galaxy S23 Ultra',
-      image: 'https://example.com/product2.jpg',
-      rating: 350,
-      price: '12990 sek',
-      url: '/categorys/product2.html'
-    },
-    {
-      id: 3,
-      category: 'Phones',
-      name: 'OnePlus 11 Pro',
-      image: 'https://example.com/product3.jpg',
-      rating: 300,
-      price: '11990 sek',
-      url: '/categorys/product3.html'
-    },
-    {
-      id: 4,
-      category: 'Phones',
-      name: 'Google Pixel 8 Pro',
-      image: 'https://example.com/product4.jpg',
-      rating: 100,
-      price: '14990 sek',
-      url: '/categorys/product4.html'
-    }
-    ,
-    {
-      id: 5,
-      category: 'Phones',
-      name: 'Google Pixel 8 Pro',
-      image: 'https://example.com/product4.jpg',
-      rating: 100,
-      price: '14990 sek',
-      url: '/categorys/product4.html'
-    }
-    ,
-    {
-      id: 6,
-      category: 'Phones',
-      name: 'Google Pixel 8 Pro',
-      image: 'https://example.com/product4.jpg',
-      rating: 100,
-      price: '14990 sek',
-      url: '/categorys/product4.html'
-    }
-    ,
-    {
-      id: 8,
-      category: 'Phones',
-      name: 'Google Pixel 8 Pro',
-      image: 'https://example.com/product4.jpg',
-      rating: 100,
-      price: '14990 sek',
-      url: '/categorys/product4.html'
-    }
-    // Add more products as needed
-  ];
+  const products = props.data
+  
   
   const scrollRef = useRef(null);
   const scrollLeft = () => {
