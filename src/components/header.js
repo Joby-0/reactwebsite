@@ -2,19 +2,10 @@ import React, { useState } from 'react'
 
 export default function Header(props) {
   const [darkMode, setDarkMode] = useState(false);
-  const [modeText, setModeText] = useState("Dark mode")
-
   const changeMode = () => {
     const newMode = !darkMode;
     props.switchmode(newMode);
     setDarkMode(newMode);
-    if (newMode == true) {
-      setModeText("light mode")
-    }
-    else {
-      setModeText("dark mode")
-    }
-
   }
   const handleModal = (value) => {
     props.handleModal(value)
@@ -24,8 +15,8 @@ export default function Header(props) {
       <nav>
         <ul className="nav">
           <li>
-            <button onClick={changeMode} className="btn btn-secondary">
-              {modeText}
+            <button onClick={changeMode} className="btn btn-sm btn-secondary">
+            {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             </button>
           </li>
           <li>

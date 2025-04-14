@@ -11,11 +11,16 @@ import Signinmodal from './components/signinmodal';
 import Itempage from './pages/itempage';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [show, setShow] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Load dark mode preference from localStorage
+    const stored = localStorage.getItem('darkMode');
+    return stored === 'true'; // convert string to boolean
+  });
   const switchmode = (e) => {
     setDarkMode(e)
   }
-  const [show, setShow] = useState(false);
+  
 
   const handleModal = (value) => {
     setShow(value);
@@ -124,12 +129,14 @@ function App() {
     } else {
       document.documentElement.removeAttribute('data-bs-theme');
     }
+    localStorage.setItem('darkMode', darkMode);
+    
   }, [darkMode], [show]);
   return (
     <>
       <Header switchmode={switchmode} handleModal={handleModal} />
-      {/* <Index data = {products}/> */}
-      <Itempage data={products} />
+      <Index data = {products}/>
+      {/* <Itempage data={products} /> */}
       <Signinmodal handleModal={handleModal} show={show} />
       <Footer />
     </>
