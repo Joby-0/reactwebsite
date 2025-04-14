@@ -8,18 +8,16 @@
     flex-wrap: nowrap;
     overflow-x: scroll;
     scrollbar-width: none;
-    position: relative;
+    
   }
   
   .items-prev,
   .item-next {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     z-index: 1;
     width: 32px;
     height: 32px;
-    display: none;
   }
   .items-prev{
     left: 0;
@@ -28,6 +26,9 @@
     right: 2rem;
   }
   #popularProductRRow:hover .item-next{
+    display: block;
+  }
+  #popularProductRRow:hover .items-prev{
     display: block;
   }
   #productBox{
