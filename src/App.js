@@ -4,11 +4,15 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import Index from './pages';
 import Header from './components/header'
 import Footer from './components/footer';
 import Signinmodal from './components/signinmodal';
+
+import Index from './pages';
 import Itempage from './pages/itempage';
+import Categoriespage from './pages/categoriespage';
+
+
 
 function App() {
   const [show, setShow] = useState(false);
@@ -130,13 +134,14 @@ function App() {
       document.documentElement.removeAttribute('data-bs-theme');
     }
     localStorage.setItem('darkMode', darkMode);
-    
+
   }, [darkMode], [show]);
   return (
     <>
       <Header switchmode={switchmode} handleModal={handleModal} />
-      <Index data = {products}/>
+      {/* <Index data = {products}/> */}
       {/* <Itempage data={products} /> */}
+      <Categoriespage/>
       <Signinmodal handleModal={handleModal} show={show} />
       <Footer />
     </>
