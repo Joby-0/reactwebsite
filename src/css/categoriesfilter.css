@@ -2,12 +2,11 @@
     position: sticky;
     height: 100vh;
     top: 0;
+    overflow-y: scroll;
+
 }
 .scrollarea{
-    overflow-y: auto;
+    /* overflow-y: scroll; */
     height: 100%;
-}
-#brandList{
-    /* max-height: 155px; */
-    overflow: hidden;
+
 }

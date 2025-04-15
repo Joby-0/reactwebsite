@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../css/itemcarusal.css'
+import Itemcolbox from './itemcolbox';
 
 export default function Itemscarusal(props) {
   //ändra till props later
@@ -42,27 +43,7 @@ export default function Itemscarusal(props) {
         <h3 className="mb-2">{props.catName}</h3>
         <div id="popularProductRRow" ref={scrollRef} style={{ scrollBehavior: 'smooth' }} className="row gap-0 p-1 row-gap-3">
           {products.map(product => (
-            <div className="col" key={product.id}>
-              <a className="text-decoration-none" href={product.url}>
-                <div id="productBox" style={{ width: '15rem' }} className="card h-100">
-                  <img
-                    src={product.image}
-                    height="140" width="140" className="card-img-top" alt={product.name}
-                  />
-                  <div className="card-body mt-5 lh-1 d-flex align-items-end">
-                    <div>
-                      <p className="text-muted">{product.category}</p>
-                      <h6 className="card-title">{product.name}</h6>
-                      <p className="text-warning mb-2">
-                        {'★'.repeat(Math.round(product.rating / 100))}
-                        ({product.rating})
-                      </p>
-                      <p className="fw-bold mb-0">{product.price}</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
+            <Itemcolbox key={product.id} product = {product}/>
           ))}
 
           {/* Navigation buttons */}

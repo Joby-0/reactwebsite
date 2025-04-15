@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -24,7 +25,7 @@ function App() {
   const switchmode = (e) => {
     setDarkMode(e)
   }
-  
+
 
   const handleModal = (value) => {
     setShow(value);
@@ -139,9 +140,13 @@ function App() {
   return (
     <>
       <Header switchmode={switchmode} handleModal={handleModal} />
-      {/* <Index data = {products}/> */}
-      {/* <Itempage data={products} /> */}
-      <Categoriespage/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element ={<Index data={products}/>}/>
+          <Route path='/c/p' element ={<Itempage data={products} />}/>
+          <Route path='/c' element={<Categoriespage data={products} />}/>
+        </Routes>
+      </BrowserRouter>
       <Signinmodal handleModal={handleModal} show={show} />
       <Footer />
     </>

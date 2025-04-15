@@ -18,6 +18,7 @@
     z-index: 1;
     width: 32px;
     height: 32px;
+    display: none;
   }
   .items-prev{
     left: 0;

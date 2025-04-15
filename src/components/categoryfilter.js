@@ -29,8 +29,8 @@ export default function Categoryfilter(props) {
     };
 
     return (
-        <div className="row">
-            <div id="stickyCol" className="col-3 text-white p-3 pt-0">
+        
+            <div id="stickyCol" className="col-3  p-3 pt-0">
                 <h1>Filter</h1>
                 <h6>catogory namn</h6>
                 <div className="row mt-4 scrollarea">
@@ -166,7 +166,7 @@ export default function Categoryfilter(props) {
                                                 onChange={(e) => handleSearchChange(index, e.target.value)}
                                             />
 
-                                            <ul className="list-group" style={{ listStyleType: 'none', paddingLeft: '0' }}>
+                                            <ul  className="list-group" style={{ listStyleType: 'none', paddingLeft: '0' }}>
                                                 {/* Show only the first 5 items */}
                                                 {filteredOptions.slice(0, 5).map((option, optIdx) => (
                                                     <li key={optIdx} style={{ height: '30px' }}>
@@ -240,6 +240,5 @@ export default function Categoryfilter(props) {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
