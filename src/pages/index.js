@@ -6,9 +6,11 @@ import Bigsponsorpart from '../components/bigsponsorpart'
 import Shortabout from '../components/shortabout'
 import Newletterpart from '../components/newletterpart'
 import Divider from '../components/divider'
+import Data from '../services/data'
 
 
 export default function Index(props) {
+  const data = new Data();
   
   return (
     <>
@@ -16,10 +18,10 @@ export default function Index(props) {
       <Categories />
       <Divider height = {50}/>
       <div className="container">
-        <Itemscarusal data = {props.data} catName="Popular phones" />
-        <Itemscarusal data = {props.data} catName="others" />
-        <Bigsponsorpart />
-        <Itemscarusal data = {props.data} catName="more others" />
+        <Itemscarusal data = {data} catName="Popular phones" />
+        <Itemscarusal data = {data} catName="others" />
+        <Bigsponsorpart/>
+        <Itemscarusal data = {data} catName="more others" />
         <Divider height = {100}/>
         <Shortabout/>
         <Divider height = {100}/>

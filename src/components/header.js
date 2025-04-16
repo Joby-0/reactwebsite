@@ -1,22 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Navbar from '../routers/navbar';
+import Signinmodal from './signinmodal';
 
 export default function Header(props) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleModal = (value) => {
+    setShow(value);
+  };
+  const [darkMode, setDarkMode] = useState(() => {
+    // Load dark mode preference from localStorage
+    const stored = localStorage.getItem('darkMode');
+    return stored === 'true'; // convert string to boolean
+  });
   const changeMode = () => {
     const newMode = !darkMode;
-    props.switchmode(newMode);
+    switchmode(newMode);
     setDarkMode(newMode);
   }
-  const handleModal = (value) => {
-    props.handleModal(value)
-  };
+
+  const switchmode = (e) => {
+    setDarkMode(e)
+  }
+
+
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.setAttribute('data-bs-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-bs-theme');
+    }
+    localStorage.setItem('darkMode', darkMode);
+
+  }, [darkMode]);
+
   return (
     <div className="container">
       <nav>
         <ul className="nav">
           <li>
             <button onClick={changeMode} className="btn btn-sm btn-secondary">
-            {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             </button>
           </li>
           <li>
@@ -157,37 +181,9 @@ export default function Header(props) {
         </ul>
       </nav>
 
-      <header className="d-flex flex-wrap justify-content-center pb-3 mb-4 border-bottom">
-        <a
-          href="/"
-          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-        >
-          <span className="fs-4">Joby eller icon</span>
-        </a>
+      <Navbar handleModal={handleModal} />
+      <Signinmodal handleModal={handleModal} show={show} />
 
-        <ul className="nav nav-pills text-body">
-          <li className="nav-item">
-            <a href="#" className="nav-link ">
-              Categories
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link ">
-              Pricing
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link ">
-              About
-            </a>
-          </li>
-          <li className="nav-item">
-            <button className="btn btn-primary" onClick={() => handleModal(true)}>
-              Sign In
-            </button>
-          </li>
-        </ul>
-      </header>
     </div>
   )
 }
