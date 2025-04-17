@@ -6,6 +6,8 @@ export default function Categoryfilter(props) {
     const [maxPrice, setMaxPrice] = useState('');
     const [selectedPriceRange, setSelectedPriceRange] = useState('3000-4000');
     const [showAll, setShowAll] = useState(false); // New state to toggle "Show All"
+    const [searchTerms, setSearchTerms] = useState({});
+
     // Toggle "Show All" functionality
     const toggleShowAll = () => setShowAll(!showAll);
 
@@ -19,7 +21,6 @@ export default function Categoryfilter(props) {
     const handleRadioChange = (event) => {
         setSelectedPriceRange(event.target.value);
     };
-    const [searchTerms, setSearchTerms] = useState({});
 
     const handleSearchChange = (index, value) => {
         setSearchTerms((prev) => ({
@@ -27,6 +28,10 @@ export default function Categoryfilter(props) {
             [index]: value
         }));
     };
+    const onFilterClick = (filterName) => {
+        props.onClick(filterName);
+        
+    }
 
     return (
         
@@ -168,13 +173,14 @@ export default function Categoryfilter(props) {
 
                                             <ul  className="list-group" style={{ listStyleType: 'none', paddingLeft: '0' }}>
                                                 {/* Show only the first 5 items */}
-                                                {filteredOptions.slice(0, 5).map((option, optIdx) => (
+                                                {filteredOptions.map((option, optIdx) => (
                                                     <li key={optIdx} style={{ height: '30px' }}>
                                                         <div className="form-check h-100 pt-1">
                                                             <input
                                                                 className="form-check-input p-2"
                                                                 type="checkbox"
                                                                 id={`${filter.title}-${optIdx}`}
+                                                                onClick={() => onFilterClick(option.name)}
                                                             />
                                                             <label
                                                                 className="form-check-label w-100"
@@ -209,7 +215,6 @@ export default function Categoryfilter(props) {
                                                         </div>
                                                     </li>
                                                 ))}
-
                                                 {/* Show the "Show All" button only if there are more than 5 items */}
                                                 {filteredOptions.length > 5 && !showAll && (
                                                     <button

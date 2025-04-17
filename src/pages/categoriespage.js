@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Categoryfilter from '../components/categoryfilter'
 import Categoriesfilterdisplay from '../components/categoriesfilterdisplay';
 import Categoriesproducts from '../components/categoriesproducts';
 import Data from '../services/data';
 
-export default function CategoriesPage(props) {
+export default function CategoriesPage() {
   const filters = [
     {
       title: 'Store',
@@ -29,13 +29,20 @@ export default function CategoriesPage(props) {
     }
   ];
   const data = new Data();
-  
+  const [activeFilter, setActiveFilter] = useState()
+
+  const onFilterClick = (filterName) => {
+    console.log(filterName);
+    setActiveFilter()
+  }
+
+
   return (
     <div className="container">
       <div className="row">
         <div className="col-10">
           <div className='row'>
-            <Categoryfilter filters={filters} />
+            <Categoryfilter onClick={onFilterClick} filters={filters} />
             <div class="col-9 scrollarea">
               <Categoriesfilterdisplay  />
               <Categoriesproducts products = {data}/>
