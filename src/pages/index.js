@@ -6,11 +6,11 @@ import Bigsponsorpart from '../components/bigsponsorpart'
 import Shortabout from '../components/shortabout'
 import Newletterpart from '../components/newletterpart'
 import Divider from '../components/divider'
-import Data from '../services/data'
+import {PopularProducts} from '../services/data'
 
 
 export default function Index(props) {
-  const data = new Data();
+  const data = new PopularProducts();
   
   return (
     <>

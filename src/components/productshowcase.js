@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router';
 
-export default function Productshowcase(props) {
+export default function Productshowcase(props) {    
+    const [mainImage, setMainImage] = useState(props.data.image);
     console.log(props.data);
     
-    const [mainImage, setMainImage] = useState(props.data.image);
-    
-      const thumbnails = props?.data?.thumbnails
-        
-    
-      const handleImageChange = (imgUrl) => {
-        setMainImage(imgUrl);
+    const thumbnails = props?.data?.thumbnails
+    const getHighestPrice = (pricelist) => {
+        const prices = pricelist
+          .map(store => parseInt(store.price?.replace(/[^\d]/g, ''))) // Remove 'kr' or nulls
+          .filter(price => !isNaN(price)); // Remove invalid ones
+      
+        return Math.max(...prices);
       };
+
+    const handleImageChange = (imgUrl) => {
+        setMainImage(imgUrl);
+    };
+
     return (
         <div className="p-5 mb-4 bg-body-tertiary rounded-3">
             <div className="row">
@@ -18,7 +25,7 @@ export default function Productshowcase(props) {
                     <div className="row">
                         {/* Left Side (Thumbnails) */}
                         <div id="smallimg" className="col-2 d-flex flex-column gap-2">
-                            {thumbnails.map((thumb, index) => (
+                            {thumbnails?.map((thumb, index) => (
                                 <img
                                     key={index}
                                     src={thumb}
@@ -48,11 +55,11 @@ export default function Productshowcase(props) {
 
                 <div className="col">
                     <div className="row">
-                        <h1>Apple iPhone 16 Pro Max, 256GB</h1>
+                        <h1>{props.data.name}</h1>
                     </div>
                     <div className="row my-2">
                         <div className="col-auto">
-                            <button className="btn btn-secondary">4.9</button>
+                            <button className="btn btn-secondary">{props.data.rating}</button>
                         </div>
                         <div className="col-auto">
                             <button className="btn btn-primary">Watch price</button>
@@ -63,13 +70,12 @@ export default function Productshowcase(props) {
                     </div>
                     <div className="row">
                         <p>
-                            iPhone 16 Pro Max erbjuder excellens med trippelkamera, A18 Pro Bionic-chip, 5G,
-                            stort batteri, samt trådbunden och MagSafe-laddning.{' '}
-                            <a href="#">read more</a>
+                            {props.data.shortdesc}...  
+                            <Link href="#">read more</Link>
                         </p>
                     </div>
                     <div className="row">
-                        <p>Produkt price range 16090 - 17490 sek</p>
+                        <p>Produkt price range {props.data.price} - {getHighestPrice(props.data.pricelist)} sek</p>
                     </div>
                 </div>
             </div>

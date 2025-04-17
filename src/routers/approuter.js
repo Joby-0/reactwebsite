@@ -15,9 +15,14 @@ export default function Approuter() {
     return (
         <Routes>
             
-            <Route path='/' element={<Index />} />
-            <Route path='/c/p/:product' element={<Itempage />} />
-            <Route path='/c/:categories' element={<CategoriesPage />} />
+            <Route path='/' element={<Index />}/>
+            <Route path='/p/:id/:product' element={<Itempage />}/>
+            <Route path='/c/:id/:categories' element={<CategoriesPage />}/>
+
+            <Route path='/p/' element={<Itempage />}/>
+            <Route path='/c/' element={<CategoriesPage />}/>
+
+            
 
             <Route path='*' element={<Errorpage/>}/>
             

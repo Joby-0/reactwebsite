@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export default function Itemcolbox(props) {
   return (
     <div className="col" key={props.product.id}>
-              <Link className="text-decoration-none" to={'/c/p'}  href={props.product.url}>
+              <Link className="text-decoration-none" to={`../p/${props.product.id}/${props.product.name}`} >
                 <div id="productBox" style={{ width: '15rem' }} className="card h-100">
                   <img
                     src={props.product.image}

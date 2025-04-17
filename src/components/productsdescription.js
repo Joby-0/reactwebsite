@@ -6,9 +6,9 @@ export default function Productsdescription(props) {
       <div className="p-4 mb-4 bg-body-tertiary rounded-3">
         <div className="row">
           {props.data.map(section => (
-            <div className="col-md-6 p-2">
+            <div key={section.id} className="col-md-6 p-2">
 
-              <div key={section.id} className="mb-4">
+              <div  className="mb-4">
                 <h3>{section.name}</h3>
                 <ul className="list-group">
                   {section.data.map((item, index) => (
