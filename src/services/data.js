@@ -2,105 +2,219 @@ import React from 'react'
 
 
 export function Categoriesdata() {
-  const cData = [
-    {
-      id: 1,
-      cName: "phones",
-      icon: "",
-      underC: [
-        {
-          id: 111,
-          uCName: "smartphones",
-          uCDesc: "Smartphones are powerful handheld devices used for communication, browsing, and entertainment."
-        },
-        {
-          id: 112,
-          uCName: "phonecases",
-          uCDesc: "Phone cases provide protection and style for your smartphone."
-        },
-        {
-          id: 113,
-          uCName: "chargers",
-          uCDesc: "Chargers and adapters to power your devices efficiently."
-        }
-      ]
-    },
-    {
-      id: 2,
-      cName: "gaming",
-      underC: [
-        {
-          id: 221,
-          uCName: "consoles",
-          uCDesc: "Gaming consoles like PlayStation, Xbox, and Nintendo Switch."
-        },
-        {
-          id: 222,
-          uCName: "pcgaming",
-          uCDesc: "Desktops, laptops, and components built for PC gaming."
-        },
-        {
-          id: 223,
-          uCName: "accessories",
-          uCDesc: "Gaming accessories including controllers, headsets, and keyboards."
-        },
-        {
-          id: 224,
-          uCName: "games",
-          uCDesc: "Video games for various platforms and genres."
-        }
-      ]
-    },
-    {
-      id: 3,
-      cName: "toys",
-      underC: [
-        {
-          id: 331,
-          uCName: "educational",
-          uCDesc: "Toys designed to help children learn and develop skills."
-        },
-        {
-          id: 332,
-          uCName: "actionfigures",
-          uCDesc: "Action figures and collectibles from popular movies and series."
-        },
-        {
-          id: 333,
-          uCName: "buildingblocks",
-          uCDesc: "LEGO and other building sets for creativity and construction."
-        }
-      ]
-    },
-    {
-      id: 4,
-      cName: "audioandtv",
-      underC: [
-        {
-          id: 441,
-          uCName: "speakers",
-          uCDesc: "Home and portable speakers with high-quality sound."
-        },
-        {
-          id: 442,
-          uCName: "headphones",
-          uCDesc: "Wired and wireless headphones for immersive listening."
-        },
-        {
-          id: 443,
-          uCName: "televisions",
-          uCDesc: "LED, OLED, and QLED TVs from various brands."
-        },
-        {
-          id: 444,
-          uCName: "soundbars",
-          uCDesc: "Soundbars that enhance your home theater experience."
-        }
-      ]
-    }
-  ];
 
-  return cData;
+
+  return (
+    [
+      {
+        id: 1,
+        name: "phones",
+        icon: "",
+        subCat: [
+          {
+            id: 111,
+            name: "smartphones",
+            desc: "Smartphones are powerful handheld devices used for communication, browsing, and entertainment."
+          },
+          {
+            id: 112,
+            name: "phonecases",
+            desc: "Phone cases provide protection and style for your smartphone.",
+            subSubCat: [
+              {
+                id: 1,
+                name: "MagSafe"
+              },
+              {
+                id: 2,
+                name: "no case"
+              }
+            ]
+          },
+          {
+            id: 113,
+            name: "chargers",
+            desc: "Chargers and adapters to power your devices efficiently."
+          }
+        ]
+      },
+      {
+        id: 2,
+        name: "gaming",
+        icon: "",
+        subCat: [
+          {
+            id: 221,
+            name: "consoles",
+            desc: "Gaming consoles like PlayStation, Xbox, and Nintendo Switch."
+          },
+          {
+            id: 222,
+            name: "pcgaming",
+            desc: "Desktops, laptops, and components built for PC gaming."
+          },
+          {
+            id: 223,
+            name: "accessories",
+            desc: "Gaming accessories including controllers, headsets, and keyboards."
+          },
+          {
+            id: 224,
+            name: "games",
+            desc: "Video games for various platforms and genres."
+          }
+        ]
+      },
+      {
+        id: 3,
+        name: "toys",
+        icon: "",
+        subCat: [
+          {
+            id: 331,
+            name: "educational",
+            desc: "Toys designed to help children learn and develop skills."
+          },
+          {
+            id: 332,
+            name: "actionfigures",
+            desc: "Action figures and collectibles from popular movies and series."
+          },
+          {
+            id: 333,
+            name: "buildingblocks",
+            desc: "LEGO and other building sets for creativity and construction."
+          }
+        ]
+      },
+      {
+        id: 4,
+        name: "audioandtv",
+        icon: "",
+        subCat: [
+          {
+            id: 441,
+            name: "speakers",
+            desc: "Home and portable speakers with high-quality sound."
+          },
+          {
+            id: 442,
+            name: "headphones",
+            desc: "Wired and wireless headphones for immersive listening."
+          },
+          {
+            id: 443,
+            name: "televisions",
+            desc: "LED, OLED, and QLED TVs from various brands."
+          },
+          {
+            id: 444,
+            name: "soundbars",
+            desc: "Soundbars that enhance your home theater experience."
+          }
+        ]
+      },
+      {
+        id: 5,
+        name: "computers",
+        icon: "",
+        subCat: [
+          {
+            id: 551,
+            name: "laptops",
+            desc: "Portable computers for work, gaming, and general use."
+          },
+          {
+            id: 552,
+            name: "desktops",
+            desc: "Desktop PCs for home, office, or gaming setups."
+          },
+          {
+            id: 553,
+            name: "monitors",
+            desc: "HD and 4K monitors for all types of users."
+          },
+          {
+            id: 554,
+            name: "components",
+            desc: "PC parts like GPUs, CPUs, RAM, and SSDs."
+          }
+        ]
+      },
+      {
+        id: 6,
+        name: "homeappliances",
+        icon: "",
+        subCat: [
+          {
+            id: 661,
+            name: "refrigerators",
+            desc: "Energy-efficient fridges from top brands."
+          },
+          {
+            id: 662,
+            name: "microwaves",
+            desc: "Microwave ovens for fast and convenient cooking."
+          },
+          {
+            id: 663,
+            name: "vacuumcleaners",
+            desc: "Powerful vacuums including robotic and cordless models."
+          },
+          {
+            id: 664,
+            name: "coffee",
+            desc: "Coffee machines and accessories for home baristas."
+          }
+        ]
+      },
+      {
+        id: 7,
+        name: "smarttech",
+        icon: "",
+        subCat: [
+          {
+            id: 771,
+            name: "smartwatches",
+            desc: "Wearables to track health, fitness, and notifications."
+          },
+          {
+            id: 772,
+            name: "smarthome",
+            desc: "Smart bulbs, thermostats, and assistants for automation."
+          },
+          {
+            id: 773,
+            name: "security",
+            desc: "Cameras, sensors, and alarms for home security."
+          }
+        ]
+      },
+      {
+        id: 8,
+        name: "office",
+        icon: "",
+        subCat: [
+          {
+            id: 881,
+            name: "printers",
+            desc: "Inkjet and laser printers for home and office use."
+          },
+          {
+            id: 882,
+            name: "stationery",
+            desc: "Notebooks, pens, and supplies for productive work."
+          },
+          {
+            id: 883,
+            name: "furniture",
+            desc: "Desks, chairs, and ergonomic accessories."
+          }
+        ]
+      }
+    ]
+
+  )
 }
 
 
@@ -2013,6 +2127,8 @@ export function PopularProducts() {
     ]
   )
 }
+
+
 
 
 

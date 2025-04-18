@@ -4,7 +4,7 @@ import Categoriesfilterdisplay from '../components/categoriesfilterdisplay';
 import Categoriesproducts from '../components/categoriesproducts';
 import Data from '../services/data';
 
-export default function CategoriesPage() {
+export default function Productlisting() {
   const filters = [
     {
       title: 'Store',

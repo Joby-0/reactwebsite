@@ -1,31 +1,33 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
 
-
-import Header from '../components/header'
 import Index from '../pages'
 import Itempage from '../pages/itempage'
-import CategoriesPage from '../pages/categoriespage'
-import Signinmodal from '../components/signinmodal'
-import Footer from '../components/footer'
 import Errorpage from '../pages/errorpage'
+import Productlisting from '../pages/productlisting'
+import Categorypage from '../pages/categorypage'
 
 
 export default function Approuter() {
     return (
         <Routes>
-            
-            <Route path='/' element={<Index />}/>
-            <Route path='/p/:id/:product' element={<Itempage />}/>
-            <Route path='/c/:id/:categories' element={<CategoriesPage />}/>
+            {/* main */}
+            <Route path='/' element={<Index />} />
 
-            <Route path='/p/' element={<Itempage />}/>
-            <Route path='/c/' element={<CategoriesPage />}/>
-
+            {/* cagegories och sub cat */}
+            <Route path="/c/:categorySlug" element={<Categorypage />} />       
+            <Route path="/c/:categorySlug/:subSlug" element={<Categorypage />} /> 
             
 
-            <Route path='*' element={<Errorpage/>}/>
-            
+            <Route path="/p/:subSlug" element={<Productlisting />} /> 
+
+            {/* the producjt page */}
+            <Route path='/p/:id/:product' element={<Itempage />} />
+
+
+            {/* error page no page found */}
+            <Route path='*' element={<Errorpage />} />
+
         </Routes>
     )
 }
