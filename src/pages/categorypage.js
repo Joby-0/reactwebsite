@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router';
+import { data, useParams } from 'react-router';
 import Categoriesandsubcategories from '../components/categoriesandsubcategories';
-import { Categoriesdata } from '../services/data'
+import { Categoriesdata, PopularProducts } from '../services/data'
+import Itemscarusal from '../components/itemscarusal';
+import Divider from '../components/divider';
 
 let categories = new Categoriesdata()
+let pdata = new PopularProducts()
 
 export default function Categorypage() {
     const { categorySlug, subSlug } = useParams();
-    const [data, setData] = useState(null)
+    const [cdata, setcData] = useState(null)
+    const [cname, setCname] = useState("")
     console.log(categories);
     
     useEffect(() => {
-        console.log(categorySlug);
 
         if (categorySlug && !subSlug) {
             // Load category by slug/id
             const foundCategory = categories.find(
                 (cat) => cat.name.toLowerCase() === categorySlug.toLowerCase()
             );
-            console.log(foundCategory);
-            
-            setData(foundCategory);
+            setCname(foundCategory.name)
+            setcData(foundCategory);
             
             
         } else if (categorySlug && subSlug) {
@@ -31,20 +33,27 @@ export default function Categorypage() {
             const foundSub = foundCategory?.subCat.find(
                 (sub) => sub.name.toLowerCase() === subSlug.toLowerCase()
             );
-            setData({ ...foundCategory, sub: foundSub });
+            setCname(foundSub?.name)
+            setcData({ ...foundCategory, sub: foundSub });
         } else {
-            // Fallback or homepage data
-            setData(null);
+            // Fallback or homepage c
+            setcData(null);
         }
     }, [categorySlug, subSlug])
+    console.log("data",cdata);
+    
     
     return (
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-10">
-                    {data ? (
+                    {cdata ? (
                         <>
-                             <Categoriesandsubcategories categories={data} />
+                             <Categoriesandsubcategories categories={cdata} />
+                             <Divider height = {50}/>
+                             <Divider height = {100}/>
+
+
                         </>
                     ) : (
                         <p>Loading...</p>
@@ -52,9 +61,10 @@ export default function Categorypage() {
                    
                 </div>
                 <div className="ads col sticky-top">
-                    ads
                 </div>
             </div>
+            <Itemscarusal catName={`Popular ${cname}`} data={pdata}/>
+
         </div>
     )
 }

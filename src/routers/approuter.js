@@ -18,7 +18,7 @@ export default function Approuter() {
             <Route path="/c/:categorySlug" element={<Categorypage />} />       
             <Route path="/c/:categorySlug/:subSlug" element={<Categorypage />} /> 
             
-
+            {/* Liost page */}
             <Route path="/p/:subSlug" element={<Productlisting />} /> 
 
             {/* the producjt page */}

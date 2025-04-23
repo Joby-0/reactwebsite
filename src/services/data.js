@@ -13,44 +13,61 @@ export function Categoriesdata() {
         subCat: [
           {
             id: 111,
-            name: "smartphones",
-            desc: "Smartphones are powerful handheld devices used for communication, browsing, and entertainment."
+            name: "Smartphones",
+            desc: "Smartphones are powerful handheld devices used for communication, browsing, and entertainment.",
+            
           },
           {
             id: 112,
-            name: "phonecases",
+            name: "Phonecases",
             desc: "Phone cases provide protection and style for your smartphone.",
             subSubCat: [
-              {
-                id: 1,
-                name: "MagSafe"
-              },
-              {
-                id: 2,
-                name: "no case"
-              }
+              { id: 13, name: "MagSafe" },
+              { id: 14, name: "No case" },
+              { id: 15, name: "Rugged" },
+              { id: 16, name: "Clear" }
             ]
           },
           {
             id: 113,
-            name: "chargers",
-            desc: "Chargers and adapters to power your devices efficiently."
+            name: "Chargers",
+            desc: "Chargers and adapters to power your devices efficiently.",
+            subSubCat: [
+              { id: 17, name: "Wireless" },
+              { id: 18, name: "USB-C" },
+              { id: 19, name: "Lightning" }
+            ]
+          },
+          {
+            id: 114,
+            name: "Powerbanks",
+            desc: "Portable power banks to charge your devices on the go."
+          },
+          {
+            id: 115,
+            name: "Screen Protectors",
+            desc: "Protective films and tempered glass for your phone screens.",
+            subSubCat: [
+              { id: 20, name: "Privacy" },
+              { id: 21, name: "Tempered Glass" }
+            ]
           }
         ]
-      },
+      }
+      ,
       {
         id: 2,
-        name: "gaming",
+        name: "computer",
         icon: "",
         subCat: [
           {
             id: 221,
-            name: "consoles",
+            name: "Computercomponents",
             desc: "Gaming consoles like PlayStation, Xbox, and Nintendo Switch."
           },
           {
             id: 222,
-            name: "pcgaming",
+            name: "Computers",
             desc: "Desktops, laptops, and components built for PC gaming."
           },
           {
@@ -60,7 +77,7 @@ export function Categoriesdata() {
           },
           {
             id: 224,
-            name: "games",
+            name: "Network",
             desc: "Video games for various platforms and genres."
           }
         ]

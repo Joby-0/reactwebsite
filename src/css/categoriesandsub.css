@@ -1,0 +1,12 @@
+/* Add this globally or in your CSS file */
+.hover-dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.hover-dropdown .dropdown-menu {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+
