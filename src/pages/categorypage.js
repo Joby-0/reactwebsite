@@ -13,57 +13,58 @@ export default function Categorypage() {
     const [cdata, setcData] = useState(null)
     const [cname, setCname] = useState("")
     console.log(categories);
-    
     useEffect(() => {
+        (async () => {
+            if (categorySlug && !subSlug) {
+                // Load category by slug/id
+                const foundCategory = categories.find(
+                    (cat) => cat.name.toLowerCase() === categorySlug.toLowerCase()
+                );
+                setCname(foundCategory.name)
+                setcData(foundCategory);
 
-        if (categorySlug && !subSlug) {
-            // Load category by slug/id
-            const foundCategory = categories.find(
-                (cat) => cat.name.toLowerCase() === categorySlug.toLowerCase()
-            );
-            setCname(foundCategory.name)
-            setcData(foundCategory);
-            
-            
-        } else if (categorySlug && subSlug) {
-            // Load subcategory within the matched category
-            const foundCategory = categories.find(
-                (cat) => cat.name.toLowerCase() === categorySlug.toLowerCase()
-            );
-            const foundSub = foundCategory?.subCat.find(
-                (sub) => sub.name.toLowerCase() === subSlug.toLowerCase()
-            );
-            setCname(foundSub?.name)
-            setcData({ ...foundCategory, sub: foundSub });
-        } else {
-            // Fallback or homepage c
-            setcData(null);
-        }
-    }, [categorySlug, subSlug])
-    console.log("data",cdata);
-    
-    
+
+            } else if (categorySlug && subSlug) {
+                // Load subcategory within the matched category
+                const foundCategory = categories.find(
+                    (cat) => cat.name.toLowerCase() === categorySlug.toLowerCase()
+                );
+                const foundSub = foundCategory?.subCat.find(
+                    (sub) => sub.name.toLowerCase() === subSlug.toLowerCase()
+                );
+                setCname(foundSub?.name)
+                setcData({ ...foundCategory, sub: foundSub });
+            } else {
+                // Fallback or homepage c
+                setcData(null);
+            }
+        })();
+    }, [categorySlug, subSlug]);
+
+    console.log("data", cdata);
+
+
     return (
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-10">
                     {cdata ? (
                         <>
-                             <Categoriesandsubcategories categories={cdata} />
-                             <Divider height = {50}/>
-                             <Divider height = {100}/>
+                            <Categoriesandsubcategories categories={cdata} />
+                            <Divider height={50} />
+                            <Divider height={100} />
 
 
                         </>
                     ) : (
                         <p>Loading...</p>
                     )}
-                   
+
                 </div>
                 <div className="ads col sticky-top">
                 </div>
             </div>
-            <Itemscarusal catName={`Popular ${cname}`} data={pdata}/>
+            <Itemscarusal catName={`Popular ${cname}`} data={pdata} />
 
         </div>
     )

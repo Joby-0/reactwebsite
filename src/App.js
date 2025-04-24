@@ -9,13 +9,16 @@ import './css/bootstrap.css'
 import Header from './components/header'
 import Footer from './components/footer';
 import Approuter from './routers/approuter'
+import ScrollToTop from './components/scrolltotop';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-        <Header/>
+        <ScrollToTop />
+
+        <Header />
         <Approuter />
         <Footer />
       </BrowserRouter>

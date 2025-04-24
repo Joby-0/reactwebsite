@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Heroindex from '../components/heroindex'
 import Categories from '../components/categories'
 import Itemscarusal from '../components/itemscarusal'
@@ -7,10 +7,20 @@ import Shortabout from '../components/shortabout'
 import Newletterpart from '../components/newletterpart'
 import Divider from '../components/divider'
 import {PopularProducts} from '../services/data'
+import ProductService from '../services/productservice'
 
 
 export default function Index(props) {
-  const data = new PopularProducts();
+  // const service = new ProductService('', null, false)
+  const [data, setData] = useState([]);
+ 
+  useEffect(() => {
+    (async () => {
+      // const products = await service.readProductsAsync();
+      const products = new PopularProducts();
+      setData(products);
+    })();
+  }, []);
   
   return (
     <>
