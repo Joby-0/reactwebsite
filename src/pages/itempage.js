@@ -7,6 +7,7 @@ import Productsreviews from '../components/productsreviews'
 import Data from '../services/data'
 import { useParams } from "react-router";
 import Modalstoreinfo from '../components/modalstoreinfo'
+import Breadcome from '../components/breadcome'
 
 
 
@@ -44,7 +45,7 @@ export default function Itempage(props) {
 
     useEffect(() => {
         (async () => {
-            
+
             const dataInstance = new Data();
             const product = dataInstance.find(item => item.id.toString() === id); //sen blir det service read product med id
             setProduct(product);
@@ -54,6 +55,7 @@ export default function Itempage(props) {
 
     return (
         <>
+            <Breadcome />
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col">

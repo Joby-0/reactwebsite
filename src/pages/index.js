@@ -7,7 +7,8 @@ import Shortabout from '../components/shortabout'
 import Newletterpart from '../components/newletterpart'
 import Divider from '../components/divider'
 import {PopularProducts} from '../services/data'
-import ProductService from '../services/productservice'
+
+
 
 
 export default function Index(props) {
@@ -24,6 +25,7 @@ export default function Index(props) {
   
   return (
     <>
+      
       <Heroindex />
       <Categories />
       <Divider height = {50}/>

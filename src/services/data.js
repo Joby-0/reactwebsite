@@ -242,7 +242,7 @@ export default function Data() {
         id: 1,
         category: 'Phones',
         categoryId: 1,
-        name: 'iPhone-16-Pro-Max-256GB',
+        name: 'iPhone 16 Pro Max 256GB',
         shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
         image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         thumbnails: [
@@ -1205,7 +1205,7 @@ export function PopularProducts() {
         id: 1,
         category: 'Phones',
         categoryId: 1,
-        name: 'iPhone-16-Pro-Max-256GB',
+        name: 'iPhone 16 Pro Max 256GB',
         shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
         image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         thumbnails: [

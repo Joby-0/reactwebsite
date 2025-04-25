@@ -2,10 +2,12 @@ import React from 'react'
 import { Link } from 'react-router'
 
 export default function Itemcolbox(props) {
+  let name = props.product.name;
+  name = name.replaceAll(" ", "-");
   return (
     <div className="col" key={props.product.id}>
-              <Link className="text-decoration-none" to={`../p/${props.product.id}/${props.product.name}`} >
-                <div id="productBox" style={{ width: '15rem' }} className="card h-100">
+              <Link className="text-decoration-none" to={`../p/${props.product.id}/${name}`} >
+                <div id="productBox" style={{ width: '16rem' }} className="card h-100">
                   <img
                     src={props.product.image}
                     height="140" width="140" className="card-img-top" alt={props.product.name}

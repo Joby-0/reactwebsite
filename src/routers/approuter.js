@@ -22,7 +22,6 @@ const routes = [
 
 export default function Approuter() {
     return (
-        
         <Routes>
             
             {languages.map((lang) =>

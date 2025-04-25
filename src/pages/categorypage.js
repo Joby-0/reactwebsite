@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { data, useParams } from 'react-router';
+import {  useParams } from 'react-router';
 import Categoriesandsubcategories from '../components/categoriesandsubcategories';
 import { Categoriesdata, PopularProducts } from '../services/data'
 import Itemscarusal from '../components/itemscarusal';
 import Divider from '../components/divider';
+import Breadcome from '../components/breadcome';
 
 let categories = new Categoriesdata()
 let pdata = new PopularProducts()
@@ -45,7 +46,10 @@ export default function Categorypage() {
 
 
     return (
+        <>
+        <Breadcome/>
         <div className="container mt-5">
+            
             <div className="row">
                 <div className="col-md-10">
                     {cdata ? (
@@ -67,5 +71,6 @@ export default function Categorypage() {
             <Itemscarusal catName={`Popular ${cname}`} data={pdata} />
 
         </div>
+        </>
     )
 }

@@ -10,6 +10,7 @@ import Header from './components/header'
 import Footer from './components/footer';
 import Approuter from './routers/approuter'
 import ScrollToTop from './components/scrolltotop';
+import Breadcome from './components/breadcome';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <ScrollToTop />
 
         <Header />
+        
         <Approuter />
         <Footer />
       </BrowserRouter>
