@@ -1,0 +1,13 @@
+.full-page-dropdown {
+   position: absolute;
+   top: 90px;
+   height: 100vh;
+}
+
+.full-page-dropdown.show {
+    transform: translateY(0);
+}
+
+.dropdown-content {
+    text-align: center;
+}
