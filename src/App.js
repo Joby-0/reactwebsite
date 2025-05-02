@@ -5,12 +5,13 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './css/bootstrap.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import Header from './components/header'
 import Footer from './components/footer';
 import Approuter from './routers/approuter'
 import ScrollToTop from './components/scrolltotop';
-import Breadcome from './components/breadcome';
+
 
 function App() {
 

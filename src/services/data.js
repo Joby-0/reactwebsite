@@ -9,6 +9,7 @@ export function Categoriesdata() {
       {
         id: 1,
         name: "phones",
+        fullname: "phones and wearables",
         icon: "",
         subCat: [
           {
@@ -232,6 +233,126 @@ export function Categoriesdata() {
     ]
 
   )
+}
+export function Categoriesdatav2(){
+  return[
+    {
+      id: 1,
+      name: "Home & Garden",
+      shortname: "Home",
+      slug: "home-garden",
+      icon: "bi-house",
+      subcategories: [
+        { id: 2, name: "Furniture", slug: "furniture" },
+        { id: 3, name: "Kitchen", slug: "kitchen" },
+        {id: 232, name: "", slug: ""}
+      ]
+    },
+    {
+      id: 4,
+      name: "Garden & Outdoors",
+      shortname: "Garden",
+      slug: "garden",
+      icon: "bi-tree",
+      subcategories: []
+    },
+    {
+      id: 5,
+      name: "Kids & Family",
+      shortname: "Kids",
+      slug: "kids",
+      icon: "bi-emoji-smile",
+      subcategories: []
+    },
+    {
+      id: 6,
+      name: "Toys & Hobby",
+      shortname: "Toys",
+      slug: "toys",
+      icon: "bi-puzzle",
+      subcategories: []
+    },
+    {
+      id: 7,
+      name: "Gaming & ",
+      shortname: "Gaming",
+      slug: "gaming",
+      icon: "bi-controller",
+      subcategories: []
+    },
+    {
+      id: 8,
+      name: "Computer Products",
+      shortname: "Computer",
+      slug: "computer",
+      icon: "bi-laptop",
+      subcategories: []
+    },
+    {
+      id: 9,
+      name: "Phones & Wearables",
+      shortname: "Phones",
+      slug: "phones",
+      icon: "bi-phone",
+      subcategories: []
+    },
+    {
+      id: 10,
+      name: "Audio & TV",
+      shortname: "Audio & TV",
+      slug: "audio-tv",
+      icon: "bi-speaker",
+      subcategories: []
+    },
+    {
+      id: 11,
+      name: "Photo & Vedio",
+      shortname: "Photo",
+      slug: "photo",
+      icon: "bi-camera",
+      subcategories: []
+    },
+    {
+      id: 12,
+      name: "Clothes & Accessories",
+      shortname: "Clothes",
+      slug: "clothes",
+      icon: "bi-shirt",
+      subcategories: []
+    },
+    {
+      id: 13,
+      name: "Beauty & Care",
+      shortname: "Care",
+      slug: "care",
+      icon: "bi-heart-pulse",
+      subcategories: []
+    },
+    {
+      id: 14,
+      name: "DIY",
+      shortname: "DIY",
+      slug: "diy",
+      icon: "bi-tools",
+      subcategories: []
+    },
+    {
+      id: 15,
+      name: "Sport & ",
+      shortname: "Sport",
+      slug: "sport",
+      icon: "bi-dribbble",
+      subcategories: []
+    },
+    {
+      id: 16,
+      name: "Vehicles & ",
+      shortname: "Vehicles",
+      slug: "vehicles",
+      icon: "bi-truck",
+      subcategories: []
+    }
+  ]
 }
 
 

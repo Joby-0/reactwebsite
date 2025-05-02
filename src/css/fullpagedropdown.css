@@ -1,13 +1,17 @@
 .full-page-dropdown {
-   position: absolute;
-   top: 90px;
-   height: 100vh;
-}
-
-.full-page-dropdown.show {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    z-index: 9999;
+    overflow-y: auto;
+    /* Allow scrolling inside dropdown */
+    transition: transform 0.3s ease-in-out;
     transform: translateY(0);
+    /* For animation */
 }
 
-.dropdown-content {
-    text-align: center;
+body.no-scroll {
+    overflow: hidden;
 }
