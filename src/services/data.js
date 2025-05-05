@@ -16,7 +16,7 @@ export function Categoriesdata() {
             id: 111,
             name: "Smartphones",
             desc: "Smartphones are powerful handheld devices used for communication, browsing, and entertainment.",
-            
+
           },
           {
             id: 112,
@@ -234,18 +234,76 @@ export function Categoriesdata() {
 
   )
 }
-export function Categoriesdatav2(){
-  return[
+export function Categoriesdatav2() {
+  return [
     {
       id: 1,
-      name: "Home & Garden",
+      name: "Home & Household",
       shortname: "Home",
-      slug: "home-garden",
+      slug: "home",
       icon: "bi-house",
       subcategories: [
-        { id: 2, name: "Furniture", slug: "furniture" },
-        { id: 3, name: "Kitchen", slug: "kitchen" },
-        {id: 232, name: "", slug: ""}
+        {
+          id: 2,
+          name: "Furniture",
+          slug: "furniture",
+          subcategories: [
+            { id: 21, name: "Sofas", slug: "sofas" },
+            { id: 22, name: "Beds", slug: "beds" },
+            { id: 23, name: "Tables", slug: "tables" },
+            { id: 24, name: "Chairs", slug: "chairs" },
+            { id: 25, name: "Storage Furniture", slug: "storage-furniture" }
+          ]
+        },
+        {
+          id: 3,
+          name: "Kitchen",
+          slug: "kitchen",
+          subcategories: [
+            { id: 31, name: "Cutlery", slug: "cutlery" },
+            { id: 32, name: "Glasses", slug: "glasses" },
+            { id: 33, name: "Cookware", slug: "cookware" },
+            { id: 34, name: "Knives", slug: "knives" },
+            { id: 35, name: "Kitchen Accessories", slug: "kitchen-accessories" }
+          ]
+        },
+        {
+          id: 232,
+          name: "Appliances",
+          slug: "appliances",
+          subcategories: [
+            { id: 41, name: "Coffee Makers", slug: "coffee-makers" },
+            { id: 42, name: "Toasters", slug: "toasters" },
+            { id: 43, name: "Blenders", slug: "blenders" },
+            { id: 44, name: "Microwaves", slug: "microwaves" },
+            { id: 45, name: "Vacuum Cleaners", slug: "vacuum-cleaners" }
+          ]
+        },
+        {
+          id: 232,
+          name: "Appliances",
+          slug: "appliances",
+          subcategories: [
+            { id: 41, name: "Coffee Makers", slug: "coffee-makers" },
+            { id: 42, name: "Toasters", slug: "toasters" },
+            { id: 43, name: "Blenders", slug: "blenders" },
+            { id: 44, name: "Microwaves", slug: "microwaves" },
+            { id: 45, name: "Vacuum Cleaners", slug: "vacuum-cleaners" }
+          ]
+        },
+        {
+          id: 232,
+          name: "Appliances",
+          slug: "appliances",
+          subcategories: [
+            { id: 41, name: "Coffee Makers", slug: "coffee-makers" },
+            { id: 42, name: "Toasters", slug: "toasters" },
+            { id: 43, name: "Blenders", slug: "blenders" },
+            { id: 44, name: "Microwaves", slug: "microwaves" },
+            { id: 45, name: "Vacuum Cleaners", slug: "vacuum-cleaners" }
+          ]
+        },
+
       ]
     },
     {
@@ -294,7 +352,41 @@ export function Categoriesdatav2(){
       shortname: "Phones",
       slug: "phones",
       icon: "bi-phone",
-      subcategories: []
+      subcategories: [
+        {
+          id: 91,
+          name: "Smartphones",
+          slug: "smartphones",
+          subcategories: [
+            
+          ]
+        },
+        {
+          id: 92,
+          name: "Smartwatches",
+          slug: "smartwatches",
+          subcategories: [
+            { id: 921, name: "Apple Watch", slug: "apple-watch" },
+            { id: 922, name: "Wear OS Watches", slug: "wear-os" }
+          ]
+        },
+        {
+          id: 93,
+          name: "Phone Accessories",
+          slug: "phone-accessories",
+          subcategories: [
+            { id: 931, name: "Chargers", slug: "chargers" },
+            { id: 932, name: "Phone Cases", slug: "phone-cases" },
+            { id: 933, name: "Screen Protectors", slug: "screen-protectors" }
+          ]
+        },
+        {
+          id: 94,
+          name: "Fitness Trackers",
+          slug: "fitness-trackers",
+          subcategories: [] // no sub-subcategories here
+        }
+      ]
     },
     {
       id: 10,
@@ -317,7 +409,7 @@ export function Categoriesdatav2(){
       name: "Clothes & Accessories",
       shortname: "Clothes",
       slug: "clothes",
-      icon: "bi-shirt",
+      icon: "bi-backpack",
       subcategories: []
     },
     {

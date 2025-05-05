@@ -20,6 +20,7 @@ export default function Itemscarusal(props) {
   };
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,15 +28,22 @@ export default function Itemscarusal(props) {
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
     };
+    
+    
 
     const currentRef = scrollRef.current;
     if (currentRef) {
       currentRef.addEventListener("scroll", handleScroll);
       handleScroll(); // initialize
     }
+    
 
     return () => currentRef?.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => {
+    console.log("canScrollRight updated:", canScrollRight);
+    console.log("canScrollLeft updated:", canScrollLeft);
+  }, [canScrollLeft, canScrollRight]);
   return (
     <>
       {/* Popular items part */}

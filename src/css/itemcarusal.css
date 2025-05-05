@@ -27,10 +27,10 @@
     right: 2rem;
   }
   #popularProductRRow:hover .item-next{
-    display: block;
+    display: block !important;
   }
   #popularProductRRow:hover .items-prev{
-    display: block;
+    display: block !important;
   }
   #productBox{
     transition: transform 0.3s ease, box-shadow 0.3s ease;

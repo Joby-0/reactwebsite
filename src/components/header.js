@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Navbar from '../routers/navbar';
 import Signinmodal from './signinmodal';
 import Categoriesfullpagedropdown from './categoriesfullpagedropdown';
+import { useLocation } from 'react-router';
 
 
-export default function Header(props) {
+
+
+export default function Header() {
+  //sign in modal
   const [show, setShow] = useState(false);
   const handleModal = (value) => {
     setShow(value);
+    setIsDropdownOpen(false)
   };
+  //////////////////////////////////////////////
   
+  //full page modal
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   const toggleDropdown = () => setIsDropdownOpen(prev => !prev);
   const closeDropdown = () => setIsDropdownOpen(false);
+  //////////////////////////////////////////////////////
 
-
+  // change mode dark and ljust
   const [darkMode, setDarkMode] = useState(() => {
     // Load dark mode preference from localStorage
     const stored = localStorage.getItem('darkMode');
@@ -26,13 +33,9 @@ export default function Header(props) {
     switchmode(newMode);
     setDarkMode(newMode);
   }
-
   const switchmode = (e) => {
     setDarkMode(e)
   }
-
-
-
   useEffect(() => {
     if (darkMode) {
       document.documentElement.setAttribute('data-bs-theme', 'dark');
@@ -42,6 +45,23 @@ export default function Header(props) {
     localStorage.setItem('darkMode', darkMode);
 
   }, [darkMode]);
+  //////////////////////////////////////////////////////////
+  
+  // copy chatgpt auto close router on page change
+  const location = useLocation();
+  const isFirstRender = useRef(true); // tracks first render
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false; // skip first run
+      return;
+    }
+
+    // On actual route change (not initial mount), close the dropdown
+    if (isDropdownOpen) {
+      closeDropdown();
+    }
+  }, [location]); // only runs when route changes
+  ///////////////////////////////////////////////////
 
   return (
     <>

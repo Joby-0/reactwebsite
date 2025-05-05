@@ -10,8 +10,8 @@ export default function Categoriesandsubcategories(props) {
   return (
 
     <div className="row g-4">
-      {props.categories.subCat.map((category, index) => {
-        const hasSubSub = category.subSubCat && category.subSubCat.length > 0;
+      {props.categories.subcategories.map((category, index) => {
+        const hasSubSub = category.subcategories && category.subcategories.length > 0;
 
         return (
           <div className="col-3" key={index}>
@@ -31,7 +31,7 @@ export default function Categoriesandsubcategories(props) {
                   className="dropdown-menu w-100"
                   aria-labelledby={`dropdown-toggle-${index}`}
                 >
-                  {category.subSubCat.map((subSub, subIndex) => (
+                  {category.subcategories.map((subSub, subIndex) => (
                     <li key={subIndex}>
                       <Link
                         className="dropdown-item"
