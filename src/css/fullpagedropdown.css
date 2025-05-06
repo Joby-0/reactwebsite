@@ -15,3 +15,20 @@
 body.no-scroll {
     overflow: hidden;
 }
+.nav .active > button {
+    background-color: #0d6efd;
+    color: white !important;
+    
+}
+#subcatlink{
+    cursor: pointer;
+    
+}
+#subcatlink:hover{
+    text-decoration: underline !important;
+    
+    
+}
+.icon-link>.bi{
+    height: auto !important;
+}

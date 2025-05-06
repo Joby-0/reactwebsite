@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import {  useParams } from 'react-router';
 import Categoriesandsubcategories from '../components/categoriesandsubcategories';
-import { Categoriesdata, PopularProducts } from '../services/data'
+import { Categoriesdata, Categoriesdatav2, PopularProducts } from '../services/data'
 import Itemscarusal from '../components/itemscarusal';
 import Divider from '../components/divider';
 import Breadcome from '../components/breadcome';
 
-let categories = new Categoriesdata()
+let categories = new Categoriesdatav2()
 let pdata = new PopularProducts()
 
 export default function Categorypage() {
@@ -19,8 +19,10 @@ export default function Categorypage() {
             if (categorySlug && !subSlug) {
                 // Load category by slug/id
                 const foundCategory = categories.find(
-                    (cat) => cat.name.toLowerCase() === categorySlug.toLowerCase()
+                    (cat) => cat.slug.toLowerCase() === categorySlug.toLowerCase()
                 );
+                console.log(foundCategory);
+                
                 setCname(foundCategory.name)
                 setcData(foundCategory);
 

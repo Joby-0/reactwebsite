@@ -7,9 +7,10 @@ export default function Categoriesfullpagedropdown(props) {
   const [activecategories, setActiveCategories] = useState()
   const changeCategory = (category) => {
     setActiveCategories(category)
+    
   }
   useEffect(() => {
-    console.log("d");
+    
 
     if (props.isOpen) {
       document.body.classList.add('no-scroll');
