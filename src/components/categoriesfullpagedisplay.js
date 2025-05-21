@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Cursor } from 'react-bootstrap-icons';
+
 import { Link } from 'react-router'
 
 export default function Categoriesfullpagedisplay(props) {
@@ -20,7 +20,7 @@ export default function Categoriesfullpagedisplay(props) {
       <div className="border rounded shadow-sm h-100 d-flex flex-column bg-dark text-white">
         <Link
           className="btn border-bottom rounded-0 fs-5 py-3 w-100 text-white text-decoration-none fw-semibold"
-          to={`/c/${props.category.slug}/${subSub.slug}`}
+          to={`/p/${subSub.slug}`}
         >
           {subSub.name}
         </Link>
