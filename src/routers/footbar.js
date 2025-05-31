@@ -9,7 +9,7 @@ export default function Footbar() {
           <ul className="nav flex-column">
             <li className="nav-item mb-2"><Link to='../info/contact' className="nav-link p-0 text-body-secondary">Contact us</Link></li>
             <li className="nav-item mb-2"><Link to="../info/about" className="nav-link p-0 text-body-secondary">About</Link></li>
-            <li className="nav-item mb-2"><Link to='' className="nav-link p-0 text-body-secondary">Pricing</Link></li>
+            <li className="nav-item mb-2"><Link to='' className="nav-link p-0 text-body-secondary">Promos</Link></li>
             <li className="nav-item mb-2"><Link to='../info/faq' className="nav-link p-0 text-body-secondary">FAQs</Link></li>
           </ul>
         </div>
