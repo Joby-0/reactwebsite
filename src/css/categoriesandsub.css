@@ -1,12 +1,20 @@
-/* Add this globally or in your CSS file */
-.hover-dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0;
+
+.dropdown-menu {
+    display: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    display: none;
+    margin-top: -4px; /* Lyft upp dropdown-menyn så att den överlappar knappen */
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top: none;
 }
 
-.hover-dropdown .dropdown-menu {
-    display: none;
-    transition: all 0.3s ease;
+
+.hover-dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 
