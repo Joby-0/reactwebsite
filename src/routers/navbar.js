@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {  } from 'react'
 import { Link } from 'react-router'
 
 export default function Navbar(props) {
@@ -26,7 +26,7 @@ export default function Navbar(props) {
         </li>
         <li className="nav-item ">
           <Link href="#" className="nav-link  text-body">
-            Pricing
+           Promos
           </Link>
         </li>
         <li className="nav-item">
