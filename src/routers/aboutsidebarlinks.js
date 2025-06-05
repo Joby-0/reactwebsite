@@ -29,7 +29,7 @@ export default function Aboutsidebarlinks() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="../info/no" className="nav-link">
+                    <NavLink to="../info/how-it-works" className="nav-link">
                         <svg className="bi pe-none me-2" width="16" height="16" aria-hidden="true">
                             <use xlinkHref="#table" />
                         </svg>
@@ -45,7 +45,7 @@ export default function Aboutsidebarlinks() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="../info/no" className="nav-link">
+                    <NavLink to="../info/customers" className="nav-link">
                         <svg className="bi pe-none me-2" width="16" height="16" aria-hidden="true">
                             <use xlinkHref="#people-circle" />
                         </svg>
