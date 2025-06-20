@@ -561,6 +561,15 @@ export default function Data() {
             productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
             price: '16090 kr',
             storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'norway'
           },
           {
             company: 'Dustin Home',
@@ -568,6 +577,7 @@ export default function Data() {
             productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
             price: '17490 kr',
             storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe'
           },
           {
             company: 'Company name/logo',

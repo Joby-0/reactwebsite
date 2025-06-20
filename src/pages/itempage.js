@@ -8,6 +8,7 @@ import Data from '../services/data'
 import { useParams } from "react-router";
 import Modalstoreinfo from '../components/modalstoreinfo'
 import Breadcome from '../components/breadcome'
+import Productstorefilter from '../components/productstorefilter'
 
 
 
@@ -63,6 +64,7 @@ export default function Itempage(props) {
                             <>
                                 <Productshowcase data={product} />
                                 <Productnavmenu active={activeSection} onNavigate={scrollTo} />
+                                <Productstorefilter />
 
                                 <div ref={storesRef}>
                                     <Productstoreslist data={product.pricelist} handleModal={handleModal} setClickstore={setClickstore} />
