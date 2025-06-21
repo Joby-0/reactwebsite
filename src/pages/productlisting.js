@@ -54,7 +54,7 @@ export default function Productlisting() {
             </div>
 
           </div>
-          <div id='ads' className="col-2"></div>
+          <div id='adscolumn' className="col-2"></div>
         </div>
 
       </div>

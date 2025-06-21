@@ -1,3 +1,10 @@
 .container{
     max-width: 90% !important;
 }
+
+#adscolumn{
+    height: 100vh;
+    top:0;
+    position: sticky;
+    background-color: rgb(43,48,53) !important;
+}

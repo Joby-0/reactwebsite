@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useParams } from "react-router";
+
 import Productshowcase from '../components/productshowcase'
 import Productnavmenu from '../components/productnavmenu'
 import Productstoreslist from '../components/productstoreslist'
-import Productsdescription from '../components/productsdescription'
+import Productsspecifications from '../components/productsspecifications'
 import Productsreviews from '../components/productsreviews'
-import Data from '../services/data'
-import { useParams } from "react-router";
+import Productstorefilter from '../components/productstorefilter'
+import Productdescription from '../components/productdescription';
+
 import Modalstoreinfo from '../components/modalstoreinfo'
 import Breadcome from '../components/breadcome'
+
+import Data from '../services/data' //remove when api
 
 
 
@@ -15,22 +20,25 @@ export default function Itempage(props) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
 
+    //store modal 
     const [show, setShow] = useState(false);
     const [clickstore, setClickstore] = useState(null)
     const handleModal = (value) => {
         setShow(value);
     };
 
+    //click to scroll
     const [activeSection, setActiveSection] = useState('stores');
-
     const storesRef = useRef(null);
     const descriptionRef = useRef(null);
     const reviewsRef = useRef(null);
+    const specificationsRef = useRef(null);
 
     const sectionRefs = {
         stores: storesRef,
         description: descriptionRef,
         reviews: reviewsRef,
+        specifications: specificationsRef
     };
     const scrollTo = (key) => {
         const offset = -80; // Adjust based on your header
@@ -40,8 +48,12 @@ export default function Itempage(props) {
         setActiveSection(key);
     };
 
-
-
+    //store filter
+    const [storeOrder, setStoreOrder] = useState('Recommended')
+    const storeOrderChange = (e) => {
+        setStoreOrder(e)
+        //make a api call to change to order
+    }
 
     useEffect(() => {
         (async () => {
@@ -57,34 +69,35 @@ export default function Itempage(props) {
         <>
             <Breadcome />
             <div className="container">
-                <div className="row align-items-center">
+                <div className="row">
                     <div className="col">
                         {product ? (
                             <>
                                 <Productshowcase data={product} />
                                 <Productnavmenu active={activeSection} onNavigate={scrollTo} />
+                                
 
                                 <div ref={storesRef}>
+                                    <Productstorefilter storeOrder={storeOrder}  storeOrderChange={storeOrderChange}/>
                                     <Productstoreslist data={product.pricelist} handleModal={handleModal} setClickstore={setClickstore} />
                                     <Modalstoreinfo show={show} handleModal={handleModal} storeInfo={clickstore} />
 
                                 </div>
-
-                                <div ref={descriptionRef}>
-                                    <Productsdescription data={product.desc} />
-                                </div>
-
                                 <div ref={reviewsRef}>
                                     <Productsreviews />
+                                </div>
+                                <div ref={descriptionRef}>
+                                    <Productdescription/>
+                                </div>
+                                <div ref={specificationsRef}>
+                                    <Productsspecifications data={product.desc} />
                                 </div>
                             </>
                         ) : (
                             <p>Loading...</p>
                         )}
                     </div>
-                    <div id='adds' className="col-2">
-
-                    </div>
+                    <div id='adscolumn'  className="col-2 bg-body-tertiary"></div>
                 </div>
             </div>
         </>

@@ -1,0 +1,11 @@
+#selectedSortWaydropdownmenu, #selectedcountrydropdownmenu{
+    border-top-left-radius: 0.375rem !important;
+    border-top-right-radius: 0.375rem !important;
+    z-index: 1021;
+}
+/* store order radio button to full   */
+.full-radio label {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
