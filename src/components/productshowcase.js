@@ -57,15 +57,15 @@ export default function Productshowcase(props) {
                     <div className="row">
                         <h1>{props.data.name}</h1>
                     </div>
-                    <div className="row my-2">
+                    <div className="row mb-2">
                         <div className="col-auto">
-                            <button className="btn btn-secondary">{props.data.rating}</button>
+                            <button className="btn btn-sm  "><i class="bi bi-star-fill"></i> {props.data.rating}</button>
                         </div>
                         <div className="col-auto">
-                            <button className="btn btn-primary">Watch price</button>
+                            <button className="btn btn-sm "><i class="bi bi-bell"></i> Watch price</button>
                         </div>
                         <div className="col-auto">
-                            <button className="btn btn-danger">x</button>
+                            <button className="btn btn-sm btn-danger">x</button>
                         </div>
                     </div>
                     <div className="row">

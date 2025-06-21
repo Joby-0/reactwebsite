@@ -25,6 +25,11 @@ export default function Productnavmenu(props) {
             Produkt description
           </button>
         </li>
+        <li className="nav-item">
+          <button onClick={() => Onclick('specifications')} className={`nav-link  ${props.active === 'specifications' ? 'active' : ''}`}>
+            Specifications
+          </button>
+        </li>
       </ul>
       
     </div>
