@@ -9,3 +9,10 @@
   width: 100%;
   cursor: pointer;
 }
+#selectedcountrydropdownmenu{
+  cursor: pointer;
+}
+#filteractivedot{
+  display: none ;
+  /* display: block; */
+}

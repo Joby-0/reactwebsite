@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, use } from 'react'
 import { useParams } from "react-router";
 
 import Productshowcase from '../components/productshowcase'
@@ -50,9 +50,14 @@ export default function Itempage(props) {
 
     //store filter
     const [storeOrder, setStoreOrder] = useState('Recommended')
+    const [activeStorefilter, setActiveStorefilter] = useState([])
     const storeOrderChange = (e) => {
         setStoreOrder(e)
         //make a api call to change to order
+    }
+    const storeFilterChange = (e) => {
+        setActiveStorefilter(e)
+        //make a api call to change what shows with filter
     }
 
     useEffect(() => {
@@ -78,7 +83,7 @@ export default function Itempage(props) {
                                 
 
                                 <div ref={storesRef}>
-                                    <Productstorefilter storeOrder={storeOrder}  storeOrderChange={storeOrderChange}/>
+                                    <Productstorefilter activeStorefilter={activeStorefilter} storeFilterChange={storeFilterChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange}/>
                                     <Productstoreslist data={product.pricelist} handleModal={handleModal} setClickstore={setClickstore} />
                                     <Modalstoreinfo show={show} handleModal={handleModal} storeInfo={clickstore} />
 
