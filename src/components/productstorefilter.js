@@ -18,21 +18,63 @@ export default function Productstorefilter(props) {
                 <div className='col-auto'>
                     <button className="btn btn-secondary position-relative" type="button" >
                         <i class="bi bi-sliders2"></i>
-                        <span id='filteractivedot' class="position-absolute top-0 start-100 translate-middle p-1 bg-primary border border-primary rounded-circle">
-                            <span class="visually-hidden">filter active</span> 
+                        <span id='filteractivedot' class="position-absolute top-0 start-100 translate-middle badge p-1 bg-primary border border-primary rounded-pill">
+                            2
+                            <span class="visually-hidden">filter active</span>
                             {/* fix fix */}
                         </span>
+                        
                     </button>
                 </div>
                 <div className='col-auto'> <div className="dropdown">
                     <button className="btn btn-secondary  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Country
                     </button>
-                    <ul id='selectedcountrydropdownmenu' className="dropdown-menu   border-0 mt-1 z-100">
-                        <li className='dropdown-item'><span class="mx-1">USA</span></li>
+                    <ul id='selectedcountrydropdownmenu' className="dropdown-menu border-0 mt-1 z-100">
+                        {/* <li className='dropdown-item'><span class="mx-1">USA</span></li>
                         <li className='dropdown-item'><span class="mx-1">Germany</span></li>
                         <li className='dropdown-item'><span class="mx-1">Sweden</span></li>
-                        <li className='dropdown-item'><span class="mx-1">UK</span></li>
+                        <li className='dropdown-item'><span class="mx-1">UK</span></li> */}
+                        <Form>
+                            {['checkbox'].map((type) => (
+                                <div key={`default-${type}`} className="mx-2">
+                                    <Form.Check
+                                        type={type}
+                                        name="group1"
+                                        id={`default-${type}-1`}
+                                        label={`USA`}
+                                        value="USA"
+
+                                        className="dropdown-item"
+                                    />
+                                    <Form.Check
+                                        type={type}
+                                        name="group1"
+                                        id={`default-${type}-2`}
+                                        label={`Germany`}
+                                        value="Germany"
+                                        className="dropdown-item"
+                                    />
+                                    <Form.Check
+                                        type={type}
+                                        name="group1"
+                                        id={`default-${type}-3`}
+                                        label={`Sweden`}
+                                        value="Sweden"
+                                        className="dropdown-item"
+                                    />
+                                    <Form.Check
+                                        type={type}
+                                        name="group1"
+                                        id={`default-${type}-4`}
+                                        label={`UK`}
+                                        value="UK"
+                                        className="dropdown-item"
+                                    />
+
+                                </div>
+                            ))}
+                        </Form>
                     </ul>
                 </div></div>
                 <div className='col d-flex justify-content-end'>
@@ -82,5 +124,6 @@ export default function Productstorefilter(props) {
 
 
         </div>
+
     )
 }
