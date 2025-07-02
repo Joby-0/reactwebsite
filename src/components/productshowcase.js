@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default function Productshowcase(props) {    
     const [mainImage, setMainImage] = useState(props.data.image);
-    console.log(props.data);
+    
     
     const thumbnails = props?.data?.thumbnails
     const getHighestPrice = (pricelist) => {
@@ -65,7 +65,7 @@ export default function Productshowcase(props) {
                             <button className="btn btn-sm "><i class="bi bi-bell"></i> Watch price</button>
                         </div>
                         <div className="col-auto">
-                            <button className="btn btn-sm btn-danger">x</button>
+                            <button className="btn btn-sm ">Compare</button>
                         </div>
                     </div>
                     <div className="row">

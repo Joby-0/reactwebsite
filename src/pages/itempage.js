@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, use } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from "react-router";
 
 import Productshowcase from '../components/productshowcase'
@@ -51,14 +51,28 @@ export default function Itempage(props) {
     //store filter
     const [storeOrder, setStoreOrder] = useState('Recommended')
     const [activeStorefilter, setActiveStorefilter] = useState([])
+    const [activeCurrency, setActiveCurrency] = useState('SEK')
     const storeOrderChange = (e) => {
         setStoreOrder(e)
         //make a api call to change to order
     }
-    const storeFilterChange = (e) => {
-        setActiveStorefilter(e)
-        //make a api call to change what shows with filter
-    }
+    // const storeFilterChange = (e) => {
+    //     setActiveStorefilter(e)
+    //     //make a api call to change what shows with filter
+    // }
+    const toggleStoreFilter = (filterKey) => {
+        setActiveStorefilter((prev) => {
+            
+            const next = prev.includes(filterKey)
+                ? prev.filter((k) => k !== filterKey)          // remove
+                : [...prev, filterKey];                        // add
+            // call your API with next ...
+            return next;
+        });
+
+    };
+    const removeFilter = (filterKey) => setActiveStorefilter((prev) => prev.filter((k) => k !== filterKey));
+    const handleCurChange = (cur) => setActiveCurrency(cur.target.value);
 
     useEffect(() => {
         (async () => {
@@ -67,7 +81,7 @@ export default function Itempage(props) {
             const product = dataInstance.find(item => item.id.toString() === id); //sen blir det service read product med id
             setProduct(product);
         })();
-    }, [id]);
+    }, [id, activeStorefilter]);
 
 
     return (
@@ -80,10 +94,10 @@ export default function Itempage(props) {
                             <>
                                 <Productshowcase data={product} />
                                 <Productnavmenu active={activeSection} onNavigate={scrollTo} />
-                                
+
 
                                 <div ref={storesRef}>
-                                    <Productstorefilter activeStorefilter={activeStorefilter} storeFilterChange={storeFilterChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange}/>
+                                    <Productstorefilter activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange} />
                                     <Productstoreslist data={product.pricelist} handleModal={handleModal} setClickstore={setClickstore} />
                                     <Modalstoreinfo show={show} handleModal={handleModal} storeInfo={clickstore} />
 
@@ -92,7 +106,7 @@ export default function Itempage(props) {
                                     <Productsreviews />
                                 </div>
                                 <div ref={descriptionRef}>
-                                    <Productdescription/>
+                                    <Productdescription />
                                 </div>
                                 <div ref={specificationsRef}>
                                     <Productsspecifications data={product.desc} />
@@ -102,7 +116,7 @@ export default function Itempage(props) {
                             <p>Loading...</p>
                         )}
                     </div>
-                    <div id='adscolumn'  className="col-2 bg-body-tertiary"></div>
+                    <div id='adscolumn' className="col-2 bg-body-tertiary"></div>
                 </div>
             </div>
         </>
