@@ -9,3 +9,18 @@
   width: 100%;
   cursor: pointer;
 }
+/* country tap */
+.form-check-label{
+  cursor: pointer;
+  width: 100%;
+  height: 2rem;
+  padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
+  padding-left: 0.5rem;
+}
+
+.form-check-input{
+  cursor: pointer;
+  padding: 0.5rem !important;
+  
+}
