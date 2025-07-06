@@ -6,7 +6,8 @@ import Data from '../services/data';
 import Breadcome from '../components/breadcome';
 
 export default function Productlisting() {
-  const filters = [
+  //change to api later
+  const filtersdata = [
     {
       title: 'Store',
       options: [
@@ -30,12 +31,24 @@ export default function Productlisting() {
     }
   ];
   const data = new Data();
-  const [activeFilter, setActiveFilter] = useState()
+  const [activeFilter, setActiveFilter] = useState([])
 
   const onFilterClick = (filterName) => {
     console.log(filterName);
     setActiveFilter()
   }
+  const toggleFilter = (filterKey) => {
+        setActiveFilter((prev) => {
+            
+            const next = prev.includes(filterKey)
+                ? prev.filter((k) => k !== filterKey)          // remove
+                : [...prev, filterKey];                        // add
+            // call your API with next ...
+            return next;
+        });
+    console.log(activeFilter);
+    };
+  const removeFilter = (filterKey) => setActiveFilter((prev) => prev.filter((k) => k !== filterKey));
 
 
   return (
@@ -46,9 +59,9 @@ export default function Productlisting() {
         <div className="row">
           <div className="col-10">
             <div className='row'>
-              <Categoryfilter onClick={onFilterClick} filters={filters} />
-              <div class="col-9 scrollarea">
-                <Categoriesfilterdisplay />
+              <Categoryfilter toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={filtersdata} />
+              <div className="col-9 scrollarea">
+                <Categoriesfilterdisplay activeFilter={activeFilter} removeFilter={removeFilter} />
                 <Categoriesproducts products={data} />
               </div>
             </div>
