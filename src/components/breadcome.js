@@ -4,10 +4,14 @@ import { Link, useLocation } from 'react-router';
 export default function Breadcome() {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x);
+    
 
     const formatName = (name) =>
         name.replace(/%20/g, " ").replace(/-/g, " ");
-
+    const formatNametoUpperCase = (str) => {
+        if (!str) return '';
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
 
 
 
@@ -23,13 +27,14 @@ export default function Breadcome() {
                     {pathnames.map((segment, index) => {
                         // Skip numbers (like IDs)
                         if (!isNaN(segment)) return null;
+                        if (segment.length == 1) return null;
 
                         const routeTo = "/" + pathnames.slice(0, index + 1).join("/");
                         const isLast = index === pathnames.length - 1;
 
                         return isLast ? (
                             <li key={segment} className="breadcrumb-item active" aria-current="page">
-                                {formatName(segment)}
+                                {formatNametoUpperCase(formatName(segment))}
                             </li>
                         ) : (
                             <li key={segment} className="breadcrumb-item">

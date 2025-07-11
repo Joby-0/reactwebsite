@@ -4,6 +4,9 @@ export default function Categoriesfilterdisplay(props) {
     const removeFilter = (filterKey) => {
         props.removeFilter(filterKey)
     }
+    const OrderChange = (order) => {
+        props.OrderChange(order)
+    }
     return (
         <>
             <div className="p-1 d-flex justify-content-between border-bottom">
@@ -18,23 +21,19 @@ export default function Categoriesfilterdisplay(props) {
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                         >
-                            Order by
+                            {props.activeOrder}
                         </button>
                         <ul className="dropdown-menu">
-                            <li>
-                                <button className="dropdown-item">Trending</button></li>
-                            <li>
-                                <button className="dropdown-item">Price ascending</button>
-                            </li>
-                            <li>
-                                <button className="dropdown-item">Price descending</button>
-                            </li>
-                            <li>
-                                <button className="dropdown-item">Name</button>
-                            </li>
-                            <li>
-                                <button className="dropdown-item">Rating</button>
-                            </li>
+                            {['Recommended','Trending', 'Price ascending', 'Price descending', 'Name', 'Rating'].map((option) => (
+                                <li key={option}>
+                                    <button
+                                        onClick={() => OrderChange(option)}
+                                        className={`dropdown-item ${props.activeOrder === option ? 'active' : ''}`}
+                                    >
+                                        {option}
+                                    </button>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -43,12 +42,12 @@ export default function Categoriesfilterdisplay(props) {
             <div className='row'>
                 <div className="mb-4 d-flex rounded-3">
                     {props.activeFilter.map(activeFilter => (
-                        <span key={activeFilter} style={{ width: 'fit-content' }} class="badge d-flex align-items-center p-1 pe-2 mx-1 my-3 text-light-emphasis bg-light-subtle border border-dark-subtle rounded-pill">
+                        <span key={activeFilter} style={{ width: 'fit-content' }} className="badge d-flex align-items-center p-1 pe-2 mx-1 my-3 text-light-emphasis bg-light-subtle border border-dark-subtle rounded-pill">
 
                             {activeFilter}
                             <span className="vr mx-2"></span>
                             <button className='btn btn-sm p-0 border-0 bg-transparent text-light-emphasis' style={{ lineHeight: 0 }} onClick={() => removeFilter(activeFilter)} aria-label={`Remove ${activeFilter}`}>
-                                <i class="bi bi-x-lg"></i>
+                                <i className="bi bi-x-lg"></i>
                             </button>
                         </span>
                     ))}
