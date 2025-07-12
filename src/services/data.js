@@ -358,7 +358,7 @@ export function Categoriesdatav2() {
           name: "Smartphones",
           slug: "smartphones",
           subcategories: [
-            
+
           ]
         },
         {
@@ -464,7 +464,7 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
         rating: '4,8',
-        price: '16090 sek',
+        price: '16090 Kr',
         desc: [
           {
             id: 1,
@@ -555,21 +555,15 @@ export default function Data() {
         ],
         url: '/categorys/product.html',
         pricelist: [
+
           {
             company: 'Elgiganten',
             productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
             productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
             price: '16090 kr',
             storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
-            country: 'swe'
-          },
-          {
-            company: 'Elgiganten',
-            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
-            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
-            price: '16090 kr',
-            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
-            country: 'norway'
+            country: 'norway',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFFLnMJdLwwQrcyfAvGm0mn5iJ9nAJ69Qkg&s'
           },
           {
             company: 'Dustin Home',
@@ -577,7 +571,26 @@ export default function Data() {
             productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
             price: '17490 kr',
             storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
-            country: 'swe'
+            country: 'swe',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7mVdlOCMx6VIBJ8SZcAHSo4_eZ7y8sZhACA&s'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
           },
           {
             company: 'Company name/logo',
@@ -592,25 +605,25 @@ export default function Data() {
         id: 2,
         category: 'Phones',
         categoryId: 1,
-        name: 'Samsung-Galaxy-S25-Ultra-512GB',
-        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
-        image: 'https://images.samsung.com/is/image/samsung/p6pim/se/galaxy-s25-ultra_front_phantom_black.png',
+        name: 'Samsung Galaxy Z Flip 7 Ultra 512GB',
+        shortdesc: "A foldable phone that combines style and performance in a pocket-sized powerhouse. Flip it, flex it, love it.",
+        image: 'https://www.telstra.com.au/content/dam/tcom/devices/mobile/mhdwhst-gzf/blueshadow/landscape-front.png',
         thumbnails: [
-          'https://images.samsung.com/is/image/samsung/p6pim/se/galaxy-s25-ultra_side_phantom_black.png',
-          'https://images.samsung.com/is/image/samsung/p6pim/se/galaxy-s25-ultra_back_phantom_black.png',
-          'https://images.samsung.com/is/image/samsung/p6pim/se/galaxy-s25-ultra_angled_phantom_black.png',
+          'https://example.com/images/zflip7-thumb1.png',
+          'https://example.com/images/zflip7-thumb2.png',
+          'https://example.com/images/zflip7-thumb3.png',
         ],
-        rating: 624,
-        price: '17990 sek',
+        rating: '4,6',
+        price: '14990 Kr',
         desc: [
           {
             id: 1,
             name: "Information",
             data: [
-              { name: "Name", value: "Samsung Galaxy S25 Ultra" },
+              { name: "Name", value: "Samsung Galaxy Z Flip 7 Ultra" },
               { name: "Manufacturer", value: "Samsung" },
-              { name: "Model Number", value: "S25 Ultra" },
-              { name: "Release Date", value: "February 2025" },
+              { name: "Model Number", value: "Z Flip7 Ultra" },
+              { name: "Release Date", value: "August 2025" },
               { name: "Operating System", value: "Android 15" }
             ]
           },
@@ -618,10 +631,10 @@ export default function Data() {
             id: 2,
             name: "Specifications",
             data: [
-              { name: "Dimensions", value: "163.4 x 78.1 x 8.9 mm" },
-              { name: "Weight", value: "233g" },
-              { name: "Material(s)", value: "Aluminum, Gorilla Glass Victus 3" },
-              { name: "Color(s)", value: "Phantom Black, Green, Cream, Lavender" },
+              { name: "Dimensions", value: "165.1 x 71.9 x 6.9 mm (unfolded)" },
+              { name: "Weight", value: "183g" },
+              { name: "Material(s)", value: "Aluminum, Glass" },
+              { name: "Color(s)", value: "Phantom Black, Cream, Lavender" },
               { name: "Storage size", value: "512GB" }
             ]
           },
@@ -629,86 +642,69 @@ export default function Data() {
             id: 3,
             name: "Display",
             data: [
-              { name: "Type", value: "Dynamic AMOLED 2X" },
-              { name: "Size", value: "6.8 inches" },
-              { name: "Resolution", value: "1440 x 3200 pixels" },
+              { name: "Type", value: "Foldable Dynamic AMOLED 2X" },
+              { name: "Size", value: "6.9 inches (main), 3.4 inches (cover)" },
+              { name: "Resolution", value: "1080 x 2640 pixels" },
               { name: "Refresh Rate", value: "120Hz" },
               { name: "HDR", value: "HDR10+" }
             ]
-          }
-        ],
-        url: '/categorys/product.html',
-        pricelist: [
-          {
-            company: 'MediaMarkt',
-            productUrl: 'https://www.mediamarkt.se/product/samsung-galaxy-s25-ultra',
-            productName: 'Samsung Galaxy S25 Ultra 5G 512GB Phantom Black',
-            price: '17990 kr',
-            storeUrl: 'https://www.mediamarkt.se/product/samsung-galaxy-s25-ultra'
           },
           {
-            company: 'Dustin Home',
-            productUrl: 'https://www.dustinhome.se/product/s25-ultra-512',
-            productName: 'Galaxy S25 Ultra 512GB Svart',
-            price: '18490 kr',
-            storeUrl: 'https://www.dustinhome.se/product/s25-ultra-512'
-          }
-        ]
-      },
-      {
-        id: 3,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'Google-Pixel-9-Pro-256GB',
-        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
-        image: 'https://store.google.com/product/pixel_9_pro_image.png',
-        thumbnails: [
-          'https://store.google.com/product/pixel_9_pro_image_side.png',
-          'https://store.google.com/product/pixel_9_pro_image_back.png',
-          'https://store.google.com/product/pixel_9_pro_image_top.png'
-        ],
-        rating: 412,
-        price: '13990 sek',
-        desc: [
-          {
-            id: 1,
-            name: "Information",
+            id: 4,
+            name: "Performance",
             data: [
-              { name: "Name", value: "Google Pixel 9 Pro" },
-              { name: "Manufacturer", value: "Google" },
-              { name: "Model Number", value: "G9P-256" },
-              { name: "Release Date", value: "October 2025" },
-              { name: "Operating System", value: "Android 15" }
-            ]
-          },
-          {
-            id: 3,
-            name: "Display",
-            data: [
-              { name: "Type", value: "LTPO OLED" },
-              { name: "Size", value: "6.7 inches" },
-              { name: "Resolution", value: "1344 x 2992 pixels" },
-              { name: "Refresh Rate", value: "120Hz" }
+              { name: "Chipset", value: "Snapdragon 8 Gen 4" },
+              { name: "CPU", value: "Octa-core" },
+              { name: "GPU", value: "Adreno 800" },
+              { name: "RAM", value: "12GB" }
             ]
           },
           {
             id: 5,
             name: "Camera",
             data: [
-              { name: "Main Camera", value: "50MP + 48MP + 48MP" },
-              { name: "Zoom", value: "5x optical" },
-              { name: "Video", value: "4K 60fps" }
+              { name: "Main Camera", value: "50MP (wide), 12MP (ultrawide)" },
+              { name: "Front Camera", value: "10MP" },
+              { name: "Video Recording", value: "4K at 60fps" }
+            ]
+          },
+          {
+            id: 6,
+            name: "Battery",
+            data: [
+              { name: "Capacity", value: "3700mAh" },
+              { name: "Charging", value: "Fast 30W, Wireless 15W" }
+            ]
+          },
+          {
+            id: 7,
+            name: "Connectivity",
+            data: [
+              { name: "Network", value: "5G, LTE" },
+              { name: "Wi-Fi", value: "Wi-Fi 7" },
+              { name: "Bluetooth", value: "5.3" },
+              { name: "USB", value: "USB-C" }
+            ]
+          },
+          {
+            id: 8,
+            name: "Other Features",
+            data: [
+              { name: "Water Resistance", value: "IPX8" },
+              { name: "Fingerprint", value: "Side-mounted" }
             ]
           }
         ],
         url: '/categorys/product.html',
         pricelist: [
           {
-            company: 'Google Store',
-            productUrl: 'https://store.google.com/pixel_9_pro',
-            productName: 'Pixel 9 Pro 256GB Obsidian',
-            price: '13990 kr',
-            storeUrl: 'https://store.google.com/pixel_9_pro'
+            company: 'Power',
+            productUrl: 'https://www.power.se/product/zflip7-ultra',
+            productName: 'Samsung Galaxy Z Flip 7 Ultra 512GB Phantom Black',
+            price: '14990 kr',
+            storeUrl: 'https://www.power.se',
+            country: 'swe',
+            storeLogo: 'https://upload.wikimedia.org/wikipedia/commons/2/2b/Power_logo.svg'
           }
         ]
       },
@@ -716,15 +712,16 @@ export default function Data() {
         id: 4,
         category: 'Phones',
         categoryId: 1,
-        name: 'OnePlus-13-Pro-512GB',
-        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
-        image: 'https://www.oneplus.com/13-pro-image.png',
+        name: 'OnePlus 13 Pro 512GB',
+        shortdesc: "Flagship power meets refined design. The OnePlus 13 Pro delivers fluid performance and elite photography for less.",
+        image: 'https://image01-eu.oneplus.net/media/202412/16/19774146b6cba4bdcbe55de31e3ae621.png',
         thumbnails: [
-          'https://www.oneplus.com/13-pro-image-side.png',
-          'https://www.oneplus.com/13-pro-image-back.png'
+          'https://image01-eu.oneplus.net/media/202412/16/f89f33e25b3e0e34a20eec1a504d17d9.png',
+          'https://example.com/images/oneplus13-thumb2.png',
+          'https://example.com/images/oneplus13-thumb3.png'
         ],
-        rating: 368,
-        price: '12990 sek',
+        rating: '4,8',
+        price: '11990 Kr',
         desc: [
           {
             id: 1,
@@ -733,8 +730,29 @@ export default function Data() {
               { name: "Name", value: "OnePlus 13 Pro" },
               { name: "Manufacturer", value: "OnePlus" },
               { name: "Model Number", value: "OP13P" },
-              { name: "Release Date", value: "August 2025" },
-              { name: "Operating System", value: "OxygenOS 15" }
+              { name: "Release Date", value: "March 2025" },
+              { name: "Operating System", value: "OxygenOS 15 (Android 15)" }
+            ]
+          },
+          {
+            id: 2,
+            name: "Specifications",
+            data: [
+              { name: "Dimensions", value: "163.2 x 74.6 x 8.8 mm" },
+              { name: "Weight", value: "205g" },
+              { name: "Material(s)", value: "Aluminum frame, Ceramic back" },
+              { name: "Color(s)", value: "Volcanic Black, Emerald Frost" },
+              { name: "Storage size", value: "512GB" }
+            ]
+          },
+          {
+            id: 3,
+            name: "Display",
+            data: [
+              { name: "Type", value: "LTPO3 AMOLED" },
+              { name: "Size", value: "6.82 inches" },
+              { name: "Resolution", value: "1440 x 3216 pixels" },
+              { name: "Refresh Rate", value: "120Hz" }
             ]
           },
           {
@@ -742,289 +760,198 @@ export default function Data() {
             name: "Performance",
             data: [
               { name: "Chipset", value: "Snapdragon 8 Gen 4" },
-              { name: "RAM", value: "12GB" },
-              { name: "Storage Options", value: "256GB, 512GB" }
+              { name: "CPU", value: "Octa-core" },
+              { name: "GPU", value: "Adreno 830" },
+              { name: "RAM", value: "16GB" }
+            ]
+          },
+          {
+            id: 5,
+            name: "Camera",
+            data: [
+              { name: "Main Camera", value: "64MP (wide), 48MP (ultrawide), 32MP (telephoto)" },
+              { name: "Front Camera", value: "32MP" },
+              { name: "Video Recording", value: "8K at 24fps, 4K at 60fps" }
             ]
           },
           {
             id: 6,
             name: "Battery",
             data: [
-              { name: "Capacity", value: "5000mAh" },
-              { name: "Charging", value: "100W SuperVOOC" }
-            ]
-          }
-        ],
-        url: '/categorys/product.html',
-        pricelist: [
-          {
-            company: 'NetOnNet',
-            productUrl: 'https://www.netonnet.se/product/oneplus-13-pro',
-            productName: 'OnePlus 13 Pro 5G 512GB Emerald Green',
-            price: '12990 kr',
-            storeUrl: 'https://www.netonnet.se/product/oneplus-13-pro'
-          }
-        ]
-      },
-      {
-        id: 5,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'OnePlus-13-Pro-512GB',
-        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
-        image: 'https://image01.oneplus.net/ebp/202501/13-pro-front.png',
-        thumbnails: [
-          'https://image01.oneplus.net/ebp/202501/13-pro-side.png',
-          'https://image01.oneplus.net/ebp/202501/13-pro-back.png',
-          'https://image01.oneplus.net/ebp/202501/13-pro-angle.png'
-        ],
-        rating: 389,
-        price: '11290 sek',
-        desc: [
-          {
-            id: 1,
-            name: 'Information',
-            data: [
-              { name: 'Name', value: 'OnePlus 13 Pro' },
-              { name: 'Manufacturer', value: 'OnePlus' },
-              { name: 'Model Number', value: 'OP13P512' },
-              { name: 'Release Date', value: 'January 2025' },
-              { name: 'Operating System', value: 'OxygenOS 15 (Android 15)' }
-            ]
-          },
-          {
-            id: 2,
-            name: 'Specifications',
-            data: [
-              { name: 'Dimensions', value: '163 x 74.2 x 8.9 mm' },
-              { name: 'Weight', value: '204g' },
-              { name: 'Material(s)', value: 'Aluminum, Gorilla Glass' },
-              { name: 'Color(s)', value: 'Emerald Green, Matte Black' },
-              { name: 'Storage size', value: '512GB' },
-              { name: 'More', value: 'Hasselblad Camera Collaboration' }
-            ]
-          },
-          {
-            id: 3,
-            name: 'Display',
-            data: [
-              { name: 'Type', value: 'Fluid AMOLED' },
-              { name: 'Size', value: '6.82 inches' },
-              { name: 'Resolution', value: '1440 x 3168 pixels' },
-              { name: 'Refresh Rate', value: '120Hz' },
-              { name: 'HDR', value: 'HDR10+' }
-            ]
-          },
-          {
-            id: 4,
-            name: 'Performance',
-            data: [
-              { name: 'Chipset', value: 'Snapdragon 8 Gen 4' },
-              { name: 'CPU', value: 'Octa-core' },
-              { name: 'GPU', value: 'Adreno 780' },
-              { name: 'RAM', value: '16GB' },
-              { name: 'Storage Options', value: '256GB, 512GB' }
-            ]
-          },
-          {
-            id: 5,
-            name: 'Camera',
-            data: [
-              { name: 'Main Camera', value: '50MP wide + 48MP ultrawide + 64MP telephoto' },
-              { name: 'Zoom', value: '6x optical, 60x digital' },
-              { name: 'Front Camera', value: '32MP' },
-              { name: 'Video Recording', value: '8K at 24fps, 4K at 60fps' }
-            ]
-          },
-          {
-            id: 6,
-            name: 'Battery',
-            data: [
-              { name: 'Capacity', value: '5500mAh' },
-              { name: 'Charging', value: '100W wired, 50W wireless' },
-              { name: 'Battery Life', value: 'Up to 2 days' }
+              { name: "Capacity", value: "5500mAh" },
+              { name: "Charging", value: "100W Wired, 50W Wireless" }
             ]
           },
           {
             id: 7,
-            name: 'Connectivity',
+            name: "Connectivity",
             data: [
-              { name: 'Network', value: '5G, LTE' },
-              { name: 'Wi-Fi', value: 'Wi-Fi 7' },
-              { name: 'Bluetooth', value: 'Bluetooth 5.4' },
-              { name: 'NFC', value: 'Yes' },
-              { name: 'USB', value: 'USB-C 3.2' }
+              { name: "Network", value: "5G, LTE" },
+              { name: "Wi-Fi", value: "Wi-Fi 7" },
+              { name: "Bluetooth", value: "5.4" },
+              { name: "USB", value: "USB-C 3.2" }
             ]
           },
           {
             id: 8,
-            name: 'Other Features',
+            name: "Other Features",
             data: [
-              { name: 'Fingerprint', value: 'In-display optical' },
-              { name: 'Cooling', value: 'Vapor Chamber Cooling System' },
-              { name: 'Speakers', value: 'Stereo Dual Speakers' },
-              { name: 'Alert Slider', value: 'Yes' },
-              { name: 'Water Resistance', value: 'IP68' }
+              { name: "Water Resistance", value: "IP68" },
+              { name: "Fingerprint", value: "Under-display optical" }
             ]
           }
         ],
         url: '/categorys/product.html',
         pricelist: [
-          {
-            company: 'OnePlus Store',
-            productUrl: 'https://www.oneplus.com/product/oneplus-13-pro',
-            productName: 'OnePlus 13 Pro 512GB Emerald Green',
-            price: '11290 kr',
-            storeUrl: 'https://www.oneplus.com/product/oneplus-13-pro'
-          },
           {
             company: 'Elgiganten',
             productUrl: 'https://www.elgiganten.se/product/oneplus-13-pro',
-            productName: 'OnePlus 13 Pro 512GB',
-            price: '11490 kr',
-            storeUrl: 'https://www.elgiganten.se/product/oneplus-13-pro'
-          },
-          {
-            company: 'Company name/logo',
-            productUrl: '#',
-            productName: 'Länk till produkt med namn på produkt',
-            price: null,
-            storeUrl: '#'
+            productName: 'OnePlus 13 Pro 512GB Volcanic Black',
+            price: '11990 kr',
+            storeUrl: 'https://www.elgiganten.se/',
+            country: 'swe',
+            storeLogo: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Elgiganten_logo.svg'
           }
         ]
       },
       {
-        id: 6,
+        id: 234,
         category: 'Phones',
         categoryId: 1,
-        name: 'Sony-Xperia-1-VI-256GB',
-        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
-        image: 'https://www.sony.com/image/xperia-1-vi-front.jpg',
+        name: 'iPhone 15 Pro Max 256GB',
+        shortdesc: "A titanium-built flagship with a powerful A17 Pro chip, perfect for photography, gaming, and everyday use.",
+        image: 'https://owp.klarna.com/product/504x504/3138228929/Apple-iPhone-15-Pro-Max-256GB-Natural-Titanium.jpg?ph=true',
         thumbnails: [
-          'https://www.sony.com/image/xperia-1-vi-side.jpg',
-          'https://www.sony.com/image/xperia-1-vi-back.jpg',
-          'https://www.sony.com/image/xperia-1-vi-angle.jpg'
+          'https://www.apple.com/v/iphone-15-pro/a/images/overview/hero/hero_iphone_15_pro__eqwrvy72748y_large.jpg',
+          'https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-15-Pro-Lineup_hero_230912_big.jpg.large.jpg',
+          'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pro-max-titanium-select-202309?wid=940&hei=1112&fmt=png-alpha&.v=1692923768284'
         ],
-        rating: 204,
-        price: '12990 sek',
+        rating: '4,7',
+        price: '14490 Kr',
         desc: [
           {
             id: 1,
-            name: 'Information',
+            name: "Information",
             data: [
-              { name: 'Name', value: 'Sony Xperia 1 VI' },
-              { name: 'Manufacturer', value: 'Sony' },
-              { name: 'Model Number', value: 'XQ-DS54' },
-              { name: 'Release Date', value: 'May 2025' },
-              { name: 'Operating System', value: 'Android 15' }
+              { name: "Name", value: "Apple iPhone 15 Pro Max" },
+              { name: "Manufacturer", value: "Apple" },
+              { name: "Model Number", value: "15 Pro Max" },
+              { name: "Release Date", value: "September 2023" },
+              { name: "Operating System", value: "iOS 17" }
             ]
           },
           {
             id: 2,
-            name: 'Specifications',
+            name: "Specifications",
             data: [
-              { name: 'Dimensions', value: '165 x 71 x 8.3 mm' },
-              { name: 'Weight', value: '187g' },
-              { name: 'Material(s)', value: 'Metal & Corning Gorilla Glass Victus' },
-              { name: 'Color(s)', value: 'Black, Silver, Blue' },
-              { name: 'Storage size', value: '256GB' },
-              { name: 'More', value: 'Pro camera interface' }
+              { name: "Dimensions", value: "159.9 x 76.7 x 8.3 mm" },
+              { name: "Weight", value: "221g" },
+              { name: "Material(s)", value: "Titanium and glass" },
+              { name: "Color(s)", value: "Black Titanium, White Titanium, Blue Titanium, Natural Titanium" },
+              { name: "Storage size", value: "256GB" },
+              { name: "More", value: "eSIM, Dual SIM, Dynamic Island" }
             ]
           },
           {
             id: 3,
-            name: 'Display',
+            name: "Display",
             data: [
-              { name: 'Type', value: 'OLED' },
-              { name: 'Size', value: '6.5 inches' },
-              { name: 'Resolution', value: '1644 x 3840 pixels (4K)' },
-              { name: 'Refresh Rate', value: '120Hz' },
-              { name: 'Aspect Ratio', value: '21:9 CinemaWide' }
+              { name: "Type", value: "Super Retina XDR OLED" },
+              { name: "Size", value: "6.7 inches" },
+              { name: "Resolution", value: "1290 x 2796 pixels" },
+              { name: "Refresh Rate", value: "120Hz" },
+              { name: "HDR", value: "HDR10, Dolby Vision" }
             ]
           },
           {
             id: 4,
-            name: 'Performance',
+            name: "Performance",
             data: [
-              { name: 'Chipset', value: 'Snapdragon 8 Gen 3' },
-              { name: 'CPU', value: 'Octa-core' },
-              { name: 'GPU', value: 'Adreno 740' },
-              { name: 'RAM', value: '12GB' },
-              { name: 'Storage Options', value: '256GB, 512GB' }
+              { name: "Chipset", value: "Apple A17 Pro" },
+              { name: "CPU", value: "Hexa-core (2 performance + 4 efficiency)" },
+              { name: "GPU", value: "Apple GPU (6-core graphics)" },
+              { name: "RAM", value: "8GB" },
+              { name: "Storage Options", value: "256GB, 512GB, 1TB" }
             ]
           },
           {
             id: 5,
-            name: 'Camera',
+            name: "Camera",
             data: [
-              { name: 'Main Camera', value: '48MP wide + 12MP telephoto + 12MP ultrawide' },
-              { name: 'Zoom', value: 'Up to 5.2x optical' },
-              { name: 'Front Camera', value: '12MP' },
-              { name: 'Video Recording', value: '4K at 120fps, Cinema Pro Mode' }
+              { name: "Main Camera", value: "Triple 48MP (wide), 12MP (ultrawide), 12MP (telephoto)" },
+              { name: "Zoom", value: "5x optical zoom" },
+              { name: "Front Camera", value: "12MP TrueDepth" },
+              { name: "Video Recording", value: "4K at 60fps, ProRes video" }
             ]
           },
           {
             id: 6,
-            name: 'Battery',
+            name: "Battery",
             data: [
-              { name: 'Capacity', value: '5000mAh' },
-              { name: 'Charging', value: '30W wired, 15W wireless' },
-              { name: 'Battery Life', value: 'Up to 20 hours video playback' }
+              { name: "Capacity", value: "4422mAh" },
+              { name: "Charging", value: "Fast charging 20W, MagSafe wireless charging 15W" },
+              { name: "Battery Life", value: "Up to 29 hours talk time" }
             ]
           },
           {
             id: 7,
-            name: 'Connectivity',
+            name: "Connectivity",
             data: [
-              { name: 'Network', value: '5G, LTE' },
-              { name: 'Wi-Fi', value: 'Wi-Fi 6E' },
-              { name: 'Bluetooth', value: 'Bluetooth 5.2' },
-              { name: 'NFC', value: 'Yes' },
-              { name: 'USB', value: 'USB-C 3.1' }
+              { name: "Network", value: "5G, LTE, GSM" },
+              { name: "Wi-Fi", value: "Wi-Fi 6E" },
+              { name: "Bluetooth", value: "Bluetooth 5.3" },
+              { name: "NFC", value: "Yes" },
+              { name: "USB", value: "USB-C 3.0" }
             ]
           },
           {
             id: 8,
-            name: 'Other Features',
+            name: "Other Features",
             data: [
-              { name: 'Headphone Jack', value: 'Yes (3.5mm)' },
-              { name: 'Pro Modes', value: 'Photo Pro, Video Pro, Cinema Pro' },
-              { name: 'Water Resistance', value: 'IP65/IP68' },
-              { name: 'Speakers', value: 'Stereo Front-Facing' },
-              { name: 'Fingerprint', value: 'Side-mounted' }
+              { name: "Water Resistance", value: "IP68 (up to 6m for 30 mins)" },
+              { name: "Face ID", value: "Yes" },
+              { name: "Stereo Speakers", value: "Yes" },
+              { name: "Sensors", value: "Face ID, Accelerometer, Gyro, Proximity, Compass, Barometer" },
+              { name: "Action Button", value: "Customizable shortcut button" }
             ]
           }
         ],
         url: '/categorys/product.html',
         pricelist: [
-          {
-            company: 'Sony Store',
-            productUrl: 'https://www.sony.se/electronics/mobiltelefoner/xperia-1-vi',
-            productName: 'Sony Xperia 1 VI 256GB Black',
-            price: '12990 kr',
-            storeUrl: 'https://www.sony.se/electronics/mobiltelefoner/xperia-1-vi'
-          },
           {
             company: 'NetOnNet',
-            productUrl: 'https://www.netonnet.se/art/sony-xperia-1-vi',
-            productName: 'Xperia 1 VI 256GB',
-            price: '13290 kr',
-            storeUrl: 'https://www.netonnet.se/art/sony-xperia-1-vi'
+            productUrl: 'https://www.netonnet.se/art/mobil/mobiltelefon/iphone-15-pro-max',
+            productName: 'iPhone 15 Pro Max 256GB',
+            price: '14490 kr',
+            storeUrl: 'https://www.netonnet.se/',
+            country: 'swe',
+            storeLogo: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Netonnet_logo.png'
           },
           {
-            company: 'Company name/logo',
-            productUrl: '#',
-            productName: 'Länk till produkt med namn på produkt',
-            price: null,
-            storeUrl: '#'
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/apple-iphone-15-pro-max-256gb',
+            productName: 'Apple iPhone 15 Pro Max 256GB',
+            price: '14490 kr',
+            storeUrl: 'https://www.elgiganten.se/',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5011311273/iphone-15-pro-max',
+            productName: 'iPhone 15 Pro Max 256GB Natural Titanium',
+            price: '14990 kr',
+            storeUrl: 'https://www.dustinhome.se/',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
           }
         ]
       },
       {
-        id: 7,
+        id: 1,
         category: 'Phones',
         categoryId: 1,
-        name: 'iPhone-16-Pro-Max-256GB',
+        name: 'iPhone 16 Pro Max 256GB',
         shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
         image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         thumbnails: [
@@ -1032,8 +959,158 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
-        rating: 542,
-        price: '16090 sek',
+        rating: '4,8',
+        price: '16090 Kr',
+        desc: [
+          {
+            id: 421,
+            name: "Information",
+            data: [
+              { name: "Name", value: "Apple iPhone 16 Pro Max" },
+              { name: "Manufacturer", value: "Apple" },
+              { name: "Model Number", value: "16 Pro Max" },
+              { name: "Release Date", value: "September 2025" },
+              { name: "Operating System", value: "iOS 19" }
+            ]
+          },
+          {
+            id: 2,
+            name: "Specifications",
+            data: [
+              { name: "Dimensions", value: "160.8 x 78.1 x 7.65 mm" },
+              { name: "Weight", value: "240g" },
+              { name: "Material(s)", value: "Titanium" },
+              { name: "Color(s)", value: "Space Black, Silver, Gold, Deep Blue" },
+              { name: "Storage size", value: "256GB" },
+              { name: "More", value: "123" }
+            ]
+          },
+          {
+            id: 3,
+            name: "Display",
+            data: [
+              { name: "Type", value: "LTPO Super Retina XDR OLED" },
+              { name: "Size", value: "6.9 inches" },
+              { name: "Resolution", value: "1290 x 2796 pixels" },
+              { name: "Refresh Rate", value: "120Hz" },
+              { name: "HDR", value: "HDR10, Dolby Vision" }
+            ]
+          },
+          {
+            id: 4,
+            name: "Performance",
+            data: [
+              { name: "Chipset", value: "Apple A19 Pro" },
+              { name: "CPU", value: "Hexa-core (2x + 4x efficiency)" },
+              { name: "GPU", value: "Apple-designed 6-core GPU" },
+              { name: "RAM", value: "8GB" },
+              { name: "Storage Options", value: "256GB, 512GB, 1TB" }
+            ]
+          },
+          {
+            id: 5,
+            name: "Camera",
+            data: [
+              { name: "Main Camera", value: "Triple 48MP (wide), 12MP (ultrawide), 12MP (telephoto)" },
+              { name: "Zoom", value: "5x optical zoom, up to 30x digital" },
+              { name: "Front Camera", value: "12MP TrueDepth" },
+              { name: "Video Recording", value: "4K at 60fps, Cinematic Mode" }
+            ]
+          },
+          {
+            id: 6,
+            name: "Battery",
+            data: [
+              { name: "Capacity", value: "4500mAh (typical)" },
+              { name: "Charging", value: "Fast charging 35W, MagSafe wireless charging 15W" },
+              { name: "Battery Life", value: "Up to 28 hours talk time" }
+            ]
+          },
+          {
+            id: 7,
+            name: "Connectivity",
+            data: [
+              { name: "Network", value: "5G, LTE, GSM, CDMA" },
+              { name: "Wi-Fi", value: "Wi-Fi 6E" },
+              { name: "Bluetooth", value: "Bluetooth 5.3" },
+              { name: "NFC", value: "Yes" },
+              { name: "USB", value: "USB-C 3.2" }
+            ]
+          },
+          {
+            id: 8,
+            name: "Other Features",
+            data: [
+              { name: "Water Resistance", value: "IP68 dust/water resistant (up to 6m for 30 mins)" },
+              { name: "Face ID", value: "Yes" },
+              { name: "Stereo Speakers", value: "Yes" },
+              { name: "Sensors", value: "Accelerometer, Gyro, Proximity, Compass, Barometer" },
+              { name: "Emergency SOS", value: "Via Satellite" }
+            ]
+          }
+        ],
+        url: '/categorys/product.html',
+        pricelist: [
+
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'norway',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFFLnMJdLwwQrcyfAvGm0mn5iJ9nAJ69Qkg&s'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7mVdlOCMx6VIBJ8SZcAHSo4_eZ7y8sZhACA&s'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
+          },
+          {
+            company: 'Company name/logo',
+            productUrl: '#',
+            productName: 'Länk till produkt med namn på produkt',
+            price: null,
+            storeUrl: '#',
+          }
+        ]
+      },
+      {
+        id: 13213,
+        category: 'Phones',
+        categoryId: 1,
+        name: 'iPhone 16 Pro Max 256GB',
+        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
+        image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+        thumbnails: [
+          'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium_AV1_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=eUdsd0dIb3VUOXdtWkY0VFUwVE8vbEdkZHNlSjBQRklnaFB2d3I5MW94NW9lRVVkRmJ5ZE03VysydEdnMXpSNEIwMUtnLzBpRitTOTN1SmJ4bU1Ma3JvNVA5M0N2RTZaVllVQ29BYjdEajZhV2hqd1JsL3h2amVwdmE3TWNmbWpaWWNmaysybmtiNU9od3gxY1JjSEE1Q1Q2ZTVQclFvTi9BaFdTUkQwZEsw&traceId=1',
+          'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+          'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+        ],
+        rating: '4,8',
+        price: '16090 Kr',
         desc: [
           {
             id: 1,
@@ -1124,12 +1201,15 @@ export default function Data() {
         ],
         url: '/categorys/product.html',
         pricelist: [
+
           {
             company: 'Elgiganten',
             productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
             productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
             price: '16090 kr',
             storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'norway',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFFLnMJdLwwQrcyfAvGm0mn5iJ9nAJ69Qkg&s'
           },
           {
             company: 'Dustin Home',
@@ -1137,6 +1217,26 @@ export default function Data() {
             productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
             price: '17490 kr',
             storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7mVdlOCMx6VIBJ8SZcAHSo4_eZ7y8sZhACA&s'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
           },
           {
             company: 'Company name/logo',
@@ -1148,10 +1248,10 @@ export default function Data() {
         ]
       },
       {
-        id: 8,
+        id: 131231,
         category: 'Phones',
         categoryId: 1,
-        name: 'iPhone-16-Pro-Max-256GB',
+        name: 'iPhone 16 Pro Max 256GB',
         shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
         image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         thumbnails: [
@@ -1159,8 +1259,8 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
-        rating: 542,
-        price: '16090 sek',
+        rating: '4,8',
+        price: '16090 Kr',
         desc: [
           {
             id: 1,
@@ -1251,12 +1351,15 @@ export default function Data() {
         ],
         url: '/categorys/product.html',
         pricelist: [
+
           {
             company: 'Elgiganten',
             productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
             productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
             price: '16090 kr',
             storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'norway',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFFLnMJdLwwQrcyfAvGm0mn5iJ9nAJ69Qkg&s'
           },
           {
             company: 'Dustin Home',
@@ -1264,6 +1367,26 @@ export default function Data() {
             productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
             price: '17490 kr',
             storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7mVdlOCMx6VIBJ8SZcAHSo4_eZ7y8sZhACA&s'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
           },
           {
             company: 'Company name/logo',
@@ -1275,146 +1398,460 @@ export default function Data() {
         ]
       },
       {
-        id: 9,
+        id: 199,
         category: 'Phones',
         categoryId: 1,
-        name: 'iPhone-16-Pro-Max-256GB',
+        name: 'iPhone 16 Pro Max 256GB',
         shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
         image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
-        thumbnails: [/* ... */],
-        rating: 542,
-        price: '16090 sek',
-        desc: [/* ... */],
+        thumbnails: [
+          'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium_AV1_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=eUdsd0dIb3VUOXdtWkY0VFUwVE8vbEdkZHNlSjBQRklnaFB2d3I5MW94NW9lRVVkRmJ5ZE03VysydEdnMXpSNEIwMUtnLzBpRitTOTN1SmJ4bU1Ma3JvNVA5M0N2RTZaVllVQ29BYjdEajZhV2hqd1JsL3h2amVwdmE3TWNmbWpaWWNmaysybmtiNU9od3gxY1JjSEE1Q1Q2ZTVQclFvTi9BaFdTUkQwZEsw&traceId=1',
+          'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+          'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+        ],
+        rating: '4,8',
+        price: '16090 Kr',
+        desc: [
+          {
+            id: 1,
+            name: "Information",
+            data: [
+              { name: "Name", value: "Apple iPhone 16 Pro Max" },
+              { name: "Manufacturer", value: "Apple" },
+              { name: "Model Number", value: "16 Pro Max" },
+              { name: "Release Date", value: "September 2025" },
+              { name: "Operating System", value: "iOS 19" }
+            ]
+          },
+          {
+            id: 2,
+            name: "Specifications",
+            data: [
+              { name: "Dimensions", value: "160.8 x 78.1 x 7.65 mm" },
+              { name: "Weight", value: "240g" },
+              { name: "Material(s)", value: "Titanium" },
+              { name: "Color(s)", value: "Space Black, Silver, Gold, Deep Blue" },
+              { name: "Storage size", value: "256GB" },
+              { name: "More", value: "123" }
+            ]
+          },
+          {
+            id: 3,
+            name: "Display",
+            data: [
+              { name: "Type", value: "LTPO Super Retina XDR OLED" },
+              { name: "Size", value: "6.9 inches" },
+              { name: "Resolution", value: "1290 x 2796 pixels" },
+              { name: "Refresh Rate", value: "120Hz" },
+              { name: "HDR", value: "HDR10, Dolby Vision" }
+            ]
+          },
+          {
+            id: 4,
+            name: "Performance",
+            data: [
+              { name: "Chipset", value: "Apple A19 Pro" },
+              { name: "CPU", value: "Hexa-core (2x + 4x efficiency)" },
+              { name: "GPU", value: "Apple-designed 6-core GPU" },
+              { name: "RAM", value: "8GB" },
+              { name: "Storage Options", value: "256GB, 512GB, 1TB" }
+            ]
+          },
+          {
+            id: 5,
+            name: "Camera",
+            data: [
+              { name: "Main Camera", value: "Triple 48MP (wide), 12MP (ultrawide), 12MP (telephoto)" },
+              { name: "Zoom", value: "5x optical zoom, up to 30x digital" },
+              { name: "Front Camera", value: "12MP TrueDepth" },
+              { name: "Video Recording", value: "4K at 60fps, Cinematic Mode" }
+            ]
+          },
+          {
+            id: 6,
+            name: "Battery",
+            data: [
+              { name: "Capacity", value: "4500mAh (typical)" },
+              { name: "Charging", value: "Fast charging 35W, MagSafe wireless charging 15W" },
+              { name: "Battery Life", value: "Up to 28 hours talk time" }
+            ]
+          },
+          {
+            id: 7,
+            name: "Connectivity",
+            data: [
+              { name: "Network", value: "5G, LTE, GSM, CDMA" },
+              { name: "Wi-Fi", value: "Wi-Fi 6E" },
+              { name: "Bluetooth", value: "Bluetooth 5.3" },
+              { name: "NFC", value: "Yes" },
+              { name: "USB", value: "USB-C 3.2" }
+            ]
+          },
+          {
+            id: 8,
+            name: "Other Features",
+            data: [
+              { name: "Water Resistance", value: "IP68 dust/water resistant (up to 6m for 30 mins)" },
+              { name: "Face ID", value: "Yes" },
+              { name: "Stereo Speakers", value: "Yes" },
+              { name: "Sensors", value: "Accelerometer, Gyro, Proximity, Compass, Barometer" },
+              { name: "Emergency SOS", value: "Via Satellite" }
+            ]
+          }
+        ],
         url: '/categorys/product.html',
-        pricelist: [/* ... */],
+        pricelist: [
+
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'norway',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFFLnMJdLwwQrcyfAvGm0mn5iJ9nAJ69Qkg&s'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7mVdlOCMx6VIBJ8SZcAHSo4_eZ7y8sZhACA&s'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
+          },
+          {
+            company: 'Company name/logo',
+            productUrl: '#',
+            productName: 'Länk till produkt med namn på produkt',
+            price: null,
+            storeUrl: '#',
+          }
+        ]
       },
       {
-        id: 10,
+        id: 166,
         category: 'Phones',
         categoryId: 1,
-        name: 'Samsung-Galaxy-S25-Ultra-512GB',
-        shortdesc: "The next-gen Android powerhouse with unmatched camera quality and speed.",
-        image: 'https://images.samsung.com/is/image/samsung/p6pim/se/sm-s928bzageub/gallery/se-galaxy-s25-ultra-5g-sm-s928-sm-s928bzageub-538420637?$650_519_PNG$',
-        thumbnails: [/* ... */],
-        rating: 487,
-        price: '14990 sek',
-        desc: [/* ... */],
+        name: 'iPhone 16 Pro Max 256GB',
+        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
+        image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+        thumbnails: [
+          'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium_AV1_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=eUdsd0dIb3VUOXdtWkY0VFUwVE8vbEdkZHNlSjBQRklnaFB2d3I5MW94NW9lRVVkRmJ5ZE03VysydEdnMXpSNEIwMUtnLzBpRitTOTN1SmJ4bU1Ma3JvNVA5M0N2RTZaVllVQ29BYjdEajZhV2hqd1JsL3h2amVwdmE3TWNmbWpaWWNmaysybmtiNU9od3gxY1JjSEE1Q1Q2ZTVQclFvTi9BaFdTUkQwZEsw&traceId=1',
+          'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+          'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+        ],
+        rating: '4,8',
+        price: '16090 Kr',
+        desc: [
+          {
+            id: 1,
+            name: "Information",
+            data: [
+              { name: "Name", value: "Apple iPhone 16 Pro Max" },
+              { name: "Manufacturer", value: "Apple" },
+              { name: "Model Number", value: "16 Pro Max" },
+              { name: "Release Date", value: "September 2025" },
+              { name: "Operating System", value: "iOS 19" }
+            ]
+          },
+          {
+            id: 2,
+            name: "Specifications",
+            data: [
+              { name: "Dimensions", value: "160.8 x 78.1 x 7.65 mm" },
+              { name: "Weight", value: "240g" },
+              { name: "Material(s)", value: "Titanium" },
+              { name: "Color(s)", value: "Space Black, Silver, Gold, Deep Blue" },
+              { name: "Storage size", value: "256GB" },
+              { name: "More", value: "123" }
+            ]
+          },
+          {
+            id: 3,
+            name: "Display",
+            data: [
+              { name: "Type", value: "LTPO Super Retina XDR OLED" },
+              { name: "Size", value: "6.9 inches" },
+              { name: "Resolution", value: "1290 x 2796 pixels" },
+              { name: "Refresh Rate", value: "120Hz" },
+              { name: "HDR", value: "HDR10, Dolby Vision" }
+            ]
+          },
+          {
+            id: 4,
+            name: "Performance",
+            data: [
+              { name: "Chipset", value: "Apple A19 Pro" },
+              { name: "CPU", value: "Hexa-core (2x + 4x efficiency)" },
+              { name: "GPU", value: "Apple-designed 6-core GPU" },
+              { name: "RAM", value: "8GB" },
+              { name: "Storage Options", value: "256GB, 512GB, 1TB" }
+            ]
+          },
+          {
+            id: 5,
+            name: "Camera",
+            data: [
+              { name: "Main Camera", value: "Triple 48MP (wide), 12MP (ultrawide), 12MP (telephoto)" },
+              { name: "Zoom", value: "5x optical zoom, up to 30x digital" },
+              { name: "Front Camera", value: "12MP TrueDepth" },
+              { name: "Video Recording", value: "4K at 60fps, Cinematic Mode" }
+            ]
+          },
+          {
+            id: 6,
+            name: "Battery",
+            data: [
+              { name: "Capacity", value: "4500mAh (typical)" },
+              { name: "Charging", value: "Fast charging 35W, MagSafe wireless charging 15W" },
+              { name: "Battery Life", value: "Up to 28 hours talk time" }
+            ]
+          },
+          {
+            id: 7,
+            name: "Connectivity",
+            data: [
+              { name: "Network", value: "5G, LTE, GSM, CDMA" },
+              { name: "Wi-Fi", value: "Wi-Fi 6E" },
+              { name: "Bluetooth", value: "Bluetooth 5.3" },
+              { name: "NFC", value: "Yes" },
+              { name: "USB", value: "USB-C 3.2" }
+            ]
+          },
+          {
+            id: 8,
+            name: "Other Features",
+            data: [
+              { name: "Water Resistance", value: "IP68 dust/water resistant (up to 6m for 30 mins)" },
+              { name: "Face ID", value: "Yes" },
+              { name: "Stereo Speakers", value: "Yes" },
+              { name: "Sensors", value: "Accelerometer, Gyro, Proximity, Compass, Barometer" },
+              { name: "Emergency SOS", value: "Via Satellite" }
+            ]
+          }
+        ],
         url: '/categorys/product.html',
-        pricelist: [/* ... */],
+        pricelist: [
+
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'norway',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFFLnMJdLwwQrcyfAvGm0mn5iJ9nAJ69Qkg&s'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7mVdlOCMx6VIBJ8SZcAHSo4_eZ7y8sZhACA&s'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
+          },
+          {
+            company: 'Company name/logo',
+            productUrl: '#',
+            productName: 'Länk till produkt med namn på produkt',
+            price: null,
+            storeUrl: '#',
+          }
+        ]
       },
       {
-        id: 11,
+        id: 11111,
         category: 'Phones',
         categoryId: 1,
-        name: 'Google-Pixel-9-Pro-256GB',
-        shortdesc: "Google’s clean Android with stellar photography and AI features.",
-        image: 'https://store.google.com/product-image.png',
-        thumbnails: [/* ... */],
-        rating: 413,
-        price: '13990 sek',
-        desc: [/* ... */],
+        name: 'iPhone 16 Pro Max 256GB',
+        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
+        image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+        thumbnails: [
+          'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium_AV1_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=eUdsd0dIb3VUOXdtWkY0VFUwVE8vbEdkZHNlSjBQRklnaFB2d3I5MW94NW9lRVVkRmJ5ZE03VysydEdnMXpSNEIwMUtnLzBpRitTOTN1SmJ4bU1Ma3JvNVA5M0N2RTZaVllVQ29BYjdEajZhV2hqd1JsL3h2amVwdmE3TWNmbWpaWWNmaysybmtiNU9od3gxY1JjSEE1Q1Q2ZTVQclFvTi9BaFdTUkQwZEsw&traceId=1',
+          'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+          'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
+        ],
+        rating: '4,8',
+        price: '16090 Kr',
+        desc: [
+          {
+            id: 1,
+            name: "Information",
+            data: [
+              { name: "Name", value: "Apple iPhone 16 Pro Max" },
+              { name: "Manufacturer", value: "Apple" },
+              { name: "Model Number", value: "16 Pro Max" },
+              { name: "Release Date", value: "September 2025" },
+              { name: "Operating System", value: "iOS 19" }
+            ]
+          },
+          {
+            id: 2,
+            name: "Specifications",
+            data: [
+              { name: "Dimensions", value: "160.8 x 78.1 x 7.65 mm" },
+              { name: "Weight", value: "240g" },
+              { name: "Material(s)", value: "Titanium" },
+              { name: "Color(s)", value: "Space Black, Silver, Gold, Deep Blue" },
+              { name: "Storage size", value: "256GB" },
+              { name: "More", value: "123" }
+            ]
+          },
+          {
+            id: 3,
+            name: "Display",
+            data: [
+              { name: "Type", value: "LTPO Super Retina XDR OLED" },
+              { name: "Size", value: "6.9 inches" },
+              { name: "Resolution", value: "1290 x 2796 pixels" },
+              { name: "Refresh Rate", value: "120Hz" },
+              { name: "HDR", value: "HDR10, Dolby Vision" }
+            ]
+          },
+          {
+            id: 4,
+            name: "Performance",
+            data: [
+              { name: "Chipset", value: "Apple A19 Pro" },
+              { name: "CPU", value: "Hexa-core (2x + 4x efficiency)" },
+              { name: "GPU", value: "Apple-designed 6-core GPU" },
+              { name: "RAM", value: "8GB" },
+              { name: "Storage Options", value: "256GB, 512GB, 1TB" }
+            ]
+          },
+          {
+            id: 5,
+            name: "Camera",
+            data: [
+              { name: "Main Camera", value: "Triple 48MP (wide), 12MP (ultrawide), 12MP (telephoto)" },
+              { name: "Zoom", value: "5x optical zoom, up to 30x digital" },
+              { name: "Front Camera", value: "12MP TrueDepth" },
+              { name: "Video Recording", value: "4K at 60fps, Cinematic Mode" }
+            ]
+          },
+          {
+            id: 6,
+            name: "Battery",
+            data: [
+              { name: "Capacity", value: "4500mAh (typical)" },
+              { name: "Charging", value: "Fast charging 35W, MagSafe wireless charging 15W" },
+              { name: "Battery Life", value: "Up to 28 hours talk time" }
+            ]
+          },
+          {
+            id: 7,
+            name: "Connectivity",
+            data: [
+              { name: "Network", value: "5G, LTE, GSM, CDMA" },
+              { name: "Wi-Fi", value: "Wi-Fi 6E" },
+              { name: "Bluetooth", value: "Bluetooth 5.3" },
+              { name: "NFC", value: "Yes" },
+              { name: "USB", value: "USB-C 3.2" }
+            ]
+          },
+          {
+            id: 8,
+            name: "Other Features",
+            data: [
+              { name: "Water Resistance", value: "IP68 dust/water resistant (up to 6m for 30 mins)" },
+              { name: "Face ID", value: "Yes" },
+              { name: "Stereo Speakers", value: "Yes" },
+              { name: "Sensors", value: "Accelerometer, Gyro, Proximity, Compass, Barometer" },
+              { name: "Emergency SOS", value: "Via Satellite" }
+            ]
+          }
+        ],
         url: '/categorys/product.html',
-        pricelist: [/* ... */],
+        pricelist: [
+
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'norway',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFFLnMJdLwwQrcyfAvGm0mn5iJ9nAJ69Qkg&s'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7mVdlOCMx6VIBJ8SZcAHSo4_eZ7y8sZhACA&s'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
+          },
+          {
+            company: 'Company name/logo',
+            productUrl: '#',
+            productName: 'Länk till produkt med namn på produkt',
+            price: null,
+            storeUrl: '#',
+          }
+        ]
       },
-      {
-        id: 12,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'OnePlus-13-Pro-512GB',
-        shortdesc: "Speed meets design in OnePlus’ latest flagship killer.",
-        image: 'https://image01.oneplus.net/ebp/202312/13/1-m00-21-e4-rb8bwmx9nbmakztkaadrr2w-lqc660_840_840.png',
-        thumbnails: [/* ... */],
-        rating: 398,
-        price: '13490 sek',
-        desc: [/* ... */],
-        url: '/categorys/product.html',
-        pricelist: [/* ... */],
-      },
-      {
-        id: 13,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'Sony-Xperia-1-V-256GB',
-        shortdesc: "Sony’s flagship with 4K HDR OLED and pro camera features.",
-        image: 'https://m.media-amazon.com/images/I/71pzB7Tb5uL._AC_SL1500_.jpg',
-        thumbnails: [/* ... */],
-        rating: 356,
-        price: '14490 sek',
-        desc: [/* ... */],
-        url: '/categorys/product.html',
-        pricelist: [/* ... */],
-      },
-      {
-        id: 14,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'Motorola-Edge-50-Ultra-512GB',
-        shortdesc: "Balanced performance and battery life in a clean design.",
-        image: 'https://motorolaus.vtexassets.com/arquivos/ids/159842/Motorola-Edge-50-Ultra.png',
-        thumbnails: [/* ... */],
-        rating: 322,
-        price: '11990 sek',
-        desc: [/* ... */],
-        url: '/categorys/product.html',
-        pricelist: [/* ... */],
-      },
-      {
-        id: 15,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'Nothing-Phone-3-256GB',
-        shortdesc: "Minimalist design meets functional transparency and lighting.",
-        image: 'https://www.nothing.tech/global-assets/phone3.png',
-        thumbnails: [/* ... */],
-        rating: 278,
-        price: '9990 sek',
-        desc: [/* ... */],
-        url: '/categorys/product.html',
-        pricelist: [/* ... */],
-      },
-      {
-        id: 16,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'Xiaomi-14-Ultra-1TB',
-        shortdesc: "Top-tier hardware with Leica lenses and a massive battery.",
-        image: 'https://i01.appmifile.com/webfile/globalimg/products/pc/xiaomi-14-ultra/overview.jpg',
-        thumbnails: [/* ... */],
-        rating: 341,
-        price: '15490 sek',
-        desc: [/* ... */],
-        url: '/categorys/product.html',
-        pricelist: [/* ... */],
-      },
-      {
-        id: 17,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'Asus-ROG-Phone-8-Pro-1TB',
-        shortdesc: "A gaming beast with air triggers and RGB cooling.",
-        image: 'https://dlcdnrog.asus.com/rog/media/1689808799468.webp',
-        thumbnails: [/* ... */],
-        rating: 379,
-        price: '16490 sek',
-        desc: [/* ... */],
-        url: '/categorys/product.html',
-        pricelist: [/* ... */],
-      },
-      {
-        id: 18,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'Huawei-Mate-60-Pro-512GB',
-        shortdesc: "Sleek design, great camera, and HarmonyOS inside.",
-        image: 'https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate60-pro/images/gallery/white/mate60-pro-white-1.png',
-        thumbnails: [/* ... */],
-        rating: 301,
-        price: '14290 sek',
-        desc: [/* ... */],
-        url: '/categorys/product.html',
-        pricelist: [/* ... */],
-      }
-      // Add more products as needed
+
+
+
+
+
     ]
   )
 }
