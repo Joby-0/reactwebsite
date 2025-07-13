@@ -818,9 +818,9 @@ export default function Data() {
         id: 234,
         category: 'Phones',
         categoryId: 1,
-        name: 'iPhone 15 Pro Max 256GB',
+        name: 'Apple iPhone 16 Pro Max, 256GB Desert Titanium',
         shortdesc: "A titanium-built flagship with a powerful A17 Pro chip, perfect for photography, gaming, and everyday use.",
-        image: 'https://owp.klarna.com/product/504x504/3138228929/Apple-iPhone-15-Pro-Max-256GB-Natural-Titanium.jpg?ph=true',
+        image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         thumbnails: [
           'https://www.apple.com/v/iphone-15-pro/a/images/overview/hero/hero_iphone_15_pro__eqwrvy72748y_large.jpg',
           'https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-15-Pro-Lineup_hero_230912_big.jpg.large.jpg',
@@ -951,7 +951,7 @@ export default function Data() {
         id: 1,
         category: 'Phones',
         categoryId: 1,
-        name: 'iPhone 16 Pro Max 256GB',
+        name: 'Apple iPhone 16 Pro Max, 256GB Desert Titanium, with a camera',
         shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
         image: 'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         thumbnails: [
