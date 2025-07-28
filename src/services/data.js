@@ -464,6 +464,7 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
         rating: '4,8',
+        reviewCount: 432,
         price: '16090 Kr',
         desc: [
           {
@@ -614,6 +615,7 @@ export default function Data() {
           'https://example.com/images/zflip7-thumb3.png',
         ],
         rating: '4,6',
+        reviewCount: 4132,
         price: '14990 Kr',
         desc: [
           {
@@ -720,7 +722,8 @@ export default function Data() {
           'https://example.com/images/oneplus13-thumb2.png',
           'https://example.com/images/oneplus13-thumb3.png'
         ],
-        rating: '4,8',
+        rating: '3,8',
+        reviewCount: 42,
         price: '11990 Kr',
         desc: [
           {
@@ -826,7 +829,8 @@ export default function Data() {
           'https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-15-Pro-Lineup_hero_230912_big.jpg.large.jpg',
           'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pro-max-titanium-select-202309?wid=940&hei=1112&fmt=png-alpha&.v=1692923768284'
         ],
-        rating: '4,7',
+        rating: '1,7',
+        reviewCount: 2,
         price: '14490 Kr',
         desc: [
           {
@@ -960,6 +964,7 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
         rating: '4,8',
+        reviewCount: 22,
         price: '16090 Kr',
         desc: [
           {
@@ -1110,6 +1115,7 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
         rating: '4,8',
+        reviewCount: 532,
         price: '16090 Kr',
         desc: [
           {
@@ -1260,6 +1266,7 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
         rating: '4,8',
+        reviewCount: 27,
         price: '16090 Kr',
         desc: [
           {
@@ -1409,7 +1416,8 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
-        rating: '4,8',
+        rating: '0,8',
+        reviewCount: 12432,
         price: '16090 Kr',
         desc: [
           {
@@ -1560,6 +1568,7 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
         rating: '4,8',
+        reviewCount: 23,
         price: '16090 Kr',
         desc: [
           {
@@ -1710,6 +1719,7 @@ export default function Data() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
         rating: '4,8',
+        reviewCount: 7,
         price: '16090 Kr',
         desc: [
           {
@@ -1873,8 +1883,9 @@ export function PopularProducts() {
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
           'https://www.smart.com.kh/_next/image?url=https%3A%2F%2Fsmartaxiata-website-prod-v2.s3.ap-southeast-1.amazonaws.com%2FDessert_i_Phone_16_ebcba4c984.png&w=3840&q=75',
         ],
-        rating: 542,
-        price: '16090 sek',
+        rating: '4,8',
+        reviewCount: 432,
+        price: '16090 Kr',
         desc: [
           {
             id: 1,
@@ -1965,12 +1976,15 @@ export function PopularProducts() {
         ],
         url: '/categorys/product.html',
         pricelist: [
+
           {
             company: 'Elgiganten',
             productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
             productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
             price: '16090 kr',
             storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'norway',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFFLnMJdLwwQrcyfAvGm0mn5iJ9nAJ69Qkg&s'
           },
           {
             company: 'Dustin Home',
@@ -1978,6 +1992,26 @@ export function PopularProducts() {
             productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
             price: '17490 kr',
             storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7mVdlOCMx6VIBJ8SZcAHSo4_eZ7y8sZhACA&s'
+          },
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 5G smartphone 256GB Natural Titanium',
+            price: '16090 kr',
+            storeUrl: 'https://www.elgiganten.se/product/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://coda.newjobs.com/api/imagesproxy/ms/clu/xw10/xw102828412wjlx/branding/162339/Elgiganten-AB-logo-637148335989618256.png'
+          },
+          {
+            company: 'Dustin Home',
+            productUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            productName: 'iPhone 16 Pro Max 256GB Naturligt titan',
+            price: '17490 kr',
+            storeUrl: 'https://www.dustinhome.se/product/5020021215/iphone-16-pro-max',
+            country: 'swe',
+            storeLogo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/46d752d1000064000500ebf2/0x0.png'
           },
           {
             company: 'Company name/logo',
@@ -1992,25 +2026,26 @@ export function PopularProducts() {
         id: 2,
         category: 'Phones',
         categoryId: 1,
-        name: 'Samsung-Galaxy-S25-Ultra-512GB',
-        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
-        image: 'https://images.samsung.com/is/image/samsung/p6pim/se/galaxy-s25-ultra_front_phantom_black.png',
+        name: 'Samsung Galaxy Z Flip 7 Ultra 512GB',
+        shortdesc: "A foldable phone that combines style and performance in a pocket-sized powerhouse. Flip it, flex it, love it.",
+        image: 'https://www.telstra.com.au/content/dam/tcom/devices/mobile/mhdwhst-gzf/blueshadow/landscape-front.png',
         thumbnails: [
-          'https://images.samsung.com/is/image/samsung/p6pim/se/galaxy-s25-ultra_side_phantom_black.png',
-          'https://images.samsung.com/is/image/samsung/p6pim/se/galaxy-s25-ultra_back_phantom_black.png',
-          'https://images.samsung.com/is/image/samsung/p6pim/se/galaxy-s25-ultra_angled_phantom_black.png',
+          'https://example.com/images/zflip7-thumb1.png',
+          'https://example.com/images/zflip7-thumb2.png',
+          'https://example.com/images/zflip7-thumb3.png',
         ],
-        rating: 624,
-        price: '17990 sek',
+        rating: '4,6',
+        reviewCount: 4132,
+        price: '14990 Kr',
         desc: [
           {
             id: 1,
             name: "Information",
             data: [
-              { name: "Name", value: "Samsung Galaxy S25 Ultra" },
+              { name: "Name", value: "Samsung Galaxy Z Flip 7 Ultra" },
               { name: "Manufacturer", value: "Samsung" },
-              { name: "Model Number", value: "S25 Ultra" },
-              { name: "Release Date", value: "February 2025" },
+              { name: "Model Number", value: "Z Flip7 Ultra" },
+              { name: "Release Date", value: "August 2025" },
               { name: "Operating System", value: "Android 15" }
             ]
           },
@@ -2018,10 +2053,10 @@ export function PopularProducts() {
             id: 2,
             name: "Specifications",
             data: [
-              { name: "Dimensions", value: "163.4 x 78.1 x 8.9 mm" },
-              { name: "Weight", value: "233g" },
-              { name: "Material(s)", value: "Aluminum, Gorilla Glass Victus 3" },
-              { name: "Color(s)", value: "Phantom Black, Green, Cream, Lavender" },
+              { name: "Dimensions", value: "165.1 x 71.9 x 6.9 mm (unfolded)" },
+              { name: "Weight", value: "183g" },
+              { name: "Material(s)", value: "Aluminum, Glass" },
+              { name: "Color(s)", value: "Phantom Black, Cream, Lavender" },
               { name: "Storage size", value: "512GB" }
             ]
           },
@@ -2029,86 +2064,176 @@ export function PopularProducts() {
             id: 3,
             name: "Display",
             data: [
-              { name: "Type", value: "Dynamic AMOLED 2X" },
-              { name: "Size", value: "6.8 inches" },
-              { name: "Resolution", value: "1440 x 3200 pixels" },
+              { name: "Type", value: "Foldable Dynamic AMOLED 2X" },
+              { name: "Size", value: "6.9 inches (main), 3.4 inches (cover)" },
+              { name: "Resolution", value: "1080 x 2640 pixels" },
               { name: "Refresh Rate", value: "120Hz" },
               { name: "HDR", value: "HDR10+" }
             ]
-          }
-        ],
-        url: '/categorys/product.html',
-        pricelist: [
-          {
-            company: 'MediaMarkt',
-            productUrl: 'https://www.mediamarkt.se/product/samsung-galaxy-s25-ultra',
-            productName: 'Samsung Galaxy S25 Ultra 5G 512GB Phantom Black',
-            price: '17990 kr',
-            storeUrl: 'https://www.mediamarkt.se/product/samsung-galaxy-s25-ultra'
           },
           {
-            company: 'Dustin Home',
-            productUrl: 'https://www.dustinhome.se/product/s25-ultra-512',
-            productName: 'Galaxy S25 Ultra 512GB Svart',
-            price: '18490 kr',
-            storeUrl: 'https://www.dustinhome.se/product/s25-ultra-512'
-          }
-        ]
-      },
-      {
-        id: 3,
-        category: 'Phones',
-        categoryId: 1,
-        name: 'Google-Pixel-9-Pro-256GB',
-        shortdesc: "this is a phone that like to have a phone phone hpne in your hand pocket and som utch more you love me so mutch that you cant to enything else",
-        image: 'https://store.google.com/product/pixel_9_pro_image.png',
-        thumbnails: [
-          'https://store.google.com/product/pixel_9_pro_image_side.png',
-          'https://store.google.com/product/pixel_9_pro_image_back.png',
-          'https://store.google.com/product/pixel_9_pro_image_top.png'
-        ],
-        rating: 412,
-        price: '13990 sek',
-        desc: [
-          {
-            id: 1,
-            name: "Information",
+            id: 4,
+            name: "Performance",
             data: [
-              { name: "Name", value: "Google Pixel 9 Pro" },
-              { name: "Manufacturer", value: "Google" },
-              { name: "Model Number", value: "G9P-256" },
-              { name: "Release Date", value: "October 2025" },
-              { name: "Operating System", value: "Android 15" }
-            ]
-          },
-          {
-            id: 3,
-            name: "Display",
-            data: [
-              { name: "Type", value: "LTPO OLED" },
-              { name: "Size", value: "6.7 inches" },
-              { name: "Resolution", value: "1344 x 2992 pixels" },
-              { name: "Refresh Rate", value: "120Hz" }
+              { name: "Chipset", value: "Snapdragon 8 Gen 4" },
+              { name: "CPU", value: "Octa-core" },
+              { name: "GPU", value: "Adreno 800" },
+              { name: "RAM", value: "12GB" }
             ]
           },
           {
             id: 5,
             name: "Camera",
             data: [
-              { name: "Main Camera", value: "50MP + 48MP + 48MP" },
-              { name: "Zoom", value: "5x optical" },
-              { name: "Video", value: "4K 60fps" }
+              { name: "Main Camera", value: "50MP (wide), 12MP (ultrawide)" },
+              { name: "Front Camera", value: "10MP" },
+              { name: "Video Recording", value: "4K at 60fps" }
+            ]
+          },
+          {
+            id: 6,
+            name: "Battery",
+            data: [
+              { name: "Capacity", value: "3700mAh" },
+              { name: "Charging", value: "Fast 30W, Wireless 15W" }
+            ]
+          },
+          {
+            id: 7,
+            name: "Connectivity",
+            data: [
+              { name: "Network", value: "5G, LTE" },
+              { name: "Wi-Fi", value: "Wi-Fi 7" },
+              { name: "Bluetooth", value: "5.3" },
+              { name: "USB", value: "USB-C" }
+            ]
+          },
+          {
+            id: 8,
+            name: "Other Features",
+            data: [
+              { name: "Water Resistance", value: "IPX8" },
+              { name: "Fingerprint", value: "Side-mounted" }
             ]
           }
         ],
         url: '/categorys/product.html',
         pricelist: [
           {
-            company: 'Google Store',
-            productUrl: 'https://store.google.com/pixel_9_pro',
-            productName: 'Pixel 9 Pro 256GB Obsidian',
-            price: '13990 kr',
-            storeUrl: 'https://store.google.com/pixel_9_pro'
+            company: 'Power',
+            productUrl: 'https://www.power.se/product/zflip7-ultra',
+            productName: 'Samsung Galaxy Z Flip 7 Ultra 512GB Phantom Black',
+            price: '14990 kr',
+            storeUrl: 'https://www.power.se',
+            country: 'swe',
+            storeLogo: 'https://upload.wikimedia.org/wikipedia/commons/2/2b/Power_logo.svg'
+          }
+        ]
+      },
+      {
+        id: 4,
+        category: 'Phones',
+        categoryId: 1,
+        name: 'OnePlus 13 Pro 512GB',
+        shortdesc: "Flagship power meets refined design. The OnePlus 13 Pro delivers fluid performance and elite photography for less.",
+        image: 'https://image01-eu.oneplus.net/media/202412/16/19774146b6cba4bdcbe55de31e3ae621.png',
+        thumbnails: [
+          'https://image01-eu.oneplus.net/media/202412/16/f89f33e25b3e0e34a20eec1a504d17d9.png',
+          'https://example.com/images/oneplus13-thumb2.png',
+          'https://example.com/images/oneplus13-thumb3.png'
+        ],
+        rating: '3,8',
+        reviewCount: 42,
+        price: '11990 Kr',
+        desc: [
+          {
+            id: 1,
+            name: "Information",
+            data: [
+              { name: "Name", value: "OnePlus 13 Pro" },
+              { name: "Manufacturer", value: "OnePlus" },
+              { name: "Model Number", value: "OP13P" },
+              { name: "Release Date", value: "March 2025" },
+              { name: "Operating System", value: "OxygenOS 15 (Android 15)" }
+            ]
+          },
+          {
+            id: 2,
+            name: "Specifications",
+            data: [
+              { name: "Dimensions", value: "163.2 x 74.6 x 8.8 mm" },
+              { name: "Weight", value: "205g" },
+              { name: "Material(s)", value: "Aluminum frame, Ceramic back" },
+              { name: "Color(s)", value: "Volcanic Black, Emerald Frost" },
+              { name: "Storage size", value: "512GB" }
+            ]
+          },
+          {
+            id: 3,
+            name: "Display",
+            data: [
+              { name: "Type", value: "LTPO3 AMOLED" },
+              { name: "Size", value: "6.82 inches" },
+              { name: "Resolution", value: "1440 x 3216 pixels" },
+              { name: "Refresh Rate", value: "120Hz" }
+            ]
+          },
+          {
+            id: 4,
+            name: "Performance",
+            data: [
+              { name: "Chipset", value: "Snapdragon 8 Gen 4" },
+              { name: "CPU", value: "Octa-core" },
+              { name: "GPU", value: "Adreno 830" },
+              { name: "RAM", value: "16GB" }
+            ]
+          },
+          {
+            id: 5,
+            name: "Camera",
+            data: [
+              { name: "Main Camera", value: "64MP (wide), 48MP (ultrawide), 32MP (telephoto)" },
+              { name: "Front Camera", value: "32MP" },
+              { name: "Video Recording", value: "8K at 24fps, 4K at 60fps" }
+            ]
+          },
+          {
+            id: 6,
+            name: "Battery",
+            data: [
+              { name: "Capacity", value: "5500mAh" },
+              { name: "Charging", value: "100W Wired, 50W Wireless" }
+            ]
+          },
+          {
+            id: 7,
+            name: "Connectivity",
+            data: [
+              { name: "Network", value: "5G, LTE" },
+              { name: "Wi-Fi", value: "Wi-Fi 7" },
+              { name: "Bluetooth", value: "5.4" },
+              { name: "USB", value: "USB-C 3.2" }
+            ]
+          },
+          {
+            id: 8,
+            name: "Other Features",
+            data: [
+              { name: "Water Resistance", value: "IP68" },
+              { name: "Fingerprint", value: "Under-display optical" }
+            ]
+          }
+        ],
+        url: '/categorys/product.html',
+        pricelist: [
+          {
+            company: 'Elgiganten',
+            productUrl: 'https://www.elgiganten.se/product/oneplus-13-pro',
+            productName: 'OnePlus 13 Pro 512GB Volcanic Black',
+            price: '11990 kr',
+            storeUrl: 'https://www.elgiganten.se/',
+            country: 'swe',
+            storeLogo: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Elgiganten_logo.svg'
           }
         ]
       },
