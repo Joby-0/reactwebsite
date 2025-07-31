@@ -24,6 +24,13 @@ export default function Productstoreslist(props) {
                             </div>
                             <div className="col">
                                 <div className="d-flex">
+                                    <img className="rounded-circle" height={50} width={50} src={item.storeLogo} alt="Logo" />
+                                    {/* <img  height={50} width={150} src={item.storeLogo} alt="Logo" /> */}
+                                    
+                                    <h2 className="ps-2 pe-1">
+                                        {item.company}
+                                    </h2>
+                                    {/* flag fix  */}
                                     <span className="pe-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
                                             <mask id="a"><circle cx="256" cy="256" r="256" fill="#fff" /></mask>
@@ -33,9 +40,6 @@ export default function Productstoreslist(props) {
                                             </g>
                                         </svg>
                                     </span>
-                                    <h2 className="">
-                                        {item.company}
-                                    </h2>
                                 </div>
 
                                 <a className="fw-semibold" href={item.productUrl}>{item.productName}</a>

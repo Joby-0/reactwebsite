@@ -19,7 +19,6 @@ export default function Categoryfilter(props) {
 
 
 
-
     // Toggle "Show All" functionality
     const toggleShowAll = () => setShowAll(!showAll);
 
@@ -65,15 +64,22 @@ export default function Categoryfilter(props) {
         props.toggleFilter(filterName);
 
     }
+
     useEffect(() => {
-        
+
     }, [props.activeFilter]);
 
     return (
 
         <div id="stickyCol" className="col-3  p-3 pt-0">
             <h1>Filter</h1>
-            <h6>catogory namn</h6>
+            {props.activeCat ? (
+                <h6>{props.activeCat[1]}</h6>
+            ) : (
+                <p>Loading...</p>
+            )
+            }
+           
             <div className="row mt-4 scrollarea">
                 <div className="accordion" id="filterAccordion">
                     <div className="accordion-item">
@@ -258,6 +264,6 @@ export default function Categoryfilter(props) {
                     })}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
