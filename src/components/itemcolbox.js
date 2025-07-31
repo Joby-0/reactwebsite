@@ -7,7 +7,7 @@ export default function Itemcolbox(props) {
   return (
     <div className="col" key={props.product.id}>
       <Link className="text-decoration-none" to={`../p/${props.product.id}/${name}`} >
-        <div id="productBox" style={{ width: '16rem' }} className="card h-100">
+        <div id="productBox" style={{ width: '16rem', height:'' }} className="card h-100">
           <div id='imgbox' className=' rounded'>
             <div id='imgcontainer' className='pt-2 pb-3 px-3 h-100 w-100 d-flex'>
               <img

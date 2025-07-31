@@ -1,6 +1,63 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import Data from '../services/data'
 export default function Heroindex() {
+  const mockData = new Data()
+
+
+  const [searchText, setSearchText] = useState("");
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+
+  const fetchResults = async (searchTerm) => {
+    try {
+      setLoading(true);
+      // const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+      // const data = await response.json();
+
+      handleSearchChange(searchTerm) // ta bort sen när api finns
+      // setResults(data.results || []); // Adjust based on your API response shape
+    } catch (error) {
+      console.error("Search error:", error);
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  //temporary
+  const handleSearchChange = (e) => {
+    const value = e;
+    setSearchText(value);
+
+    if (value.length >= 2) {
+      const filtered = mockData.filter((item) =>
+        item.name.toLowerCase().includes(value.toLowerCase())
+
+      );
+      console.log(filtered);
+
+
+      setResults(filtered || []);
+    } else {
+      setResults([]);
+    }
+  };
+
+
+
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      if (searchText.length >= 2) {
+        fetchResults(searchText);
+      } else {
+        setResults([]);
+      }
+    }, 300); // Debounce for 300ms
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchText]);
+
   return (
     <div className="container">
       <div
@@ -12,12 +69,44 @@ export default function Heroindex() {
             Compare Prices on Thousands of Products Instantly
           </h1>
           <p className="lead">Save money. Save time. Find the best deal.</p>
-          <input
-            className="form-control form-control-lg"
-            type="search"
-            placeholder="What are you looking for?"
-            aria-label="Search"
-          />
+
+          <div className="position-relative" >
+            <input
+              className="form-control form-control-lg"
+              type="search"
+              placeholder="What are you looking for?"
+              aria-label="Search"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+
+            {searchText && (
+              <ul className="list-group position-absolute w-100 shadow-sm z-3">
+                {loading ? (
+                  <li className="list-group-item">Loading...</li>
+                ) : results.length >= 2 ? (
+                  results.map((item, index) => (
+                    <li key={index} className="list-group-item list-group-item-action">
+                      {/* Adjust according to your API */}
+                      <div>
+                        <img width={100} height={75} src={`${item.image}`}></img>
+                      </div>
+                      <div>
+                        {item.name} {item.price}
+                      </div>
+                      <div>
+                        {item.category}
+                      </div>
+
+                    </li>
+                  ))
+                ) : (
+                  <li className="list-group-item text-muted">No results</li>
+                )}
+              </ul>
+            )}
+          </div>
+
         </div>
       </div>
     </div>
