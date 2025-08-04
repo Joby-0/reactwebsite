@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Data from '../services/data'
+import { Link } from 'react-router';
 export default function Heroindex() {
   const mockData = new Data()
 
@@ -87,18 +88,33 @@ export default function Heroindex() {
                 ) : results.length >= 2 ? (
                   results.map((item, index) => (
                     <li key={index} className="list-group-item list-group-item-action">
-                      {/* Adjust according to your API */}
-                      <div>
-                        <img width={100} height={75} src={`${item.image}`}></img>
-                      </div>
-                      <div>
-                        {item.name} {item.price}
-                      </div>
-                      <div>
-                        {item.category}
-                      </div>
+                      <div className="d-flex align-items-center">
+                        {/* Image */}
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          width={75}
+                          height={75}
+                          className="img-thumbnail me-3"
+                          style={{ objectFit: 'cover' }}
+                        />
 
+                        {/* Name and Category */}
+                        <div className="flex-grow-1">
+                          <div className="fw-semibold">{item.name}</div>
+
+                          <Link className="text-muted small">{item.category}</Link>
+
+
+                        </div>
+                        {/* Price on the left */}
+                        <div className="me-3 text-nowrap fw-bold fs-5" style={{ width: '90px' }}>
+                          {item.price}
+                        </div>
+
+                      </div>
                     </li>
+
                   ))
                 ) : (
                   <li className="list-group-item text-muted">No results</li>
