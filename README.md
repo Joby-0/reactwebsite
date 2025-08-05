@@ -1,7 +1,7 @@
 Hemsida
 Jämför priser av olika prudukter och butiker(som prisjakt och pricerunner)
 
-Sidan för en produkt
+## Sidan för en produkt
 <img width="1418" height="809" alt="image" src="https://github.com/user-attachments/assets/51d2811f-ba27-4fca-9677-14206fdf6d49" />
 
 Antligen har mna en liten ikon och butikens namn i text
