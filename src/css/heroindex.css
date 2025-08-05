@@ -1,0 +1,21 @@
+#searchItemBox{
+
+}
+#searchItemCatLink:hover{
+    text-decoration: underline !important;
+}
+#searchItemLiBox:first-child{
+    border-start-end-radius: 0;
+    border-start-start-radius: 0;
+}
+.typing-style{
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+    
+}
+.form-control:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #495057 !important; /* Optional: keeps border neutral */
+  
+}

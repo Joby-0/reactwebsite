@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Data from '../services/data'
 import { Link } from 'react-router';
+import '../css/heroindex.css'
 export default function Heroindex() {
   const mockData = new Data()
 
@@ -73,7 +74,9 @@ export default function Heroindex() {
 
           <div className="position-relative" >
             <input
-              className="form-control form-control-lg"
+
+              className={`form-control form-control-lg ${searchText ? 'typing-style' : ''
+                }`}
               type="search"
               placeholder="What are you looking for?"
               aria-label="Search"
@@ -87,8 +90,8 @@ export default function Heroindex() {
                   <li className="list-group-item">Loading...</li>
                 ) : results.length >= 2 ? (
                   results.map((item, index) => (
-                    <li key={index} className="list-group-item list-group-item-action">
-                      <div className="d-flex align-items-center">
+                    <li key={index} id='searchItemLiBox' className="list-group-item list-group-item-action">
+                      <Link id='searchItemBox' className="d-flex align-items-center text-decoration-none">
                         {/* Image */}
                         <img
                           src={item.image}
@@ -101,18 +104,18 @@ export default function Heroindex() {
 
                         {/* Name and Category */}
                         <div className="flex-grow-1">
-                          <div className="fw-semibold">{item.name}</div>
+                          <div className="fw-semibold text-body">{item.name}</div>
 
-                          <Link className="text-muted small">{item.category}</Link>
+                          <Link id='searchItemCatLink' className="text-muted small text-decoration-none ">{item.category}</Link>
 
 
                         </div>
                         {/* Price on the left */}
-                        <div className="me-3 text-nowrap fw-bold fs-5" style={{ width: '90px' }}>
+                        <div className="me-3 text-nowrap text-body  fw-bold fs-5" style={{ width: '90px' }}>
                           {item.price}
                         </div>
 
-                      </div>
+                      </Link>
                     </li>
 
                   ))
