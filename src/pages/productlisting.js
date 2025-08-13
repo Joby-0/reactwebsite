@@ -85,7 +85,7 @@ export default function Productlisting() {
           <div className="col-10">
             <div className='row'>
               <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={filtersdata} />
-              <div className="col-9 scrollarea">
+              <div className="col scrollarea">
                 <Categoriesfilterdisplay activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} activeOrder={activeOrder} />
                 <Categoriesproducts products={data} />
               </div>

@@ -4,10 +4,7 @@
 #searchItemCatLink:hover{
     text-decoration: underline !important;
 }
-#searchItemLiBox:first-child{
-    border-start-end-radius: 0;
-    border-start-start-radius: 0;
-}
+
 .typing-style{
     border-end-end-radius: 0;
     border-end-start-radius: 0;
@@ -18,4 +15,9 @@
   outline: none !important;
   border-color: #495057 !important; /* Optional: keeps border neutral */
   
+}
+.list-group-item:first-child{
+    border-top: none;
+    border-start-end-radius: 0 !important;
+    border-start-start-radius: 0 !important;
 }

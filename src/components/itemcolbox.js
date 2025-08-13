@@ -5,14 +5,15 @@ export default function Itemcolbox(props) {
   let name = props.product.name;
   name = name.replaceAll(" ", "-");
   return (
-    <div className="col" key={props.product.id}>
+    <div className="col"  key={props.product.id}>
       <Link className="text-decoration-none" to={`../p/${props.product.id}/${name}`} >
-        <div id="productBox" style={{ width: '16rem', height:'' }} className="card h-100">
+        <div id="productBox" style={{ width: '14rem', height:'' }} className="card h-100">
           <div id='imgbox' className=' rounded'>
-            <div id='imgcontainer' className='pt-2 pb-3 px-3 h-100 w-100 d-flex'>
+            <div id='imgcontainer' className='pt-2 pb-3 px-2  d-flex'>
               <img
-                src={props.product.image}
-                height="200" width="200" className="card-img-top" alt={props.product.name}
+                src={props.product}
+                height="140px" width="150px" 
+                className="card-img-top img-thumbnail" alt={props.product.name}
               />
             </div>
 

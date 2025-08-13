@@ -88,7 +88,7 @@ export default function Heroindex() {
               <ul className="list-group position-absolute w-100 shadow-sm z-3">
                 {loading ? (
                   <li className="list-group-item">Loading...</li>
-                ) : results.length >= 2 ? (
+                ) : results.length > 0 ? (
                   results.map((item, index) => (
                     <li key={index} id='searchItemLiBox' className="list-group-item list-group-item-action">
                       <Link id='searchItemBox' className="d-flex align-items-center text-decoration-none">
@@ -118,9 +118,9 @@ export default function Heroindex() {
                       </Link>
                     </li>
 
-                  ))
+                  )) 
                 ) : (
-                  <li className="list-group-item text-muted">No results</li>
+                  <li className="list-group-item text-muted ">No results</li>
                 )}
               </ul>
             )}
