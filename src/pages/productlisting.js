@@ -37,6 +37,8 @@ export default function Productlisting() {
   //filter
   const [activeFilter, setActiveFilter] = useState([]);
   const [activeOrder, setActiveOrder] = useState('Recommended');
+  const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
   const onFilterClick = (filterName) => {
@@ -71,9 +73,21 @@ export default function Productlisting() {
     (async () => {
       
       setActiveCat(location.pathname.split("/").filter((x) => x))
+      try {
+        const response = await fetch(
+          "https://localhost:7020/api/Product/ItemsDto?seeded=true&flat=true&pageNumber=0&pageSize=10"
+        );
+        const data = await response.json();
+        console.log("API Response:", data);
+        setProducts(data.pageItems); // depending on your ResponsePageDto naming
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
 
     })();
-  }, [activeOrder, activeFilter]);
+  }, []);
 
 
   return (
@@ -87,7 +101,7 @@ export default function Productlisting() {
               <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={filtersdata} />
               <div className="col scrollarea">
                 <Categoriesfilterdisplay activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} activeOrder={activeOrder} />
-                <Categoriesproducts products={data} />
+                <Categoriesproducts products={products} />
               </div>
             </div>
 
