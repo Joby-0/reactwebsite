@@ -5,8 +5,8 @@ import Itemcolbox from './itemcolbox';
 export default function Itemscarusal(props) {
   //ändra till props later
   const products = props.data
-  
-  
+
+
   const scrollRef = useRef(null);
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -20,7 +20,7 @@ export default function Itemscarusal(props) {
   };
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,15 +28,15 @@ export default function Itemscarusal(props) {
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
     };
-    
-    
+
+
 
     const currentRef = scrollRef.current;
     if (currentRef) {
       currentRef.addEventListener("scroll", handleScroll);
       handleScroll(); // initialize
     }
-    
+
 
     return () => currentRef?.removeEventListener("scroll", handleScroll);
   }, []);
@@ -51,7 +51,8 @@ export default function Itemscarusal(props) {
         <h3 className="mb-2">{props.catName}</h3>
         <div id="popularProductRRow" ref={scrollRef} style={{ scrollBehavior: 'smooth' }} className="row gap-0 p-1 row-gap-3">
           {products.map(product => (
-            <Itemcolbox key={product.id} product = {product}/>
+            <Itemcolbox key={product.id} product={product} />
+
           ))}
 
           {/* Navigation buttons */}

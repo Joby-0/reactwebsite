@@ -71,7 +71,7 @@ export default function Categoryfilter(props) {
 
     return (
 
-        <div id="stickyCol" className="col-3  p-3 pt-0">
+        <div style={{maxWidth: '250px'}} id="stickyCol" className="col  p-3 pt-0">
             <h1>Filter</h1>
             {props.activeCat ? (
                 <h6>{props.activeCat[1]}</h6>
