@@ -13,12 +13,15 @@ import Modalstoreinfo from '../components/modalstoreinfo'
 import Breadcome from '../components/breadcome'
 
 import Data from '../services/data' //remove when api
+import ProductService from '../services/productservice';
 
 
 
 export default function Itempage(props) {
     const { id } = useParams();
-    const [product, setProduct] = useState(null);
+    const [data, setData] = useState();
+    const service = new ProductService('https://localhost:7020/api');
+
 
     //store modal 
     const [show, setShow] = useState(false);
@@ -62,7 +65,7 @@ export default function Itempage(props) {
     // }
     const toggleStoreFilter = (filterKey) => {
         setActiveStorefilter((prev) => {
-            
+
             const next = prev.includes(filterKey)
                 ? prev.filter((k) => k !== filterKey)          // remove
                 : [...prev, filterKey];                        // add
@@ -75,14 +78,20 @@ export default function Itempage(props) {
     const handleCurChange = (cur) => setActiveCurrency(cur.target.value);
 
     useEffect(() => {
-        (async () => {
-
-            const dataInstance = new Data();
-            const product = dataInstance.find(item => item.id.toString() === id); //sen blir det service read product med id
-            setProduct(product);
-        })();
+        
+        const fetchProducts = async () => {
+            try {
+                // Call your service method
+                const products = await service.readProductAsync(id);
+                setData(products); // store the fetched data
+                
+                
+            } catch (err) {
+                console.error(err);
+            }
+        };
+        fetchProducts();
     }, [id, activeStorefilter]);
-
 
     return (
         <>
@@ -90,26 +99,26 @@ export default function Itempage(props) {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        {product ? (
+                        {data ? (
                             <>
-                                <Productshowcase data={product} />
+                                <Productshowcase data={data.item} />
                                 <Productnavmenu active={activeSection} onNavigate={scrollTo} />
 
 
                                 <div ref={storesRef}>
                                     <Productstorefilter activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange} />
-                                    <Productstoreslist data={product.pricelist} handleModal={handleModal} setClickstore={setClickstore} />
+                                    <Productstoreslist data={data.item.storeProducts} handleModal={handleModal} setClickstore={setClickstore} />
                                     <Modalstoreinfo show={show} handleModal={handleModal} storeInfo={clickstore} />
 
                                 </div>
                                 <div ref={reviewsRef}>
-                                    <Productsreviews />
+                                    <Productsreviews productId={data.item.productId}/>
                                 </div>
                                 <div ref={descriptionRef}>
                                     <Productdescription />
                                 </div>
                                 <div ref={specificationsRef}>
-                                    <Productsspecifications data={product.desc} />
+                                    <Productsspecifications data={data.item.attributes} />
                                 </div>
                             </>
                         ) : (

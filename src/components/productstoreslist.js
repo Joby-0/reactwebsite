@@ -8,6 +8,7 @@ export default function Productstoreslist(props) {
         props.setClickstore(item)
     };
 
+    
 
     return (
         <>
@@ -28,7 +29,7 @@ export default function Productstoreslist(props) {
                                     {/* <img  height={50} width={150} src={item.storeLogo} alt="Logo" /> */}
                                     
                                     <h2 className="ps-2 pe-1">
-                                        {item.company}
+                                        {item.storeName}
                                     </h2>
                                     {/* flag fix  */}
                                     <span className="pe-2">
@@ -42,11 +43,11 @@ export default function Productstoreslist(props) {
                                     </span>
                                 </div>
 
-                                <a className="fw-semibold" href={item.productUrl}>{item.productName}</a>
+                                <a className="fw-semibold" href={item.storeProductLink}>{item.storeProductName}</a>
                             </div>
                             <div className="col-auto d-flex align-items-center">
-                                <h3 className="m-3 fw-semibold">{item.price}</h3>
-                                <a href={item.storeUrl} className="btn btn-primary align-middle">To store &gt;</a>
+                                <h3 className="m-3 fw-semibold">{item.storePrice} {item.storeCurrency}</h3>
+                                <a href={item.storeProductLink} className="btn btn-primary align-middle">To store &gt;</a>
                             </div>
                         </div>
                     </div>

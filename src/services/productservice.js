@@ -47,7 +47,7 @@ class ProductService {
 
     // Read single product by id
     async readProductAsync(id, flat = false) {
-        return await this.#_getAsync(`${this.#baseUrl}/Product/${id}`, { flat: flat.toString() });
+        return await this.#_getAsync(`${this.#baseUrl}/Product/ItemDto/${id}`, { flat: flat.toString() });
     }
 
     // Read top products
@@ -75,6 +75,17 @@ class ProductService {
             minPrice,
             maxPrice
         });
+    }
+
+    // Get reviews for a specific product
+    async readReviewsAsync(productId, pageNumber = 0, pageSize = 3) {
+        const params = { pageNumber, pageSize };
+        return await this.#_getAsync(`${this.#baseUrl}/Review/ItemsDto/${productId}`, params);
+    }
+
+    //  Create a new review
+    async createReviewAsync(reviewDto) {
+        return await this.#_postAsync(`${this.#baseUrl}/item`, reviewDto);
     }
 }
 export default ProductService;

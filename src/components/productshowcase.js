@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router';
 
 export default function Productshowcase(props) {    
-    const [mainImage, setMainImage] = useState(props.data.image);
+    const [mainImage, setMainImage] = useState(props.data.thumbnailImage);
+
+
     
     
-    const thumbnails = props?.data?.thumbnails
-    const getHighestPrice = (pricelist) => {
-        const prices = pricelist
-          .map(store => parseInt(store.price?.replace(/[^\d]/g, ''))) // Remove 'kr' or nulls
-          .filter(price => !isNaN(price)); // Remove invalid ones
+    
+    const thumbnails = props?.productImages
+    // const getHighestPrice = (storeProducts) => {
+    //     const prices = storeProducts
+    //       .map(store => parseInt(store.price?.replace(/[^\d]/g, ''))) // Remove 'kr' or nulls
+    //       .filter(price => !isNaN(price)); // Remove invalid ones
       
-        return Math.max(...prices);
-      };
+    //     return Math.max(...prices);
+    //   };
 
     const handleImageChange = (imgUrl) => {
         setMainImage(imgUrl);
@@ -55,11 +58,11 @@ export default function Productshowcase(props) {
 
                 <div className="col">
                     <div className="row">
-                        <h1>{props.data.name}</h1>
+                        <h1>{props.data.productName}</h1>
                     </div>
                     <div className="row mb-2">
                         <div className="col-auto">
-                            <button className="btn btn-sm  "><i class="bi bi-star-fill"></i> {props.data.rating}</button>
+                            <button className="btn btn-sm  "><i class="bi bi-star-fill"></i> {props.data.avgRating}</button>
                         </div>
                         <div className="col-auto">
                             <button className="btn btn-sm "><i class="bi bi-bell"></i> Watch price</button>
@@ -75,7 +78,9 @@ export default function Productshowcase(props) {
                         </p>
                     </div>
                     <div className="row">
-                        <p>Produkt price range {props.data.price} - {getHighestPrice(props.data.pricelist)} sek</p>
+                        <p>Produkt price range {props.data.productPrice} - 
+                            {/* {getHighestPrice(props.data.pricelist)}  */}
+                            sek</p>
                     </div>
                 </div>
             </div>
