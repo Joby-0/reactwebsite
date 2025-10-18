@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-
 import ProductService from '../services/productservice';
+
+// import { useServices } from "../services/ServiceContext";
 
 // Star rating component
 const StarRating = ({ rating }) => {
@@ -49,7 +50,7 @@ const Review = ({ name, rating, text }) => (
   </div>
 );
 
-export default function Productsreviews( props ) {
+export default function Productsreviews( {reviews} ) {
   const ratingSummary = [
     { stars: 5, percent: 36 },
     { stars: 4, percent: 42 },
@@ -57,25 +58,6 @@ export default function Productsreviews( props ) {
     { stars: 2, percent: 21 },
     { stars: 1, percent: 5 },
   ];
-
-  
-  
-  const [review, setReviews] = useState([]);
-  const service = new ProductService('https://localhost:7020/api');
-
-  useEffect(() => {
-
-     const loadReviews = async () => {
-      try {
-        const result = await service.readReviewsAsync(props.productId, 0, 3);
-        setReviews(result.pageItems || []);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    loadReviews();
-  }, [props.productId]);
 
 
   
@@ -96,7 +78,7 @@ export default function Productsreviews( props ) {
             <button className="btn btn-primary p-2 w-100 mt-4">Write a review</button>
           </div>
           <div className="col-md-8">
-            {review.map((review, index) => (
+            {reviews.map((review, index) => (
               <Review
                 key={index}
                 name={review.userName}

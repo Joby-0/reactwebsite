@@ -20,7 +20,10 @@ import ProductService from '../services/productservice';
 export default function Itempage(props) {
     const { id } = useParams();
     const [data, setData] = useState();
+    const [reviews, setReviews] = useState([]);
+
     const service = new ProductService('https://localhost:7020/api');
+
 
 
     //store modal 
@@ -76,22 +79,23 @@ export default function Itempage(props) {
     };
     const removeFilter = (filterKey) => setActiveStorefilter((prev) => prev.filter((k) => k !== filterKey));
     const handleCurChange = (cur) => setActiveCurrency(cur.target.value);
-
     useEffect(() => {
-        
         const fetchProducts = async () => {
             try {
-                // Call your service method
                 const products = await service.readProductAsync(id);
-                setData(products); // store the fetched data
-                
-                
+                setData(products);
+
+                const reviewData = await service.readReviewsAsync(id);
+                setReviews(reviewData.pageItems);
             } catch (err) {
-                console.error(err);
+                console.error("Failed to load product or reviews:", err);
             }
         };
+
         fetchProducts();
     }, [id, activeStorefilter]);
+    console.log(reviews);
+    
 
     return (
         <>
@@ -112,7 +116,7 @@ export default function Itempage(props) {
 
                                 </div>
                                 <div ref={reviewsRef}>
-                                    <Productsreviews productId={data.item.productId}/>
+                                    <Productsreviews reviews={reviews} />
                                 </div>
                                 <div ref={descriptionRef}>
                                     <Productdescription />

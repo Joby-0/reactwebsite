@@ -17,6 +17,8 @@ class ProductService {
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.statusText}`);
         }
+        console.log("", url);
+        
         return await response.json();
     }
 
@@ -82,6 +84,7 @@ class ProductService {
         const params = { pageNumber, pageSize };
         return await this.#_getAsync(`${this.#baseUrl}/Review/ItemsDto/${productId}`, params);
     }
+
 
     //  Create a new review
     async createReviewAsync(reviewDto) {

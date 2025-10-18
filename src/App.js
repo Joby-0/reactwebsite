@@ -13,20 +13,23 @@ import Header from './components/header'
 import Footer from './components/footer';
 import Approuter from './routers/approuter'
 import ScrollToTop from './components/scrolltotop';
+import { ServiceProvider } from './services/ServiceContext';
 
 
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <ScrollToTop />
+      {/* <ServiceProvider> */}
+        <BrowserRouter>
+          <ScrollToTop />
 
-        <Header />
-        
-        <Approuter />
-        <Footer />
-      </BrowserRouter>
+          <Header />
+
+          <Approuter />
+          <Footer />
+        </BrowserRouter>
+      {/* </ServiceProvider> */}
     </>
   );
 }

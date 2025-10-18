@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { Categoriesdatav2 } from "../services/data"
 
+import { useServices } from "../services/ServiceContext";
+
 export default function Categoriylinks() {
     const [categories, setCategories] = useState([]); //har [] för att map inte kan null 
+    // const { productService } = useServices();
     useEffect(() => {
 
         (async () => {
