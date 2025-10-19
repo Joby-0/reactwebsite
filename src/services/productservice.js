@@ -95,6 +95,10 @@ class ProductService {
         if(storeId == null){return null}
         return await this.#_getAsync(`${this.#baseUrl}/Store/item/${storeId}`)
     }
+
+    async readCategoriesAsync(){
+        return await this.#_getAsync(`${this.#baseUrl}/Category/Items`)
+    }
 }
 export default ProductService;
 
