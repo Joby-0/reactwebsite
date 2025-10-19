@@ -94,7 +94,7 @@ export default function Itempage(props) {
 
         fetchProducts();
     }, [id, activeStorefilter]);
-    console.log(reviews);
+    console.log(data);
     
 
     return (
@@ -112,7 +112,7 @@ export default function Itempage(props) {
                                 <div ref={storesRef}>
                                     <Productstorefilter activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange} />
                                     <Productstoreslist data={data.item.storeProducts} handleModal={handleModal} setClickstore={setClickstore} />
-                                    <Modalstoreinfo show={show} handleModal={handleModal} storeInfo={clickstore} />
+                                    <Modalstoreinfo show={show} handleModal={handleModal} storeId={clickstore} />
 
                                 </div>
                                 <div ref={reviewsRef}>

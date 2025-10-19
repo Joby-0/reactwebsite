@@ -84,11 +84,16 @@ class ProductService {
         const params = { pageNumber, pageSize };
         return await this.#_getAsync(`${this.#baseUrl}/Review/ItemsDto/${productId}`, params);
     }
-
-
+    
     //  Create a new review
     async createReviewAsync(reviewDto) {
         return await this.#_postAsync(`${this.#baseUrl}/item`, reviewDto);
+    }
+
+    //store info
+    async readStoreInfoAsync(storeId){
+        if(storeId == null){return null}
+        return await this.#_getAsync(`${this.#baseUrl}/Store/item/${storeId}`)
     }
 }
 export default ProductService;

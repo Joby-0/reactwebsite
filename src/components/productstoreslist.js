@@ -5,7 +5,7 @@ export default function Productstoreslist(props) {
 
     const handleModal = (value, item) => {
         props.handleModal(value);
-        props.setClickstore(item)
+        props.setClickstore(item.storeId)
     };
 
     
