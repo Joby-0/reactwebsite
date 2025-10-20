@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 
 export default function Itemcolbox(props) {
   let name = props.product.productName;
-  console.log(props);
   
   // name = name.replaceAll(" ", "-");
   return (

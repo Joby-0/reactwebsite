@@ -13,7 +13,6 @@ export default function Categoriylinks() {
     const { categories, loading } = useContext(CategoriesContext);
     // const service = new ProductService('https://localhost:7020/api');
 
-    console.log(categories);
     
     return (
         <div className="row g-3 justify-content-center">
