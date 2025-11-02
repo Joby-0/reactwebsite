@@ -18,7 +18,7 @@ import ProductService from '../services/productservice';
 
 
 export default function Itempage(props) {
-    const { id } = useParams();
+    const { shortKey } = useParams();
     const [data, setData] = useState();
     const [reviews, setReviews] = useState([]);
 
@@ -82,10 +82,10 @@ export default function Itempage(props) {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const products = await service.readProductAsync(id);
+                const products = await service.readProductAsync(shortKey);
                 setData(products);
 
-                const reviewData = await service.readReviewsAsync(id);
+                const reviewData = await service.readReviewsAsync(shortKey);
                 setReviews(reviewData.pageItems);
             } catch (err) {
                 console.error("Failed to load product or reviews:", err);
@@ -93,8 +93,8 @@ export default function Itempage(props) {
         };
 
         fetchProducts();
-    }, [id, activeStorefilter]);
-    console.log(data);
+    }, [shortKey, activeStorefilter]);
+    console.log(shortKey);
     
 
     return (

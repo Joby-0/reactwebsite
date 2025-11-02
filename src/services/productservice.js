@@ -48,8 +48,8 @@ class ProductService {
     }
 
     // Read single product by id
-    async readProductAsync(id, flat = false) {
-        return await this.#_getAsync(`${this.#baseUrl}/Product/ItemDto/${id}`, { flat: flat.toString() });
+    async readProductAsync(shortKey, flat = false) {
+        return await this.#_getAsync(`${this.#baseUrl}/Product/ItemDto/${shortKey}`, { flat: flat.toString() });
     }
 
     // Read top products

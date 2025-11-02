@@ -72,7 +72,7 @@ export default function Productlisting() {
   useEffect(() => {
     (async () => {
       
-      setActiveCat(location.pathname.split("/").filter((x) => x))
+      // setActiveCat(location.pathname.split("/").filter((x) => x))
       
 
     })();

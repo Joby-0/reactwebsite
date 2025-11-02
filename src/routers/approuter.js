@@ -24,7 +24,7 @@ const routes = [
     { path: "/c/:categorySlug/:subSlug/:subsubSlug", element: <Categorypage /> },
     { path: "/p/:categorySlug/:subSlug", element: <Productlisting /> },
     { path: "/p/:categorySlug/:subSlug/:subsubSlug", element: <Productlisting /> },
-    { path: "/p/:id/:product", element: <Itempage /> },
+    { path: "/:shortKey/:product", element: <Itempage /> },
 ];
 
 
