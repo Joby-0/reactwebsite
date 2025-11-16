@@ -17,6 +17,7 @@ class ProductService {
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.statusText}`);
         }
+        console.log("", response);
 
         return await response.json();
     }
@@ -60,13 +61,14 @@ class ProductService {
 
     // Read top products
     // Read top products with optional category
-    async readTopProductsAsync(categoryId = null, pageNr = 0, pageSize = 10) {
+    async readTopProductsAsync(categoryId = null, categorySlug = null, pageNr = 0, pageSize = 10) {
         const params = {
             seeded: 'true',
-            categoryid: categoryId || '',
             pageNumber: pageNr,
-            pageSize
+            pageSize,
+            ...(categorySlug ? { categorySlug } : categoryId ? { categoryid: categoryId } : {})
         };
+
         return await this.#_getAsync(`${this.#baseUrl}/Product/TopItemsDto`, params);
     }
 
@@ -87,24 +89,24 @@ class ProductService {
 
     async readProductsByCategory(categorySlug = '', pageNr = 0, pageSize = 40, filters = { storeIds: [], attributeValueIds: [], minRating: 0 }, sort = "Recomended", search = "", minPrice = null, maxPrice = null) {
 
-    const queryParams = {
-        categorySlug,
-        search: search || undefined,
-        sort: sort || undefined,
-        minPrice: minPrice ?? undefined,
-        maxPrice: maxPrice ?? undefined,
-        pageNumber: pageNr,
-        pageSize
-    };
+        const queryParams = {
+            categorySlug,
+            search: search || undefined,
+            sort: sort || undefined,
+            minPrice: minPrice ?? undefined,
+            maxPrice: maxPrice ?? undefined,
+            pageNumber: pageNr,
+            pageSize
+        };
 
-    const body = {
-        storeIds: filters.storeIds,
-        attributeValueIds: filters.attributeValueIds,
-        minRating: filters.minRating ?? 0
-    };
+        const body = {
+            storeIds: filters.storeIds,
+            attributeValueIds: filters.attributeValueIds,
+            minRating: filters.minRating ?? 0
+        };
 
-    return await this.#_postAsync(`${this.#baseUrl}/Product/search`, queryParams, body);
-}
+        return await this.#_postAsync(`${this.#baseUrl}/Product/search`, queryParams, body);
+    }
 
 
 
