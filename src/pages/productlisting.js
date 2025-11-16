@@ -1,12 +1,18 @@
 import React, { use, useEffect, useState } from 'react'
+import { useParams } from "react-router";
+
 import Categoryfilter from '../components/categoryfilter'
 import Categoriesfilterdisplay from '../components/categoriesfilterdisplay';
 import Categoriesproducts from '../components/categoriesproducts';
-import Data from '../services/data';
 import Breadcome from '../components/breadcome';
 import { useLocation } from 'react-router';
 
+import ProductService from '../services/productservice';
+
 export default function Productlisting() {
+  const service = new ProductService('https://localhost:7020/api');
+  const { subsubSlug } = useParams();
+
   //change to api later
   //data
   const filtersdata = [
@@ -32,13 +38,13 @@ export default function Productlisting() {
       ]
     }
   ];
-  const data = new Data();
 
   //filter
-  const [activeFilter, setActiveFilter] = useState([]);
-  const [activeOrder, setActiveOrder] = useState('Recommended');
-  const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState(null);
+  const [activeFilter, setActiveFilter] = useState({ storeIds: [], attributeValueIds: [] });
+  const [activeOrder, setActiveOrder] = useState('price_desc');
+  const [loading, setLoading] = useState(false);
+
 
 
   const onFilterClick = (filterName) => {
@@ -46,48 +52,43 @@ export default function Productlisting() {
     setActiveFilter()
   }
   const toggleFilter = (filterKey) => {
-    setActiveFilter((prev) => {
-
-      const next = prev.includes(filterKey)
-        ? prev.filter((k) => k !== filterKey)          // remove
-        : [...prev, filterKey];                        // add
-      // call your API with next ...
-      return next;
-    });
-    console.log(activeFilter);
+    // setActiveFilter((prev) => {
+    //   const next = prev.includes(filterKey)
+    //     ? prev.filter((k) => k !== filterKey)
+    //     : [...prev, filterKey];
+    //   return next;
+    // });
   };
+
+
   const removeFilter = (filterKey) => setActiveFilter((prev) => prev.filter((k) => k !== filterKey));
 
 
-  const OrderChange = (e) => {
-    setActiveOrder(e)
-    //make a api call to change to order
-  }
+
+  const OrderChange = (newOrder) => {
+    setActiveOrder(newOrder); // triggers useEffect automatically
+  };
+
 
   const location = useLocation();
-  const [activeCat, setActiveCat] = useState();
+  const [activeCat, setActiveCat] = useState([]);
 
-  
+
 
   useEffect(() => {
-    (async () => {
-      
-      setActiveCat(location.pathname.split("/").filter((x) => x))
+    const fetchProducts = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(
-          "https://localhost:7020/api/Product/ItemsDto?seeded=true&flat=true&pageNumber=0&pageSize=10"
-        );
-        const data = await response.json();
-        console.log("API Response:", data);
-        setProducts(data.pageItems); // depending on your ResponsePageDto naming
-      } catch (error) {
-        console.error("Error fetching products:", error);
+        const result = await service.readProductsByCategory(subsubSlug, 0, 40, activeFilter, activeOrder);
+        setProducts(result);
+      } catch (err) {
+        console.error(err);
       } finally {
         setLoading(false);
       }
-
-    })();
-  }, []);
+    };
+    if (subsubSlug) fetchProducts();
+  }, [subsubSlug, activeFilter, activeOrder]);
 
 
   return (
@@ -100,16 +101,30 @@ export default function Productlisting() {
             <div className='row'>
               <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={filtersdata} />
               <div className="col scrollarea">
-                <Categoriesfilterdisplay activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} activeOrder={activeOrder} />
-                <Categoriesproducts products={products} />
+                {loading ? (
+                  <div>Loading products...</div>
+                ) : products?.pageItems?.length > 0 ? (
+                  <>
+                    <Categoriesfilterdisplay
+                      nrOfProduct={products.dbItemsCount}
+                      activeFilter={activeFilter}
+                      removeFilter={removeFilter}
+                      OrderChange={OrderChange}
+                      activeOrder={activeOrder}
+                    />
+                    <Categoriesproducts products={products.pageItems} />
+                  </>
+                ) : (
+                  <div>No products found.</div>
+                )}
               </div>
-            </div>
 
+            </div>
           </div>
           <div id='adscolumn' className="col-2"></div>
         </div>
-
       </div>
     </>
   )
+
 }

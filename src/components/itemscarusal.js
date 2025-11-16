@@ -5,7 +5,7 @@ import Itemcolbox from './itemcolbox';
 export default function Itemscarusal(props) {
   //ändra till props later
   const products = props.data
-
+  
 
   const scrollRef = useRef(null);
   const scrollLeft = () => {
@@ -51,7 +51,7 @@ export default function Itemscarusal(props) {
         <h3 className="mb-2">{props.catName}</h3>
         <div id="popularProductRRow" ref={scrollRef} style={{ scrollBehavior: 'smooth' }} className="row gap-0 p-1 row-gap-3">
           {products.map(product => (
-            <Itemcolbox key={product.id} product={product} />
+            <Itemcolbox key={product.productId} product={product} />
 
           ))}
 

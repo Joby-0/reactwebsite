@@ -3,10 +3,11 @@ import { Link } from 'react-router'
 
 export default function Itemcolbox(props) {
   let name = props.product.productName;
+  
   // name = name.replaceAll(" ", "-");
   return (
     <div className="col"  key={props.product.ProductId}>
-      <Link className="text-decoration-none" to={`../p/${props.product.id}/${name}`} >
+      <Link className="text-decoration-none" to={`../${props.product.shortKey}/${name}`} >
         <div id="productBox" style={{ width: '14rem', height:'' }} className="card h-100">
           <div id='imgbox' className=' rounded'>
             <div id='imgcontainer' className='pt-2 pb-3 px-2  d-flex'>

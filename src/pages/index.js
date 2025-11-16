@@ -6,22 +6,34 @@ import Bigsponsorpart from '../components/bigsponsorpart'
 import Shortabout from '../components/shortabout'
 import Newletterpart from '../components/newletterpart'
 import Divider from '../components/divider'
-import { PopularProducts } from '../services/data'
+// import { PopularProducts } from '../services/data'
 
+import ProductService from '../services/productservice';
 
 
 
 export default function Index(props) {
   // const service = new ProductService('', null, false)
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ pageItems: [], dbItemsCount: 0 });
+  const service = new ProductService('https://localhost:7020/api');
 
   useEffect(() => {
-    (async () => {
-      // const products = await service.readProductsAsync();
-      const products = new PopularProducts();
-      setData(products);
-    })();
-  }, []);
+    const fetchProducts = async () => {
+      try {
+        // Call your service method
+        const products = await service.readTopProductsAsync("00dbe305-2ba3-48c6-b3ec-a9d33f847498");
+
+        setData(products); // store the fetched data
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchProducts();
+  }, []); // empty dependency array = run once on mount
+
+  // Extract pageItems for mapping
+  const products = data.pageItems || [];
 
   return (
     <>
@@ -30,10 +42,10 @@ export default function Index(props) {
       <Categories />
       <Divider height={50} />
       <div className="container">
-        <Itemscarusal data={data} catName="Popular phones" />
-        <Itemscarusal data={data} catName="others" />
+        <Itemscarusal data={products} catName="Popular phones" />
+        <Itemscarusal data={products} catName="others" />
         <Bigsponsorpart />
-        <Itemscarusal data={data} catName="more others" />
+        <Itemscarusal data={products} catName="more others" />
         <Divider height={100} />
         <Shortabout />
         <Divider height={100} />

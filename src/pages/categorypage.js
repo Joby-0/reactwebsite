@@ -1,78 +1,94 @@
-import React, { useEffect, useState } from 'react'
-import {  useParams } from 'react-router';
-import Categoriesandsubcategories from '../components/categoriesandsubcategories';
-import { Categoriesdata, Categoriesdatav2, PopularProducts } from '../services/data'
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { CategoryGrid } from '../components/categoryGrid';
 import Itemscarusal from '../components/itemscarusal';
 import Divider from '../components/divider';
 import Breadcome from '../components/breadcome';
-
-let categories = new Categoriesdatav2()
-let pdata = new PopularProducts()
+import { CategoriesContext } from "../services/CategoriesContext";
+import ProductService from '../services/productservice';
 
 export default function Categorypage() {
+    const { categories } = useContext(CategoriesContext);
+    const service = new ProductService('https://localhost:7020/api');
+
     const { categorySlug, subSlug } = useParams();
-    const [cdata, setcData] = useState(null)
-    const [cname, setCname] = useState("")
-    console.log(categories);
+    const [cdata, setcData] = useState(null);
+    const [cname, setCname] = useState("");
+    const [pData, setPData] = useState(null);
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
-        (async () => {
-            if (categorySlug && !subSlug) {
-                // Load category by slug/id
-                const foundCategory = categories.find(
-                    (cat) => cat.slug.toLowerCase() === categorySlug.toLowerCase()
-                );
-                console.log(foundCategory);
-                
-                setCname(foundCategory.name)
-                setcData(foundCategory);
+        if (!categories || categories.length === 0) return;
 
-
-            } else if (categorySlug && subSlug) {
-                // Load subcategory within the matched category
-                const foundCategory = categories.find(
-                    (cat) => cat.name.toLowerCase() === categorySlug.toLowerCase()
-                );
-                const foundSub = foundCategory?.subCat.find(
-                    (sub) => sub.name.toLowerCase() === subSlug.toLowerCase()
-                );
-                setCname(foundSub?.name)
-                setcData({ ...foundCategory, sub: foundSub });
-            } else {
-                // Fallback or homepage c
-                setcData(null);
+        const fetchProducts = async () => {
+            setLoading(true);
+            try {
+                const result = await service.readTopProductsAsync(null, categorySlug, 0, 10);
+                setPData(result);
+                console.log("Fetched products:", result);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
             }
-        })();
-    }, [categorySlug, subSlug]);
+        };
 
-    console.log("data", cdata);
+        if (categorySlug) fetchProducts();
 
+        const foundCategory = categories.find(
+            cat => cat.categorySlug?.toLowerCase() === categorySlug?.toLowerCase()
+        );
 
+        if (!foundCategory) {
+            setcData(null);
+            return;
+        }
+
+        if (!subSlug) {
+            setCname(foundCategory.categoryName);
+            setcData(foundCategory);
+        } else {
+            const foundSub = foundCategory.childrenCategories?.find(
+                sub => sub.categorySlug?.toLowerCase() === subSlug?.toLowerCase()
+            );
+
+            setCname(foundSub?.categoryName || foundCategory.categoryName);
+            setcData({ ...foundCategory, sub: foundSub });
+        }
+
+    }, [categorySlug, subSlug, categories]);
+
+    
     return (
         <>
-        <Breadcome/>
-        <div className="container mt-5">
-            
-            <div className="row">
-                <div className="col-md-10">
-                    {cdata ? (
-                        <>
-                            <Categoriesandsubcategories categories={cdata} />
-                            <Divider height={50} />
-                            <Divider height={100} />
-
-
-                        </>
-                    ) : (
-                        <p>Loading...</p>
-                    )}
-
+            <Breadcome />
+            <div className="container mt-5">
+                <div className="row">
+                    <div className="col-md-10">
+                        {cdata ? (
+                            <>
+                                <CategoryGrid categories={cdata.sub || cdata} />
+                                <Divider height={50} />
+                                <Divider height={100} />
+                            </>
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                    </div>
+                    <div className="ads col sticky-top">
+                    </div>
                 </div>
-                <div className="ads col sticky-top">
-                </div>
+
+                {/* Render carousel after loading */}
+                {loading ? (
+                    <div>Loading products...</div>
+                ) : pData?.pageItems?.length > 0 ? (
+                    <Itemscarusal catName={`Popular ${cname}`} data={pData.pageItems} />
+                ) : (
+                    <div>No products found.</div>
+                )}
+
             </div>
-            <Itemscarusal catName={`Popular ${cname}`} data={pdata} />
-
-        </div>
         </>
-    )
+    );
 }

@@ -13,12 +13,18 @@ import Modalstoreinfo from '../components/modalstoreinfo'
 import Breadcome from '../components/breadcome'
 
 import Data from '../services/data' //remove when api
+import ProductService from '../services/productservice';
 
 
 
 export default function Itempage(props) {
-    const { id } = useParams();
-    const [product, setProduct] = useState(null);
+    const { shortKey } = useParams();
+    const [data, setData] = useState();
+    const [reviews, setReviews] = useState([]);
+
+    const service = new ProductService('https://localhost:7020/api');
+
+
 
     //store modal 
     const [show, setShow] = useState(false);
@@ -62,7 +68,7 @@ export default function Itempage(props) {
     // }
     const toggleStoreFilter = (filterKey) => {
         setActiveStorefilter((prev) => {
-            
+
             const next = prev.includes(filterKey)
                 ? prev.filter((k) => k !== filterKey)          // remove
                 : [...prev, filterKey];                        // add
@@ -73,16 +79,23 @@ export default function Itempage(props) {
     };
     const removeFilter = (filterKey) => setActiveStorefilter((prev) => prev.filter((k) => k !== filterKey));
     const handleCurChange = (cur) => setActiveCurrency(cur.target.value);
-
     useEffect(() => {
-        (async () => {
+        const fetchProducts = async () => {
+            try {
+                const products = await service.readProductAsync(shortKey);
+                setData(products);
 
-            const dataInstance = new Data();
-            const product = dataInstance.find(item => item.id.toString() === id); //sen blir det service read product med id
-            setProduct(product);
-        })();
-    }, [id, activeStorefilter]);
+                const reviewData = await service.readReviewsAsync(shortKey);
+                setReviews(reviewData.pageItems);
+            } catch (err) {
+                console.error("Failed to load product or reviews:", err);
+            }
+        };
 
+        fetchProducts();
+    }, [shortKey, activeStorefilter]);
+    console.log(shortKey);
+    
 
     return (
         <>
@@ -90,26 +103,26 @@ export default function Itempage(props) {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        {product ? (
+                        {data ? (
                             <>
-                                <Productshowcase data={product} />
+                                <Productshowcase data={data.item} />
                                 <Productnavmenu active={activeSection} onNavigate={scrollTo} />
 
 
                                 <div ref={storesRef}>
                                     <Productstorefilter activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange} />
-                                    <Productstoreslist data={product.pricelist} handleModal={handleModal} setClickstore={setClickstore} />
-                                    <Modalstoreinfo show={show} handleModal={handleModal} storeInfo={clickstore} />
+                                    <Productstoreslist data={data.item.storeProducts} handleModal={handleModal} setClickstore={setClickstore} />
+                                    <Modalstoreinfo show={show} handleModal={handleModal} storeId={clickstore} />
 
                                 </div>
                                 <div ref={reviewsRef}>
-                                    <Productsreviews />
+                                    <Productsreviews reviews={reviews} />
                                 </div>
                                 <div ref={descriptionRef}>
                                     <Productdescription />
                                 </div>
                                 <div ref={specificationsRef}>
-                                    <Productsspecifications data={product.desc} />
+                                    <Productsspecifications data={data.item.attributes} />
                                 </div>
                             </>
                         ) : (

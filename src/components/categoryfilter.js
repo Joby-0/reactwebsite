@@ -19,6 +19,7 @@ export default function Categoryfilter(props) {
 
 
 
+
     // Toggle "Show All" functionality
     const toggleShowAll = () => setShowAll(!showAll);
 
@@ -60,10 +61,12 @@ export default function Categoryfilter(props) {
             [index]: value
         }));
     };
-    const onFilterClick = (filterName) => {
-        props.toggleFilter(filterName);
+    const onFilterClick = (filterType, id) => {
+        // filterType = "store" | "attribute"
+        // id = the ID of the store or attribute
+        props.toggleFilter(filterType, id);
+    };
 
-    }
 
     useEffect(() => {
 
@@ -71,7 +74,7 @@ export default function Categoryfilter(props) {
 
     return (
 
-        <div style={{maxWidth: '250px'}} id="stickyCol" className="col  p-3 pt-0">
+        <div style={{ maxWidth: '300px' }} id="stickyCol" className="col  p-3 pt-0">
             <h1>Filter</h1>
             {props.activeCat ? (
                 <h6>{props.activeCat[1]}</h6>
@@ -79,7 +82,7 @@ export default function Categoryfilter(props) {
                 <p>Loading...</p>
             )
             }
-           
+
             <div className="row mt-4 scrollarea">
                 <div className="accordion" id="filterAccordion">
                     <div className="accordion-item">
@@ -159,7 +162,8 @@ export default function Categoryfilter(props) {
                     {props.filtersdata.map((filter, index) => {
                         const searchTerm = searchTerms[index] || '';
                         const filteredOptions = filter.options.filter(option =>
-                            option.name.toLowerCase().includes(searchTerm.toLowerCase())
+                            option.name.toLowerCase()
+                            // .includes(searchTerm.toLowerCase())
                         );
 
                         return (
@@ -198,14 +202,21 @@ export default function Categoryfilter(props) {
                                                         <input
                                                             className="form-check-input p-2"
                                                             type="checkbox"
-                                                            checked={props.activeFilter.includes(option.name)}
+                                                            checked={
+                                                                filter.title.toLowerCase() === 'store'
+                                                                    ? props.activeFilter.storeIds.includes(option.id)
+                                                                    : props.activeFilter.attributeValueIds.includes(option.id)
+                                                            }
                                                             id={`${filter.title}-${optIdx}`}
-                                                            onClick={() => onFilterClick(option.name)}
+                                                            onChange={() => {
+                                                                if (filter.title.toLowerCase() === 'store') {
+                                                                    props.toggleFilter('store', option.id);
+                                                                } else {
+                                                                    props.toggleFilter('attribute', option.id);
+                                                                }
+                                                            }}
                                                         />
-                                                        <label
-                                                            className="form-check-label w-100"
-                                                            htmlFor={`${filter.title}-${optIdx}`}
-                                                        >
+                                                        <label className="form-check-label w-100" htmlFor={`${filter.title}-${optIdx}`}>
                                                             <span className="d-flex w-100">
                                                                 <p className="text-start mb-0">{option.name}</p>
                                                                 <p className="text-muted ms-auto mb-0">{option.count}</p>
@@ -214,27 +225,7 @@ export default function Categoryfilter(props) {
                                                     </div>
                                                 </li>
                                             ))}
-                                            {/* Display the rest of the items when "Show All" is clicked */}
-                                            {/* {showAll && filteredOptions.slice(5).map((option, optIdx) => (
-                                                    <li key={optIdx} style={{ height: '30px' }}>
-                                                        <div className="form-check h-100 pt-1">
-                                                            <input
-                                                                className="form-check-input p-2"
-                                                                type="checkbox"
-                                                                id={`${filter.title}-${optIdx}`}
-                                                            />
-                                                            <label
-                                                                className="form-check-label w-100"
-                                                                htmlFor={`${filter.title}-${optIdx}`}
-                                                            >
-                                                                <span className="d-flex w-100">
-                                                                    <p className="text-start mb-0">{option.name}</p>
-                                                                    <p className="text-muted ms-auto mb-0">{option.count}</p>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
-                                                ))} */}
+
                                             {/* Show the "Show All" button only if there are more than 5 items */}
                                             {filteredOptions.length > 5 && !showAll && (
                                                 <button
