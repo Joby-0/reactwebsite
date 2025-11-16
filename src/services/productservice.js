@@ -17,24 +17,30 @@ class ProductService {
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.statusText}`);
         }
-        console.log("", url);
-        
+
         return await response.json();
     }
 
     // Private helper for POST requests
-    async #_postAsync(url, body = {}, params = {}) {
-        const query = new URLSearchParams(params).toString();
-        const response = await fetch(`${url}?${query}`, {
+    async #_postAsync(url, params = {}, body = {}) {
+        const filteredParams = Object.fromEntries(
+            Object.entries(params).filter(([_, v]) => v !== null && v !== undefined && v !== "")
+        );
+        const query = new URLSearchParams(filteredParams).toString();
+        const response = await fetch(`${url}${query ? `?${query}` : ''}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
+            headers: { 'Content-Type': 'application/json' }, // <- important
+            body: JSON.stringify(body) // <- ensure this is an object, not null
         });
-        if (!response.ok) {
-            throw new Error(`Failed to fetch: ${response.statusText}`);
-        }
+
+        if (!response.ok) throw new Error(`Failed to fetch: ${response.statusText}`);
+        console.log(url, body, params);
+
         return await response.json();
     }
+
+
+
 
     // Read all products
     async readProductsAsync(category = null, pageNr = 0, flat = false, filter = null, pageSize = 10) {
@@ -79,24 +85,54 @@ class ProductService {
         });
     }
 
+    async readProductsByCategory(categorySlug = '', pageNr = 0, pageSize = 40, filters = { storeIds: [], attributeValueIds: [], minRating: 0 }, sort = "Recomended", search = "", minPrice = null, maxPrice = null) {
+
+    const queryParams = {
+        categorySlug,
+        search: search || undefined,
+        sort: sort || undefined,
+        minPrice: minPrice ?? undefined,
+        maxPrice: maxPrice ?? undefined,
+        pageNumber: pageNr,
+        pageSize
+    };
+
+    const body = {
+        storeIds: filters.storeIds,
+        attributeValueIds: filters.attributeValueIds,
+        minRating: filters.minRating ?? 0
+    };
+
+    return await this.#_postAsync(`${this.#baseUrl}/Product/search`, queryParams, body);
+}
+
+
+
+
+
+
+
+
+
+
     // Get reviews for a specific product
     async readReviewsAsync(productId, pageNumber = 0, pageSize = 3) {
         const params = { pageNumber, pageSize };
         return await this.#_getAsync(`${this.#baseUrl}/Review/ItemsDto/${productId}`, params);
     }
-    
+
     //  Create a new review
     async createReviewAsync(reviewDto) {
         return await this.#_postAsync(`${this.#baseUrl}/item`, reviewDto);
     }
 
     //store info
-    async readStoreInfoAsync(storeId){
-        if(storeId == null){return null}
+    async readStoreInfoAsync(storeId) {
+        if (storeId == null) { return null }
         return await this.#_getAsync(`${this.#baseUrl}/Store/item/${storeId}`)
     }
 
-    async readCategoriesAsync(){
+    async readCategoriesAsync() {
         return await this.#_getAsync(`${this.#baseUrl}/Category/Items`)
     }
 }
