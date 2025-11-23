@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 
-import ProductService from '../services/productservice';
+import { _productService } from "../services/productservice";
+
 
 
 export default function Modalstoreinfo(props) {
   const [storeInfo, setStoreInfo] = useState(null)
-  const service = new ProductService('https://localhost:7020/api');
+
 
 
   const handleModal = (value) => {
@@ -21,16 +22,13 @@ export default function Modalstoreinfo(props) {
 
     (async () => {
       try {
-        const info = await service.readStoreInfoAsync(props.storeId);
+        const info = await _productService.readStoreInfoAsync(props.storeId);
         setStoreInfo(info);
       } catch (err) {
         console.error("Failed to load store info:", err);
       }
     })();
   }, [props.show, props.storeId]);
-
-  console.log("", storeInfo);
-
   return (
     <>
       <Modal show={props.show} onHide={() => handleModal(false)}>
