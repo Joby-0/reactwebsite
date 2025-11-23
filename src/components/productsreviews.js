@@ -1,26 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import ProductService from '../services/productservice';
+import Review from './reviewComponent.jsx';
 
-// import { useServices } from "../services/ServiceContext";
-
-// Star rating component
-const StarRating = ({ rating }) => {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 >= 0.5;
-  const totalStars = 5;
-
-  return (
-    <>
-      {Array.from({ length: fullStars }, (_, i) => (
-        <i key={i} className="bi bi-star-fill text-warning me-1"></i>
-      ))}
-      {hasHalfStar && <i className="bi bi-star-half text-warning me-1"></i>}
-      {Array.from({ length: totalStars - fullStars - (hasHalfStar ? 1 : 0) }, (_, i) => (
-        <i key={i} className="bi bi-star text-warning me-1"></i>
-      ))}
-    </>
-  );
-};
 
 // Rating bar
 const RatingBar = ({ stars, percent }) => (
@@ -36,31 +16,35 @@ const RatingBar = ({ stars, percent }) => (
         aria-valuemax="100"
       ></div>
     </div>
+    <span>{percent}%</span>
   </li>
 );
 
-// Individual review
-const Review = ({ name, rating, text }) => (
-  <div className="p-2 mb-4  rounded-3 border">
-    <div className="d-flex justify-content-between">
-      <h3>{name}</h3>
-      <div><StarRating rating={rating} /></div>
-    </div>
-    <p>{text}</p>
-  </div>
-);
 
-export default function Productsreviews( {reviews} ) {
+
+
+
+export default function Productsreviews({ reviewData, ReviewModal,reviewsModal }) {
+
   const ratingSummary = [
-    { stars: 5, percent: 36 },
-    { stars: 4, percent: 42 },
-    { stars: 3, percent: 12 },
-    { stars: 2, percent: 21 },
-    { stars: 1, percent: 5 },
-  ];
+    { stars: 5, count: reviewData.nrOfFiveStar },
+    { stars: 4, count: reviewData.nrOfFourStar },
+    { stars: 3, count: reviewData.nrOfThreeStar },
+    { stars: 2, count: reviewData.nrOfTwoStar },
+    { stars: 1, count: reviewData.nrOfOneStar }
+  ].map(r => ({
+    stars: r.stars,
+    percent:
+      reviewData.dbItemsCount === 0
+        ? 0
+        : Math.round((r.count / reviewData.dbItemsCount) * 100)
+  }));
 
+  const handleReviewModal = (value) => {
 
-  
+    ReviewModal(value)
+  };
+
 
   return (
     <section id="reviews">
@@ -68,24 +52,43 @@ export default function Productsreviews( {reviews} ) {
         <div className="row">
           <h1>Reviews</h1>
           <div className="col-md-4">
-            <h2>3,7</h2>
-            <p>from 3 reviews</p>
+            <h2>{reviewData.avgRating} stars</h2>
+            <p>from {reviewData.dbItemsCount} reviews</p>
             <ul className="list-group list-group-flush">
               {ratingSummary.map((rate) => (
                 <RatingBar key={rate.stars} stars={rate.stars} percent={rate.percent} />
               ))}
             </ul>
-            <button className="btn btn-primary p-2 w-100 mt-4">Write a review</button>
+            <button onClick={() => handleReviewModal(true)} className="btn btn-primary p-2 w-100 mt-4">Write a review</button>
           </div>
           <div className="col-md-8">
-            {reviews.map((review, index) => (
-              <Review
-                key={index}
-                name={review.userName}
-                rating={review.starRating}
-                text={review.comment}
-              />
-            ))}
+            {reviewData?.pageItems ? (
+              reviewData.pageItems.map((review, index) => (
+                <Review
+                  key={index}
+                  Created_at={review.created_at}
+                  profile={review.ProfileImage}
+                  name={review.userName}
+                  rating={review.starRating}
+                  text={review.comment}
+                />
+              ))
+
+            ) : (
+              <div>Loading...</div>
+            )}
+            {reviewData.dbItemsCount > 3 && (
+              <div className="d-flex justify-content-center my-3">
+                <button
+                  type="button"
+                  className="btn btn-link"
+                onClick={() => reviewsModal()} // your click handler
+                >
+                  Show all reviews
+                </button>
+              </div>
+            )}
+
           </div>
         </div>
       </div>

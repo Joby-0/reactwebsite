@@ -33,9 +33,9 @@ class ProductService {
             headers: { 'Content-Type': 'application/json' }, // <- important
             body: JSON.stringify(body) // <- ensure this is an object, not null
         });
+        console.log(url, body, params);
 
         if (!response.ok) throw new Error(`Failed to fetch: ${response.statusText}`);
-        console.log(url, body, params);
 
         return await response.json();
     }
@@ -118,14 +118,22 @@ class ProductService {
 
 
     // Get reviews for a specific product
-    async readReviewsAsync(productId, pageNumber = 0, pageSize = 3) {
-        const params = { pageNumber, pageSize };
-        return await this.#_getAsync(`${this.#baseUrl}/Review/ItemsDto/${productId}`, params);
+    async readReviewsAsync({ shortKey, productId, pageNumber = 0, pageSize = 3, includeStats = false }) {
+        const params = { pageNumber, pageSize, includeStats };
+
+        if (shortKey) params.shortKey = shortKey;
+        if (productId) params.productId = productId;
+
+        return await this.#_getAsync(`${this.#baseUrl}/Review/items`, params);
     }
 
-    //  Create a new review
-    async createReviewAsync(reviewDto) {
-        return await this.#_postAsync(`${this.#baseUrl}/item`, reviewDto);
+    // Create a new review
+    async createReviewAsync(shortKey, reviewDto) {
+        return await this.#_postAsync(
+            `${this.#baseUrl}/Review/CreateItem/${shortKey}`,
+            {},
+            reviewDto
+        );
     }
 
     //store info
@@ -140,3 +148,6 @@ class ProductService {
 }
 export default ProductService;
 
+
+
+export const _productService = new ProductService("https://localhost:7020/api");

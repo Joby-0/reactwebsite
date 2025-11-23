@@ -12,18 +12,15 @@ import Productdescription from '../components/productdescription';
 import Modalstoreinfo from '../components/modalstoreinfo'
 import Breadcome from '../components/breadcome'
 
-import Data from '../services/data' //remove when api
-import ProductService from '../services/productservice';
+import ModalWriteAreview from '../components/modalWriteAreview';
+import ModalShowAllReviews from '../components/modalShowAllReviews';
 
-
+import { _productService } from "../services/productservice";
 
 export default function Itempage(props) {
     const { shortKey } = useParams();
     const [data, setData] = useState();
-    const [reviews, setReviews] = useState([]);
-
-    const service = new ProductService('https://localhost:7020/api');
-
+    const [reviewdata, setReviewdata] = useState([]);
 
 
     //store modal 
@@ -32,6 +29,28 @@ export default function Itempage(props) {
     const handleModal = (value) => {
         setShow(value);
     };
+    //write review modal
+    const [showReviewModal, setShowReviewModal] = useState(false)
+    const handleReviewModal = (value) => {
+        setShowReviewModal(value);
+    }
+    const onSubmitReview = async (value) => {
+
+        await _productService.createReviewAsync(shortKey, {
+            starRating: value.starRating,
+            comment: value.comment,
+            userId: "9545e273-6a73-4366-8458-00059d1befc6",
+            productId: data.item.productId
+        });
+        //to do a some kind of alert that it succeded
+
+    };
+
+    //all reviews modal
+    const [showReviews, setShowReviews] = useState(false)
+    const handleAllReivewsModal = (value) => {
+        setShowReviews(value);
+    }
 
     //click to scroll
     const [activeSection, setActiveSection] = useState('stores');
@@ -82,11 +101,17 @@ export default function Itempage(props) {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const products = await service.readProductAsync(shortKey);
+                const products = await _productService.readProductAsync(shortKey);
                 setData(products);
 
-                const reviewData = await service.readReviewsAsync(shortKey);
-                setReviews(reviewData.pageItems);
+                const reviewData = await _productService.readReviewsAsync({
+                    shortKey: shortKey,
+                    pageNumber: 0,
+                    pageSize: 3,
+                    includeStats: true
+                });
+
+                setReviewdata(reviewData);
             } catch (err) {
                 console.error("Failed to load product or reviews:", err);
             }
@@ -94,8 +119,7 @@ export default function Itempage(props) {
 
         fetchProducts();
     }, [shortKey, activeStorefilter]);
-    console.log(shortKey);
-    
+
 
     return (
         <>
@@ -116,7 +140,9 @@ export default function Itempage(props) {
 
                                 </div>
                                 <div ref={reviewsRef}>
-                                    <Productsreviews reviews={reviews} />
+                                    <Productsreviews reviewData={reviewdata} ReviewModal={handleReviewModal} reviewsModal={() => handleAllReivewsModal(true)} />
+                                    <ModalWriteAreview showReviewModal={showReviewModal} handleReviewModal={handleReviewModal} onSubmitReview={onSubmitReview} />
+                                    <ModalShowAllReviews showReviews={showReviews} onClose={() => handleAllReivewsModal(false)} reviews={reviewdata.pageItems} productId={data.item.productId} />
                                 </div>
                                 <div ref={descriptionRef}>
                                     <Productdescription />
