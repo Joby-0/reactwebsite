@@ -6,31 +6,33 @@ import Bigsponsorpart from '../components/bigsponsorpart'
 import Shortabout from '../components/shortabout'
 import Newletterpart from '../components/newletterpart'
 import Divider from '../components/divider'
-// import { PopularProducts } from '../services/data'
 
-import ProductService from '../services/productservice';
-
+import { _productService } from "../services/productservice";
 
 
 export default function Index(props) {
-  // const service = new ProductService('', null, false)
   const [data, setData] = useState({ pageItems: [], dbItemsCount: 0 });
-  const service = new ProductService('https://localhost:7020/api');
+  const [loading, setLoading] = useState(true)
+
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         // Call your service method
-        const products = await service.readTopProductsAsync("00dbe305-2ba3-48c6-b3ec-a9d33f847498");
+        const products = await _productService.readTopProductsAsync("faf07f9e-3c9e-44ed-9dd7-d4128e91953f");
 
         setData(products); // store the fetched data
+
       } catch (err) {
         console.error(err);
+      }
+      finally{
+        setLoading(false)
       }
     };
 
     fetchProducts();
-  }, []); // empty dependency array = run once on mount
+  }, []); 
 
   // Extract pageItems for mapping
   const products = data.pageItems || [];
@@ -42,10 +44,10 @@ export default function Index(props) {
       <Categories />
       <Divider height={50} />
       <div className="container">
-        <Itemscarusal data={products} catName="Popular phones" />
-        <Itemscarusal data={products} catName="others" />
+        <Itemscarusal loading={loading} data={products} catName="Popular phones" />
+        <Itemscarusal loading={loading} data={products} catName="others" />
         <Bigsponsorpart />
-        <Itemscarusal data={products} catName="more others" />
+        <Itemscarusal loading={loading} data={products} catName="more others" />
         <Divider height={100} />
         <Shortabout />
         <Divider height={100} />

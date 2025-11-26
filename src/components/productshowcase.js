@@ -3,9 +3,6 @@ import { Link } from 'react-router';
 
 export default function Productshowcase(props) {    
     const [mainImage, setMainImage] = useState(props.data.thumbnailImage);
-
-
-    
     
     
     const thumbnails = props?.productImages

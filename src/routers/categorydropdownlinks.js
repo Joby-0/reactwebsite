@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 
-import {Categoriesdatav2} from "../services/data"
-
 export default function Categorydropdownlinks(props) {
     const [active, setActive] = useState(null)
-    const navItems = Categoriesdatav2();
     
     const onClickCategory = (category) =>{
         props.onClick(category)

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Review from './reviewComponent.jsx';
+import { Placeholder } from 'react-bootstrap';
 
 
 // Rating bar
@@ -75,7 +76,12 @@ export default function Productsreviews({ reviewData, ReviewModal,reviewsModal }
               ))
 
             ) : (
-              <div>Loading...</div>
+              <Placeholder as='div' animation='glow'>
+                <Placeholder style={{height:150}} xs={12}/>
+                <Placeholder className="my-3" style={{height:150}} xs={12}/>
+                <Placeholder style={{height:150}} xs={12}/>
+
+              </Placeholder>
             )}
             {reviewData.dbItemsCount > 3 && (
               <div className="d-flex justify-content-center my-3">

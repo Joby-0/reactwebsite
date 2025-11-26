@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { Link } from 'react-router'
 
 export default function Categoriesfullpagedisplay(props) {
-
-  console.log(props);
-  
 
   if (!props.category) return null; // or show a loading state
   return (

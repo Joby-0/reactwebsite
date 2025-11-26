@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useParams } from "react-router";
 
 import Categoryfilter from '../components/categoryfilter'
@@ -7,10 +7,10 @@ import Categoriesproducts from '../components/categoriesproducts';
 import Breadcome from '../components/breadcome';
 import { useLocation } from 'react-router';
 
-import ProductService from '../services/productservice';
+import { _productService } from "../services/productservice";
+
 
 export default function Productlisting() {
-  const service = new ProductService('https://localhost:7020/api');
   const { subsubSlug } = useParams();
 
   //change to api later
@@ -43,7 +43,7 @@ export default function Productlisting() {
   const [products, setProducts] = useState(null);
   const [activeFilter, setActiveFilter] = useState({ storeIds: [], attributeValueIds: [] });
   const [activeOrder, setActiveOrder] = useState('price_desc');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
 
 
@@ -79,7 +79,7 @@ export default function Productlisting() {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const result = await service.readProductsByCategory(subsubSlug, 0, 40, activeFilter, activeOrder);
+        const result = await _productService.readProductsByCategory(subsubSlug, 0, 40, activeFilter, activeOrder);
         setProducts(result);
       } catch (err) {
         console.error(err);
@@ -101,22 +101,10 @@ export default function Productlisting() {
             <div className='row'>
               <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={filtersdata} />
               <div className="col scrollarea">
-                {loading ? (
-                  <div>Loading products...</div>
-                ) : products?.pageItems?.length > 0 ? (
-                  <>
-                    <Categoriesfilterdisplay
-                      nrOfProduct={products.dbItemsCount}
-                      activeFilter={activeFilter}
-                      removeFilter={removeFilter}
-                      OrderChange={OrderChange}
-                      activeOrder={activeOrder}
-                    />
-                    <Categoriesproducts products={products.pageItems} />
-                  </>
-                ) : (
-                  <div>No products found.</div>
-                )}
+                
+                    <Categoriesfilterdisplay loading={loading} nrOfProduct={products} activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} activeOrder={activeOrder}/>
+                    <Categoriesproducts loading={loading} products={products} />
+
               </div>
 
             </div>

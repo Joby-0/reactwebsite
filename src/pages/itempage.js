@@ -16,11 +16,13 @@ import ModalWriteAreview from '../components/modalWriteAreview';
 import ModalShowAllReviews from '../components/modalShowAllReviews';
 
 import { _productService } from "../services/productservice";
+import { Placeholder } from 'react-bootstrap';
 
 export default function Itempage(props) {
     const { shortKey } = useParams();
     const [data, setData] = useState();
     const [reviewdata, setReviewdata] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
     //store modal 
@@ -103,7 +105,7 @@ export default function Itempage(props) {
             try {
                 const products = await _productService.readProductAsync(shortKey);
                 setData(products);
-
+                setLoading(false);
                 const reviewData = await _productService.readReviewsAsync({
                     shortKey: shortKey,
                     pageNumber: 0,
@@ -127,7 +129,14 @@ export default function Itempage(props) {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        {data ? (
+                        {loading ? (
+                            <Placeholder as="div" animation="glow">
+                                <Placeholder  style={{ width: "100%", height: 300, marginBottom: "1.5rem" }} />
+                                <Placeholder  style={{ width: "100%", height: 100, marginBottom: "1.5rem" }} />
+                                <Placeholder  style={{ width: "100%", height: 100, marginBottom: "1.5rem" }} />
+                                <Placeholder  style={{ width: "100%", height: 300, marginBottom: "0.5rem" }} />
+                            </Placeholder>
+                        ) : (
                             <>
                                 <Productshowcase data={data.item} />
                                 <Productnavmenu active={activeSection} onNavigate={scrollTo} />
@@ -151,8 +160,6 @@ export default function Itempage(props) {
                                     <Productsspecifications data={data.item.attributes} />
                                 </div>
                             </>
-                        ) : (
-                            <p>Loading...</p>
                         )}
                     </div>
                     <div id='adscolumn' className="col-2 bg-body-tertiary"></div>

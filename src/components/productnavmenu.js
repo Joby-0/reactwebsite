@@ -3,8 +3,6 @@ import React from 'react'
 
 export default function Productnavmenu(props) {
   const Onclick = (e) => {
-    console.log(e);
-
     props.onNavigate(e);
   }
   return (

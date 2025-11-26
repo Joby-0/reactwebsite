@@ -5,16 +5,16 @@ import Itemscarusal from '../components/itemscarusal';
 import Divider from '../components/divider';
 import Breadcome from '../components/breadcome';
 import { CategoriesContext } from "../services/CategoriesContext";
-import ProductService from '../services/productservice';
+
+import { _productService } from "../services/productservice";
 
 export default function Categorypage() {
     const { categories } = useContext(CategoriesContext);
-    const service = new ProductService('https://localhost:7020/api');
 
     const { categorySlug, subSlug } = useParams();
     const [cdata, setcData] = useState(null);
     const [cname, setCname] = useState("");
-    const [pData, setPData] = useState(null);
+    const [pData, setPData] = useState({ pageItems: [], dbItemsCount: 0 });
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -23,9 +23,8 @@ export default function Categorypage() {
         const fetchProducts = async () => {
             setLoading(true);
             try {
-                const result = await service.readTopProductsAsync(null, categorySlug, 0, 10);
+                const result = await _productService.readTopProductsAsync(null, categorySlug, 0, 10);
                 setPData(result);
-                console.log("Fetched products:", result);
             } catch (err) {
                 console.error(err);
             } finally {
@@ -58,7 +57,7 @@ export default function Categorypage() {
 
     }, [categorySlug, subSlug, categories]);
 
-    
+    const products = pData.pageItems || [];
     return (
         <>
             <Breadcome />
@@ -80,15 +79,12 @@ export default function Categorypage() {
                 </div>
 
                 {/* Render carousel after loading */}
-                {loading ? (
-                    <div>Loading products...</div>
-                ) : pData?.pageItems?.length > 0 ? (
-                    <Itemscarusal catName={`Popular ${cname}`} data={pData.pageItems} />
-                ) : (
-                    <div>No products found.</div>
-                )}
+
+                <Itemscarusal loading={loading} catName={`Popular ${cname}`} data={products} />
 
             </div>
+
+
         </>
     );
 }
