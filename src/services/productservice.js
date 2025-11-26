@@ -40,6 +40,19 @@ class ProductService {
         return await response.json();
     }
 
+    async #_getTextAsync(url, params = {}) {
+        const query = new URLSearchParams(params).toString();
+        const response = await fetch(`${url}?${query}`);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.statusText}`);
+        }
+
+        const text = await response.text();
+        console.log("Fetched string:", text);
+        return text;
+    }
+
 
 
 
@@ -144,6 +157,9 @@ class ProductService {
 
     async readCategoriesAsync() {
         return await this.#_getAsync(`${this.#baseUrl}/Category/Items`)
+    }
+    async readCategoryTreeAsync(id) {
+        return await this.#_getTextAsync(`${this.#baseUrl}/Category/Item/${id}/category-tree`);
     }
 }
 export default ProductService;

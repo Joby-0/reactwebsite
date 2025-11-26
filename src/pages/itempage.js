@@ -41,7 +41,7 @@ export default function Itempage(props) {
         await _productService.createReviewAsync(shortKey, {
             starRating: value.starRating,
             comment: value.comment,
-            userId: "9545e273-6a73-4366-8458-00059d1befc6",
+            userId: "9545e273-6a73-4366-8458-00059d1befc6", // todo fixa när man kan logga in
             productId: data.item.productId
         });
         //to do a some kind of alert that it succeded
@@ -122,19 +122,23 @@ export default function Itempage(props) {
         fetchProducts();
     }, [shortKey, activeStorefilter]);
 
-
+    console.log(data);
     return (
         <>
-            <Breadcome />
+            {data ? (
+                <Breadcome id={data.item.productId} />
+            ) : (
+                <div>Loading breadcrumbs...</div>
+            )}
             <div className="container">
                 <div className="row">
                     <div className="col">
                         {loading ? (
                             <Placeholder as="div" animation="glow">
-                                <Placeholder  style={{ width: "100%", height: 300, marginBottom: "1.5rem" }} />
-                                <Placeholder  style={{ width: "100%", height: 100, marginBottom: "1.5rem" }} />
-                                <Placeholder  style={{ width: "100%", height: 100, marginBottom: "1.5rem" }} />
-                                <Placeholder  style={{ width: "100%", height: 300, marginBottom: "0.5rem" }} />
+                                <Placeholder style={{ width: "100%", height: 300, marginBottom: "1.5rem" }} />
+                                <Placeholder style={{ width: "100%", height: 100, marginBottom: "1.5rem" }} />
+                                <Placeholder style={{ width: "100%", height: 100, marginBottom: "1.5rem" }} />
+                                <Placeholder style={{ width: "100%", height: 300, marginBottom: "0.5rem" }} />
                             </Placeholder>
                         ) : (
                             <>
