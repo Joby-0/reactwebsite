@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
 import Categoriylinks from '../routers/categoriylinks'
 
 export default function Categories() {

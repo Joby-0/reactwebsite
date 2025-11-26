@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../css/itemcarusal.css'
 import Itemcolbox from './itemcolbox';
+import { Placeholder } from 'react-bootstrap';
 
 export default function Itemscarusal(props) {
   //ändra till props later
   const products = props.data
-  
+
 
   const scrollRef = useRef(null);
   const scrollLeft = () => {
@@ -50,10 +51,48 @@ export default function Itemscarusal(props) {
       <div className="row flex-lg-row-reverse align-items-center g-5 py-5 position-relative">
         <h3 className="mb-2">{props.catName}</h3>
         <div id="popularProductRRow" ref={scrollRef} style={{ scrollBehavior: 'smooth' }} className="row gap-0 p-1 row-gap-3">
-          {products.map(product => (
-            <Itemcolbox key={product.productId} product={product} />
+          {props.loading ? (
+            [...Array(7)].map((_, i) => (
+              <div className="col" key={i}>
+                <div
+                  className="card h-100 p-0"
+                  style={{ width: '14rem', height: '330px' }}
+                >
+                  <Placeholder animation="glow">
+                    {/* Image area */}
+                    <div className="pt-2 pb-3 px-2">
+                      <Placeholder
+                        className="w-100 rounded"
+                        style={{ height: '150px' }}
+                      />
+                    </div>
 
-          ))}
+                    <div className="px-3 d-flex flex-column">
+                      {/* Category */}
+                      <Placeholder className="mb-2" xs={4} />
+
+                      {/* Title (2 lines) */}
+                      <Placeholder className="mb-1" xs={8} />
+                      <Placeholder className="mb-2" xs={7} />
+
+                      {/* Spacer */}
+                      <div className="mt-4">
+                        {/* Rating */}
+                        <Placeholder className="mb-2" xs={5} />
+
+                        {/* Price */}
+                        <Placeholder className="mb-2" xs={3} />
+                      </div>
+                    </div>
+                  </Placeholder>
+                </div>
+              </div>
+            ))
+          ) : (
+            products.map(product => (
+              <Itemcolbox key={product.productId} product={product} />
+            ))
+          )}
 
           {/* Navigation buttons */}
           {canScrollLeft && (

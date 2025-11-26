@@ -4,7 +4,6 @@ import { Link } from 'react-router'
 export default function Itemcolbox(props) {
   let name = props.product.productName;
   
-  // name = name.replaceAll(" ", "-");
   return (
     <div className="col"  key={props.product.ProductId}>
       <Link className="text-decoration-none" to={`../${props.product.shortKey}/${name}`} >
@@ -29,7 +28,6 @@ export default function Itemcolbox(props) {
             <div className="mt-auto">
               <p className="text-warning mb-1">
                 {(() => {
-                  // const ratingStr = props.product.avgRating.toString().replace(',', '.');
                   const rating = props.product.avgRating;
                   const stars = [];
 

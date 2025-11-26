@@ -1,64 +1,72 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { CategoryGrid } from '../components/categoryGrid';
 import Itemscarusal from '../components/itemscarusal';
 import Divider from '../components/divider';
 import Breadcome from '../components/breadcome';
 import { CategoriesContext } from "../services/CategoriesContext";
-import ProductService from '../services/productservice';
+
+import { _productService } from "../services/productservice";
+import SubCategoryCard from '../components/subCategoryCard';
 
 export default function Categorypage() {
     const { categories } = useContext(CategoriesContext);
-    const service = new ProductService('https://localhost:7020/api');
 
     const { categorySlug, subSlug } = useParams();
     const [cdata, setcData] = useState(null);
     const [cname, setCname] = useState("");
-    const [pData, setPData] = useState(null);
+    const [pData, setPData] = useState({ pageItems: [], dbItemsCount: 0 });
     const [loading, setLoading] = useState(false);
 
+    function findCategoryBySlug(category, slug) {
+        if (category.categorySlug?.toLowerCase() === slug?.toLowerCase()) {
+            return category;
+        }
+
+        if (!Array.isArray(category.children)) return null;
+
+        for (const child of category.children) {
+            const found = findCategoryBySlug(child, slug);
+            if (found) return found;
+        }
+
+        return null;
+    }
+
     useEffect(() => {
-        if (!categories || categories.length === 0) return;
+        if (!categories?.length) return;
 
-        const fetchProducts = async () => {
-            setLoading(true);
-            try {
-                const result = await service.readTopProductsAsync(null, categorySlug, 0, 10);
-                setPData(result);
-                console.log("Fetched products:", result);
-            } catch (err) {
-                console.error(err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        if (categorySlug) fetchProducts();
-
-        const foundCategory = categories.find(
+        // Find the root category
+        const rootCategory = categories.find(
             cat => cat.categorySlug?.toLowerCase() === categorySlug?.toLowerCase()
         );
 
-        if (!foundCategory) {
+        if (!rootCategory) {
             setcData(null);
             return;
         }
 
-        if (!subSlug) {
-            setCname(foundCategory.categoryName);
-            setcData(foundCategory);
-        } else {
-            const foundSub = foundCategory.childrenCategories?.find(
-                sub => sub.categorySlug?.toLowerCase() === subSlug?.toLowerCase()
-            );
+        // If subSlug exists → search recursively
+        let activeCategory = rootCategory;
 
-            setCname(foundSub?.categoryName || foundCategory.categoryName);
-            setcData({ ...foundCategory, sub: foundSub });
+        if (subSlug) {
+            const found = findCategoryBySlug(rootCategory, subSlug);
+            if (found) activeCategory = found;
         }
+
+        setCname(activeCategory.categoryName);
+        setcData(activeCategory);
+
+        // Fetch top products
+        setLoading(true);
+        _productService.readTopProductsAsync(null, activeCategory.categorySlug, 0, 10)
+            .then(result => setPData(result))
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false));
 
     }, [categorySlug, subSlug, categories]);
 
-    
+
+    const products = pData.pageItems || [];
     return (
         <>
             <Breadcome />
@@ -67,7 +75,12 @@ export default function Categorypage() {
                     <div className="col-md-10">
                         {cdata ? (
                             <>
-                                <CategoryGrid categories={cdata.sub || cdata} />
+                                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                                    {cdata.children?.map((sub, i) => (
+                                        <SubCategoryCard activeCategoryId={cdata.categoryId} key={i} sub={sub} />
+                                    ))}
+                                </div>
+
                                 <Divider height={50} />
                                 <Divider height={100} />
                             </>
@@ -79,16 +92,11 @@ export default function Categorypage() {
                     </div>
                 </div>
 
-                {/* Render carousel after loading */}
-                {loading ? (
-                    <div>Loading products...</div>
-                ) : pData?.pageItems?.length > 0 ? (
-                    <Itemscarusal catName={`Popular ${cname}`} data={pData.pageItems} />
-                ) : (
-                    <div>No products found.</div>
-                )}
+                <Itemscarusal loading={loading} catName={`Popular ${cname}`} data={products} />
 
             </div>
+
+
         </>
     );
 }

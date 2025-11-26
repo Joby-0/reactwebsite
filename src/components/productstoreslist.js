@@ -1,6 +1,4 @@
 
-
-
 export default function Productstoreslist(props) {
 
     const handleModal = (value, item) => {

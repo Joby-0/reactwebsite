@@ -1,8 +1,6 @@
 import React from 'react'
 
 export default function Productsdescription(props) {
-
-
   
   
   return (
@@ -31,7 +29,6 @@ export default function Productsdescription(props) {
           ))}
         </div>
       </div>
-
     </section>
   )
 }

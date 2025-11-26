@@ -7,14 +7,13 @@ import { CategoriesContext } from "../services/CategoriesContext";
 
 
 export default function Categoriesfullpagedropdown(props) {
-  const [activecategories, setActiveCategories] = useState()
   const { categories, loading } = useContext(CategoriesContext);
+  const [activeCategories, setActiveCategories] = useState(categories[0] || null);
 
 
   const changeCategory = (category) => {
-    setActiveCategories(category)
-
-  }
+    setActiveCategories(category);
+  };
   useEffect(() => {
 
 
@@ -25,14 +24,26 @@ export default function Categoriesfullpagedropdown(props) {
     }
     return () => document.body.classList.remove('no-scroll');
   }, [props.isOpen]);
+  useEffect(() => {
+    if (categories.length > 0 && !activeCategories) {
+      setActiveCategories(categories[0]);
+    }
+  }, [categories, activeCategories]);
+
   if (!props.isOpen) return null;
-  
+
+
+
   return (
     <div className="full-page-dropdown bg-body">
       <div className="dropdown-content container">
         <div className='row'>
           <Categorydropdownlinks categories={categories} onClick={changeCategory} />
-          <Categoriesfullpagedisplay category={activecategories} />
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <Categoriesfullpagedisplay category={activeCategories} />
+          )}
         </div>
       </div>
     </div>
