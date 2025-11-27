@@ -69,7 +69,7 @@ class ProductService {
 
     // Read single product by id
     async readProductAsync(shortKey, flat = false) {
-        return await this.#_getAsync(`${this.#baseUrl}/Product/ItemDto/${shortKey}`, { flat: flat.toString() });
+        return await this.#_getAsync(`${this.#baseUrl}/Product/Item/${shortKey}`, { flat: flat.toString() });
     }
 
     // Read top products
@@ -82,7 +82,7 @@ class ProductService {
             ...(categorySlug ? { categorySlug } : categoryId ? { categoryid: categoryId } : {})
         };
 
-        return await this.#_getAsync(`${this.#baseUrl}/Product/TopItemsDto`, params);
+        return await this.#_getAsync(`${this.#baseUrl}/Product/TopItems`, params);
     }
 
     // Search products
@@ -155,6 +155,8 @@ class ProductService {
         return await this.#_getAsync(`${this.#baseUrl}/Store/item/${storeId}`)
     }
 
+
+    //cagetgories
     async readCategoriesAsync() {
         return await this.#_getAsync(`${this.#baseUrl}/Category/Items`)
     }
@@ -162,6 +164,8 @@ class ProductService {
         return await this.#_getTextAsync(`${this.#baseUrl}/Category/Item/${id}/category-tree`);
     }
 }
+
+
 export default ProductService;
 
 
