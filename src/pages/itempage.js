@@ -41,7 +41,7 @@ export default function Itempage(props) {
         await _productService.createReviewAsync(shortKey, {
             starRating: value.starRating,
             comment: value.comment,
-            userId: "9545e273-6a73-4366-8458-00059d1befc6", // todo fixa när man kan logga in
+            userId: "7308e46f-3ce5-4320-b642-0000abe96c10", // todo fixa när man kan logga in
             productId: data.item.productId
         });
         //to do a some kind of alert that it succeded

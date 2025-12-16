@@ -10,7 +10,7 @@ import Divider from '../components/divider'
 import { _productService } from "../services/productservice";
 
 
-export default function Index(props) {
+export default function Index() {
   const [data, setData] = useState({ pageItems: [], dbItemsCount: 0 });
   const [loading, setLoading] = useState(true)
 

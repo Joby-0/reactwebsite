@@ -79,7 +79,7 @@ export default function Productlisting() {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const result = await _productService.readProductsByCategory(subsubSlug, 0, 40, activeFilter, activeOrder);
+        const result = await _productService.readProductsByCategory(subsubSlug, 0, 20, activeFilter, activeOrder);
         setProducts(result);
       } catch (err) {
         console.error(err);
@@ -89,7 +89,8 @@ export default function Productlisting() {
     };
     if (subsubSlug) fetchProducts();
   }, [subsubSlug, activeFilter, activeOrder]);
-
+  console.log(products);
+  
 
   return (
     <>
