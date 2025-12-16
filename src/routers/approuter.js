@@ -30,6 +30,7 @@ const routes = [
 
 
 export default function Approuter() {
+
     return (
         <Routes>
 
@@ -42,8 +43,8 @@ export default function Approuter() {
                     />
                 ))
             )}
-            <Route path="/info" element={<Aboutlayout/>}>
-                
+            <Route path="/info" element={<Aboutlayout />}>
+
                 <Route path='about' element={<About />} />
                 <Route path="faq" element={<Faq />} />
                 <Route path="how-it-works" element={<Howitworks />} />

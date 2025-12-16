@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router';
 import './App.css';
 
@@ -14,26 +14,29 @@ import Footer from './components/footer';
 import Approuter from './routers/approuter'
 import ScrollToTop from './components/scrolltotop';
 
-import { ServiceProvider } from './services/ServiceContext';
-import { CategoriesProvider } from './services/CategoriesContext';
 
+import { useUI } from "./Context/UiContext";
+import Signinmodal from './components/signinmodal';
+import Signupmodal from './components/signupmodeal';
 
 function App() {
-
+  const { showSignIn, showSignUp, closeAll } = useUI();
   return (
     <>
-      <CategoriesProvider>
-        {/* <ServiceProvider> */}
-        <BrowserRouter>
-          <ScrollToTop />
 
-          <Header />
+      {/* <ServiceProvider> */}
+      <BrowserRouter>
+        <ScrollToTop />
 
-          <Approuter />
-          <Footer />
-        </BrowserRouter>
-        {/* </ServiceProvider> */}
-      </CategoriesProvider>
+        <Header />
+        <Signinmodal show={showSignIn} handleModal={closeAll} />
+        <Signupmodal show={showSignUp} handleModal={closeAll} />
+
+        <Approuter />
+        <Footer />
+      </BrowserRouter>
+      {/* </ServiceProvider> */}
+
     </>
   );
 }

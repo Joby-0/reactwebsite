@@ -18,11 +18,16 @@ import ModalShowAllReviews from '../components/modalShowAllReviews';
 import { _productService } from "../services/productservice";
 import { Placeholder } from 'react-bootstrap';
 
+import { useAuth } from "../Context/AuthContext";
+
+
 export default function Itempage(props) {
     const { shortKey } = useParams();
     const [data, setData] = useState();
     const [reviewdata, setReviewdata] = useState([]);
     const [loading, setLoading] = useState(true);
+    const {user, isLoggedIn} = useAuth();
+    
 
 
     //store modal 
@@ -41,7 +46,7 @@ export default function Itempage(props) {
         await _productService.createReviewAsync(shortKey, {
             starRating: value.starRating,
             comment: value.comment,
-            userId: "7308e46f-3ce5-4320-b642-0000abe96c10", // todo fixa när man kan logga in
+            userId: user.userId, 
             productId: data.item.productId
         });
         //to do a some kind of alert that it succeded
@@ -122,7 +127,6 @@ export default function Itempage(props) {
         fetchProducts();
     }, [shortKey, activeStorefilter]);
 
-    console.log(data);
     return (
         <>
             {data ? (
@@ -154,7 +158,7 @@ export default function Itempage(props) {
                                 </div>
                                 <div ref={reviewsRef}>
                                     <Productsreviews reviewData={reviewdata} ReviewModal={handleReviewModal} reviewsModal={() => handleAllReivewsModal(true)} />
-                                    <ModalWriteAreview showReviewModal={showReviewModal} handleReviewModal={handleReviewModal} onSubmitReview={onSubmitReview} />
+                                    <ModalWriteAreview isLoggedIn={isLoggedIn()} showReviewModal={showReviewModal} handleReviewModal={handleReviewModal} onSubmitReview={onSubmitReview} />
                                     <ModalShowAllReviews showReviews={showReviews} onClose={() => handleAllReivewsModal(false)} reviews={reviewdata.pageItems} productId={data.item.productId} />
                                 </div>
                                 <div ref={descriptionRef}>

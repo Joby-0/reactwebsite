@@ -13,30 +13,32 @@ class ProductService {
     // Private helper for GET requests with query params
     async #_getAsync(url, params = {}) {
         const query = new URLSearchParams(params).toString();
-        const response = await fetch(`${url}?${query}`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch: ${response.statusText}`);
-        }
-        console.log("", response);
+        const token = authService.getToken();
 
+        const response = await fetch(`${url}?${query}`, {
+            headers: token
+                ? { Authorization: `Bearer ${token}` }
+                : {}
+        });
+
+        if (!response.ok) throw new Error(response.statusText);
         return await response.json();
     }
 
     // Private helper for POST requests
     async #_postAsync(url, params = {}, body = {}) {
-        const filteredParams = Object.fromEntries(
-            Object.entries(params).filter(([_, v]) => v !== null && v !== undefined && v !== "")
-        );
-        const query = new URLSearchParams(filteredParams).toString();
-        const response = await fetch(`${url}${query ? `?${query}` : ''}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }, // <- important
-            body: JSON.stringify(body) // <- ensure this is an object, not null
+        const token = authService.getToken();
+
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                ...(token && { Authorization: `Bearer ${token}` })
+            },
+            body: JSON.stringify(body)
         });
-        console.log(url, body, params);
 
-        if (!response.ok) throw new Error(`Failed to fetch: ${response.statusText}`);
-
+        if (!response.ok) throw new Error(response.statusText);
         return await response.json();
     }
 
@@ -171,3 +173,56 @@ export default ProductService;
 
 
 export const _productService = new ProductService("https://localhost:7020/api");
+
+
+class AuthService {
+    token = null;
+
+    async login(credentials) {
+        const res = await fetch("https://localhost:7020/api/User/Login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(credentials)
+        });
+
+        if (!res.ok) throw new Error("Login failed");
+
+        return await res.json();
+    }
+
+    async register(credentials) {
+        const res = await fetch("https://localhost:7020/api/User/Register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(credentials),
+        });
+
+        if (!res.ok) {
+            const error = await res.text();
+            throw new Error(error || "Registration failed");
+        }
+
+        return await res.json();
+    }
+
+    setToken(token) {
+        this.token = token;
+
+        localStorage.setItem("jwt", token);
+    }
+
+    getToken() {
+        return this.token || localStorage.getItem("jwt");
+    }
+
+    logout() {
+        this.token = null;
+        localStorage.removeItem("jwt");
+    }
+
+    isLoggedIn() {
+        return !!this.getToken();
+    }
+}
+
+export const authService = new AuthService();

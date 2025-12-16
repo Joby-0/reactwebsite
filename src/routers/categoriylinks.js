@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router'
 
-import { CategoriesContext } from "../services/CategoriesContext";
+import { CategoriesContext } from "../Context/CategoriesContext";
 import { Placeholder } from 'react-bootstrap';
 
 

@@ -1,20 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Navbar from '../routers/navbar';
-import Signinmodal from './signinmodal';
+
 import Categoriesfullpagedropdown from './categoriesfullpagedropdown';
 import { useLocation } from 'react-router';
 
 
+import { useAuth } from "../Context/AuthContext";
 
 
 
-export default function Header() {
-  //sign in modal
-  const [show, setShow] = useState(false);
-  const handleModal = (value) => {
-    setShow(value);
-    setIsDropdownOpen(false)
-  };
+
+export default function Header({openSignIn, openSignUp}) {
+  const { isLoggedIn, logout,user } = useAuth();
 
 
   //full page modal
@@ -49,14 +46,14 @@ export default function Header() {
 
   //change språk
   const languages = [
-    { code: 'en', label: 'ENG', flag: '🇬🇧',currency: 'Gbp' },
-    { code: 'us', label: 'USA', flag: 'us',currency: 'Usd' },
-    { code: 'sv', label: 'SWE', flag: '🇸🇪',currency: 'Sek' },
-    {code: 'es', label: 'ESP', flag: '🇪🇸',currency: 'Eur'},
-    { code: 'fr', label: 'FRE', flag: '🇫🇷',currency: 'Eur' },
-    { code: 'de', label: 'GER', flag: '🇩🇪',currency: 'Eur' },
+    { code: 'en', label: 'ENG', flag: '🇬🇧', currency: 'Gbp' },
+    { code: 'us', label: 'USA', flag: 'us', currency: 'Usd' },
+    { code: 'sv', label: 'SWE', flag: '🇸🇪', currency: 'Sek' },
+    { code: 'es', label: 'ESP', flag: '🇪🇸', currency: 'Eur' },
+    { code: 'fr', label: 'FRE', flag: '🇫🇷', currency: 'Eur' },
+    { code: 'de', label: 'GER', flag: '🇩🇪', currency: 'Eur' },
     { code: 'pt', label: 'POR', flag: '🇵🇹', currency: 'Eur' },
-    
+
   ];
   const [activeLang, setActiveLang] = useState(languages[0])
   const handleChangeLang = (lang) => {
@@ -79,7 +76,6 @@ export default function Header() {
       closeDropdown();
     }
   }, [location]); // only runs when route changes
-
 
   return (
     <>
@@ -108,32 +104,33 @@ export default function Header() {
                 <ul style={{ minWidth: "5rem" }} className="dropdown-menu">
                   {languages.map(lang => (
                     <li key={lang.code}>
-                    <button
-                      className="btn btn-sm d-flex align-items-center"
-                      type="button"
-                      key={lang.code}
-                      onClick={() =>{
-                        handleChangeLang(lang)
-                      }}
-                    >
-                      <span className="d-flex align-items-center">
-                        {lang.flag}
-                      </span>
-                      <span className="mx-1">{lang.label}</span>
-                      
-                    </button>
-                  </li>
+                      <button
+                        className="btn btn-sm d-flex align-items-center"
+                        type="button"
+                        key={lang.code}
+                        onClick={() => {
+                          handleChangeLang(lang)
+                        }}
+                      >
+                        <span className="d-flex align-items-center">
+                          {lang.flag}
+                        </span>
+                        <span className="mx-1">{lang.label}</span>
+
+                      </button>
+                    </li>
                   ))}
-                  
+
                 </ul>
               </div>
             </li>
           </ul>
         </nav>
 
-        <Navbar handleModal={handleModal} toggleDropdown={toggleDropdown} />
+        <Navbar toggleDropdown={toggleDropdown} isLoggedIn={!isLoggedIn()} logout={logout} user={user} />
         <Categoriesfullpagedropdown isOpen={isDropdownOpen} closeDropdown={closeDropdown} />
-        <Signinmodal handleModal={handleModal} show={show} />
+
+        
 
       </div>
     </>
