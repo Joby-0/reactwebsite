@@ -9,7 +9,7 @@ export default function Categoriesproducts(props) {
       {props.loading ? (
         [...Array(20)].map((_, i) => <ItemcolboxPlaceholder key={i} />)
       ) : (
-        props.products.pageItems.map((product) => (
+        props.products.pageResult.pageItems.map((product) => (
           <Itemcolbox
             key={product.productId}
             product={product}

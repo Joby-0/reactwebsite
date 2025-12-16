@@ -3,7 +3,7 @@ import '../css/fullpagedropdown.css'
 import Categorydropdownlinks from '../routers/categorydropdownlinks';
 import Categoriesfullpagedisplay from './categoriesfullpagedisplay';
 
-import { CategoriesContext } from "../services/CategoriesContext";
+import { CategoriesContext } from "../Context/CategoriesContext";
 
 
 export default function Categoriesfullpagedropdown(props) {

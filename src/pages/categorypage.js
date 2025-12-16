@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import Itemscarusal from '../components/itemscarusal';
 import Divider from '../components/divider';
 import Breadcome from '../components/breadcome';
-import { CategoriesContext } from "../services/CategoriesContext";
+import { CategoriesContext } from "../Context/CategoriesContext";
 
 import { _productService } from "../services/productservice";
 import SubCategoryCard from '../components/subCategoryCard';
