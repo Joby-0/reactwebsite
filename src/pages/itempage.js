@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { useParams } from "react-router";
 
 import Productshowcase from '../components/productshowcase'
@@ -21,13 +21,14 @@ import { Placeholder } from 'react-bootstrap';
 import { useAuth } from "../Context/AuthContext";
 
 
+
 export default function Itempage(props) {
     const { shortKey } = useParams();
     const [data, setData] = useState();
     const [reviewdata, setReviewdata] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {user, isLoggedIn} = useAuth();
-    
+    const { user, isLoggedIn } = useAuth();
+
 
 
     //store modal 
@@ -42,11 +43,12 @@ export default function Itempage(props) {
         setShowReviewModal(value);
     }
     const onSubmitReview = async (value) => {
+        console.log(user);
 
         await _productService.createReviewAsync(shortKey, {
             starRating: value.starRating,
             comment: value.comment,
-            userId: user.userId, 
+            userId: user.userId,
             productId: data.item.productId
         });
         //to do a some kind of alert that it succeded
@@ -104,7 +106,41 @@ export default function Itempage(props) {
 
     };
     const removeFilter = (filterKey) => setActiveStorefilter((prev) => prev.filter((k) => k !== filterKey));
-    const handleCurChange = (cur) => setActiveCurrency(cur.target.value);
+    const handleCurChange = (cur) => setActiveCurrency(cur);
+
+
+    
+    const storeProducts = data?.item?.storeProducts ?? [];
+
+    const filteredAndSortedStores = useMemo(() => {
+        let stores = [...storeProducts];
+
+        if (activeStorefilter.length > 0) {
+            stores = stores.filter(store =>
+                activeStorefilter.includes(store.storeCountry)
+            );
+        }
+
+
+        switch (storeOrder) {
+            case 'price_asc':
+                stores.sort((a, b) => a.storePrice - b.storePrice);
+                break;
+            case 'price_desc':
+                stores.sort((a, b) => b.storePrice - a.storePrice);
+                break;
+            default:
+                break;
+        }
+        console.log(stores);
+
+        return stores;
+    }, [storeProducts, activeStorefilter, storeOrder]);
+
+    const countryOptions = useMemo(() => {
+        return [...new Set(storeProducts.map(store => store.storeCountry))];
+    }, [storeProducts]);
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -151,8 +187,8 @@ export default function Itempage(props) {
 
 
                                 <div ref={storesRef}>
-                                    <Productstorefilter activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange} />
-                                    <Productstoreslist data={data.item.storeProducts} handleModal={handleModal} setClickstore={setClickstore} />
+                                    <Productstorefilter countryOptions={countryOptions} activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange} />
+                                    <Productstoreslist activeCurrency={activeCurrency} data={filteredAndSortedStores} handleModal={handleModal} setClickstore={setClickstore} />
                                     <Modalstoreinfo show={show} handleModal={handleModal} storeId={clickstore} />
 
                                 </div>
