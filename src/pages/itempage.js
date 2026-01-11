@@ -19,6 +19,7 @@ import { _productService } from "../services/productservice";
 import { Placeholder } from 'react-bootstrap';
 
 import { useAuth } from "../Context/AuthContext";
+import { convertPrice } from '../services/Helpers/currencyConverter';
 
 
 
@@ -83,17 +84,16 @@ export default function Itempage(props) {
     };
 
     //store filter
-    const [storeOrder, setStoreOrder] = useState('Recommended')
+    const [storeOrder, setStoreOrder] = useState('Recommended');
+
+    const storeOrderChange = (value) => {
+        console.log(value);
+        
+        setStoreOrder(value);
+    };
     const [activeStorefilter, setActiveStorefilter] = useState([])
     const [activeCurrency, setActiveCurrency] = useState('SEK')
-    const storeOrderChange = (e) => {
-        setStoreOrder(e)
-        //make a api call to change to order
-    }
-    // const storeFilterChange = (e) => {
-    //     setActiveStorefilter(e)
-    //     //make a api call to change what shows with filter
-    // }
+
     const toggleStoreFilter = (filterKey) => {
         setActiveStorefilter((prev) => {
 
@@ -109,7 +109,7 @@ export default function Itempage(props) {
     const handleCurChange = (cur) => setActiveCurrency(cur);
 
 
-    
+
     const storeProducts = data?.item?.storeProducts ?? [];
 
     const filteredAndSortedStores = useMemo(() => {
@@ -123,16 +123,26 @@ export default function Itempage(props) {
 
 
         switch (storeOrder) {
-            case 'price_asc':
-                stores.sort((a, b) => a.storePrice - b.storePrice);
+            case "PriceAsc":
+                stores.sort((a, b) => convertPrice(a.storePrice, a.storeCurrency, activeCurrency) - convertPrice(b.storePrice, b.storeCurrency, activeCurrency));
                 break;
-            case 'price_desc':
-                stores.sort((a, b) => b.storePrice - a.storePrice);
+            case "PriceDesc":
+                stores.sort((a, b) => convertPrice(b.storePrice, b.storeCurrency, activeCurrency) - convertPrice(a.storePrice, a.storeCurrency, activeCurrency));
+                break;
+            case "Country":
+                stores.sort((a, b) => a.storeCountry.localeCompare(b.storeCountry));
+                break;
+            case "Rating":
+                stores.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+                break;
+            case "Delivery":
+                stores.sort((a, b) => (a.deliveryTime || 0) - (b.deliveryTime || 0));
                 break;
             default:
+                // Recommended or default order
                 break;
         }
-        console.log(stores);
+
 
         return stores;
     }, [storeProducts, activeStorefilter, storeOrder]);
@@ -187,7 +197,7 @@ export default function Itempage(props) {
 
 
                                 <div ref={storesRef}>
-                                    <Productstorefilter countryOptions={countryOptions} activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrder={storeOrder} storeOrderChange={storeOrderChange} />
+                                    <Productstorefilter countryOptions={countryOptions} storeOrder={storeOrder} activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrderChange={storeOrderChange} />
                                     <Productstoreslist activeCurrency={activeCurrency} data={filteredAndSortedStores} handleModal={handleModal} setClickstore={setClickstore} />
                                     <Modalstoreinfo show={show} handleModal={handleModal} storeId={clickstore} />
 

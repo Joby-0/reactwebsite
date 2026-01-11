@@ -6,6 +6,8 @@ import '../css/productstorefilter.css'
 export default function Productstorefilter(props) {
     // const [selectedSortWay, setSelectedSortWay] = useState('Recondmended')
     const handleChange = (e) => {
+        console.log(e.target.value);
+
         props.storeOrderChange(e.target.value)
     };
     const CURRENCY_OPTIONS = [
@@ -17,6 +19,18 @@ export default function Productstorefilter(props) {
     ];
     const removeFilter = (filterKey) => {
         props.removeFilter(filterKey)
+    }
+    const STORE_ORDER_OPTIONS = [
+        { label: "Recommended", value: "Recommended" },
+        { label: "Price: Low → High", value: "PriceAsc" },
+        { label: "Price: High → Low", value: "PriceDesc" },
+        { label: "Country", value: "Country" },
+        { label: "Rating", value: "Rating" },
+        { label: "Delivery Time", value: "Delivery" }
+    ];
+    function getLabelByValue(value) {
+        const option = STORE_ORDER_OPTIONS.find(opt => opt.value === value);
+        return option ? option.label : value;
     }
 
     return (
@@ -97,41 +111,27 @@ export default function Productstorefilter(props) {
                     <div className='col d-flex justify-content-end'>
                         <div className="dropdown">
                             <button className="btn btn-secondary  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {props.storeOrder}
+                                {getLabelByValue(props.storeOrder)}
                             </button>
                             <ul id='selectedSortWaydropdownmenu' className="dropdown-menu dropdown-menu-end  border-0 mt-1 z-100">
                                 <Form>
-                                    {['radio'].map((type) => (
-                                        <div key={`default-${type}`} className="p-2">
-                                            <Form.Check
-                                                type={type}
-                                                name="group1"
-                                                id={`default-${type}-1`}
-                                                label={`Recommended`}
-                                                value="Recommended"
-                                                onChange={handleChange}
-                                                className="full-radio"
-                                            />
-                                            <Form.Check
-                                                type={type}
-                                                label="Price"
-                                                value="Price"
-                                                checked={props.storeOrder === 'Price'}
-                                                onChange={handleChange}
-                                            />
+                                    {STORE_ORDER_OPTIONS.map(option => (
+                                        <Form.Check
+                                            type="radio"
+                                            name="storeOrder"
+                                            id={`storeOrder-${option.value}`}
+                                            label={option.label}
+                                            value={option.value}
+                                            checked={props.storeOrder === option.value}
+                                            onChange={() => props.storeOrderChange(option.value)}
+                                            className="full-radio"
+                                        />
 
-                                            <Form.Check
-                                                type={type}
-                                                name="group1"
-                                                id={`default-${type}-3`}
-                                                label={`country`}
-                                                value="country"
-                                                onChange={handleChange}
-                                                className="full-radio"
-                                            />
-                                        </div>
+
                                     ))}
                                 </Form>
+
+
                             </ul>
                         </div></div>
 

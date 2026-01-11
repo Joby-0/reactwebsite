@@ -17,7 +17,7 @@ const EXCHANGE_RATES = {
  */
 export function convertPrice(amount, fromCurrency, toCurrency) {
     if (!EXCHANGE_RATES[fromCurrency] || !EXCHANGE_RATES[toCurrency]) {
-        console.warn(`Unknown currency: ${fromCurrency} or ${toCurrency}`);
+        // console.warn(`Unknown currency: ${fromCurrency} or ${toCurrency}`);
         return amount;
     }
 

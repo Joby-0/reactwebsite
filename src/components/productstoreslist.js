@@ -7,8 +7,6 @@ export default function Productstoreslist(props) {
         props.setClickstore(item.storeId)
     };
 
-
-    console.log(props);
     
     return (
         <>
@@ -48,7 +46,7 @@ export default function Productstoreslist(props) {
                             <div className="col-auto d-flex align-items-center">
                                 <h3 className="m-3 fw-semibold">
                                     {convertPrice(item.storePrice, item.storeCurrency, props.activeCurrency)} {props.activeCurrency.toUpperCase()}
-                                    <small className="text-muted ms-2">({item.storePrice} {item.storeCurrency})</small>
+                                    <small className="text-muted fs-6 ms-2">({item.storePrice} {item.storeCurrency})</small>
                                 </h3>
                                 <a href={item.storeProductLink} className="btn btn-primary align-middle">To store &gt;</a>
                             </div>
