@@ -126,8 +126,6 @@ export default function Productstorefilter(props) {
                                             onChange={() => props.storeOrderChange(option.value)}
                                             className="full-radio"
                                         />
-
-
                                     ))}
                                 </Form>
 
