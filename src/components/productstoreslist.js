@@ -1,3 +1,4 @@
+import { convertPrice } from '../services/Helpers/currencyConverter';
 
 export default function Productstoreslist(props) {
 
@@ -7,12 +8,11 @@ export default function Productstoreslist(props) {
     };
 
     
-
     return (
         <>
             <section id="prices">
-                {props.data.map((item, index) => (
-                    <div key={index} className="p-2 mb-4 bg-body-tertiary rounded-3" id="companyListitem">
+                {props.data.map((item) => (
+                    <div key={item.storeId} className="p-2 mb-4 bg-body-tertiary rounded-3" id="companyListitem">
                         <div className="row align-items-center">
                             <div className="col-auto d-flex justify-content-center">
                                 <button type="button" className="btn" onClick={() => handleModal(true, item)} >
@@ -25,7 +25,7 @@ export default function Productstoreslist(props) {
                                 <div className="d-flex">
                                     <img className="rounded-circle" height={50} width={50} src={item.storeLogo} alt="Logo" />
                                     {/* <img  height={50} width={150} src={item.storeLogo} alt="Logo" /> */}
-                                    
+
                                     <h2 className="ps-2 pe-1">
                                         {item.storeName}
                                     </h2>
@@ -44,7 +44,10 @@ export default function Productstoreslist(props) {
                                 <a className="fw-semibold" href={item.storeProductLink}>{item.storeProductName}</a>
                             </div>
                             <div className="col-auto d-flex align-items-center">
-                                <h3 className="m-3 fw-semibold">{item.storePrice} {item.storeCurrency}</h3>
+                                <h3 className="m-3 fw-semibold">
+                                    {convertPrice(item.storePrice, item.storeCurrency, props.activeCurrency)} {props.activeCurrency.toUpperCase()}
+                                    <small className="text-muted fs-6 ms-2">({item.storePrice} {item.storeCurrency})</small>
+                                </h3>
                                 <a href={item.storeProductLink} className="btn btn-primary align-middle">To store &gt;</a>
                             </div>
                         </div>

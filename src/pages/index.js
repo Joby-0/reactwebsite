@@ -19,7 +19,7 @@ export default function Index() {
     const fetchProducts = async () => {
       try {
         // Call your service method
-        const products = await _productService.readTopProductsAsync("faf07f9e-3c9e-44ed-9dd7-d4128e91953f");
+        const products = await _productService.readTopProductsAsync("300823a1-1c77-44e4-a27f-b1114fc7cf76");
 
         setData(products); // store the fetched data
 
