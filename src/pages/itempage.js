@@ -20,10 +20,11 @@ import { Placeholder } from 'react-bootstrap';
 
 import { useAuth } from "../Context/AuthContext";
 import { convertPrice } from '../services/Helpers/currencyConverter';
+import AlertToast from '../components/alerttoast';
 
 
 
-export default function Itempage(props) {
+export default function Itempage() {
     const { shortKey } = useParams();
     const [data, setData] = useState();
     const [reviewdata, setReviewdata] = useState([]);
@@ -40,21 +41,48 @@ export default function Itempage(props) {
     };
     //write review modal
     const [showReviewModal, setShowReviewModal] = useState(false)
+    const [alert, setAlert] = useState({ show: false, type: "success", message: "" });
+
     const handleReviewModal = (value) => {
         setShowReviewModal(value);
     }
     const onSubmitReview = async (value) => {
-        console.log(user);
+        try {
+            await _productService.createReviewAsync(shortKey, {
+                starRating: value.starRating,
+                comment: value.comment,
+                userId: user.userId,
+                productId: data.item.productId
+            });
 
-        await _productService.createReviewAsync(shortKey, {
-            starRating: value.starRating,
-            comment: value.comment,
-            userId: user.userId,
-            productId: data.item.productId
-        });
-        //to do a some kind of alert that it succeded
+            //success feedback
+            setAlert({
+                show: true,
+                type: "success",
+                message: "Review submitted successfully!"
+            });
 
+        } catch (error) {
+            console.error("Failed to submit review:", error);
+
+            //error feedback
+            setAlert({
+                show: true,
+                type: "error",
+                message: "Something went wrong"
+            });
+        }
     };
+    useEffect(() => {
+        if (!alert.show) return;
+
+        const timer = setTimeout(() => {
+            setAlert(a => ({ ...a, show: false }));
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, [alert.show]);
+
 
     //all reviews modal
     const [showReviews, setShowReviews] = useState(false)
@@ -85,14 +113,11 @@ export default function Itempage(props) {
 
     //store filter
     const [storeOrder, setStoreOrder] = useState('Recommended');
-
-    const storeOrderChange = (value) => {
-        console.log(value);
-        
-        setStoreOrder(value);
-    };
     const [activeStorefilter, setActiveStorefilter] = useState([])
     const [activeCurrency, setActiveCurrency] = useState('SEK')
+
+    const storeOrderChange = (value) => setStoreOrder(value);
+
 
     const toggleStoreFilter = (filterKey) => {
         setActiveStorefilter((prev) => {
@@ -175,6 +200,12 @@ export default function Itempage(props) {
 
     return (
         <>
+            <AlertToast
+                show={alert.show}
+                type={alert.type}   // success | warning | danger | info
+                message={alert.message}
+                onClose={() => setAlert({ ...alert, show: false })}
+            />
             {data ? (
                 <Breadcome id={data.item.productId} />
             ) : (

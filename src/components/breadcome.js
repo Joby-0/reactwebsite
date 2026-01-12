@@ -14,53 +14,77 @@ export default function Breadcome({ id }) {
     };
 
     useEffect(() => {
-        const pathnames = location.pathname.split("/").filter(x => x);
-
         const buildBreadcrumbs = async () => {
             let items = [];
 
             // Home
             items.push({ name: "Home", path: "/" });
 
-            // Product page: fetch category string
+            // PRODUCT PAGE
             if (id) {
                 try {
-                    const categoryString = await _productService.readCategoryTreeAsync(id); // e.g., "Audio & TV > Headphones > Noise Cancelling Headphones"
+                    const categoryString = await _productService.readCategoryTreeAsync(id);
+                    // "Audio & TV > Headphones > Over Ear Headphones"
+
                     const categories = categoryString.split(" > ");
 
-                    let path = "/c"; // Assuming all categories pages start with /c
+                    const slugs = categories.map(cat =>
+                        cat.toLowerCase().replace(/ /g, "-")
+                    );
+
+                    // build category crumbs
                     categories.forEach((cat, idx) => {
-                        path += "/" + cat.replace(/ /g, "-"); // optional: format URL
-                        items.push({ name: cat, path: path });
+                        const isLastCategory = idx === categories.length - 1;
+
+                        const base = isLastCategory ? "/p" : "/c";
+                        const path = base + "/" + slugs.slice(0, idx + 1).join("/");
+
+                        items.push({
+                            name: cat,
+                            path
+                        });
                     });
 
-                    // Last breadcrumb: product name from URL
-                    const lastSegment = pathnames[pathnames.length - 1];
-                    items.push({ name: formatNametoUpperCase(formatName(lastSegment)), path: null });
+                    // Product name (no link)
+                    const productSlug = location.pathname.split("/").pop();
+                    items.push({
+                        name: formatNametoUpperCase(formatName(productSlug)),
+                        path: null
+                    });
+
                 } catch (err) {
                     console.error("Failed to fetch categories:", err);
                 }
-            } else {
-                // Category page: build from URL
-                pathnames.forEach((segment, idx) => {
-                    if (!isNaN(segment)) return; // skip numbers
-                    if (segment.length === 1) return; // skip single char segments
+            }
 
-                    const routeTo = "/" + pathnames.slice(0, idx + 1).join("/");
-                    const isLast = idx === pathnames.length - 1;
+            // CATEGORY PAGE
+            else {
+                const segments = location.pathname
+                    .split("/")
+                    .filter(Boolean);
+
+                // Remove "c" prefix
+                const categorySegments = segments[0] === "c" || segments[0] === "p"
+                    ? segments.slice(1)
+                    : segments;
+
+                categorySegments.forEach((segment, idx) => {
+                    const path = "/c/" + categorySegments.slice(0, idx + 1).join("/");
 
                     items.push({
                         name: formatNametoUpperCase(formatName(segment)),
-                        path: isLast ? null : routeTo
+                        path: idx === categorySegments.length - 1 ? null : path
                     });
                 });
             }
+
 
             setBreadcrumbs(items);
         };
 
         buildBreadcrumbs();
     }, [location.pathname, id]);
+
 
     return (
         <div className='container'>
