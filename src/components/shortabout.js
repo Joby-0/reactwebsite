@@ -7,7 +7,7 @@ export default function Shortabout() {
       <div className="d-flex p-3 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border">
         <div className="col p-3">
           <h1 className="display-4 fw-bold lh-1 text-body-emphasis">
-            Our mission is for you to find <br /> the best price
+            Our mission is for you to find <br /> the best price and give back
           </h1>
           <div className="row py-5">
             <div className="col">
