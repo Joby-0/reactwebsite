@@ -6,17 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { CategoriesProvider } from './Context/CategoriesContext';
 import { AuthProvider } from './Context/AuthContext';
 import { UIProvider } from './Context/UiContext';
+import { LanguageProvider } from './Context/LanguageContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UIProvider>
-      <AuthProvider>
-        <CategoriesProvider>
-          <App />
-        </CategoriesProvider>
-      </AuthProvider>
-    </UIProvider>
+    <LanguageProvider>
+      <UIProvider>
+        <AuthProvider>
+          <CategoriesProvider>
+            <App />
+          </CategoriesProvider>
+        </AuthProvider>
+      </UIProvider>
+    </LanguageProvider>
   </React.StrictMode>
 );
 

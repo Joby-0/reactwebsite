@@ -6,12 +6,12 @@ import { useLocation } from 'react-router';
 
 
 import { useAuth } from "../Context/AuthContext";
+import { useLanguage } from "../Context/LanguageContext";
 
 
 
-
-export default function Header({openSignIn, openSignUp}) {
-  const { isLoggedIn, logout,user } = useAuth();
+export default function Header({ openSignIn, openSignUp }) {
+  const { isLoggedIn, logout, user } = useAuth();
 
 
   //full page modal
@@ -44,23 +44,7 @@ export default function Header({openSignIn, openSignUp}) {
 
   }, [darkMode]);
 
-  //change språk
-  const languages = [
-    { code: 'en', label: 'ENG', flag: '🇬🇧', currency: 'Gbp' },
-    { code: 'us', label: 'USA', flag: 'us', currency: 'Usd' },
-    { code: 'sv', label: 'SWE', flag: '🇸🇪', currency: 'Sek' },
-    { code: 'es', label: 'ESP', flag: '🇪🇸', currency: 'Eur' },
-    { code: 'fr', label: 'FRE', flag: '🇫🇷', currency: 'Eur' },
-    { code: 'de', label: 'GER', flag: '🇩🇪', currency: 'Eur' },
-    { code: 'pt', label: 'POR', flag: '🇵🇹', currency: 'Eur' },
-
-  ];
-  const [activeLang, setActiveLang] = useState(languages[0])
-  const handleChangeLang = (lang) => {
-    setActiveLang(lang);
-    //change the lang
-  };
-
+  const { languages, activeLang, changeLanguage } = useLanguage();
 
   // copy chatgpt auto close router on page change
   const location = useLocation();
@@ -102,21 +86,15 @@ export default function Header({openSignIn, openSignUp}) {
                   <span className="mx-1">{activeLang.label}</span>
                 </button>
                 <ul style={{ minWidth: "5rem" }} className="dropdown-menu">
+
                   {languages.map(lang => (
                     <li key={lang.code}>
                       <button
                         className="btn btn-sm d-flex align-items-center"
-                        type="button"
-                        key={lang.code}
-                        onClick={() => {
-                          handleChangeLang(lang)
-                        }}
+                        onClick={() => changeLanguage(lang)}
                       >
-                        <span className="d-flex align-items-center">
-                          {lang.flag}
-                        </span>
-                        <span className="mx-1">{lang.label}</span>
-
+                        <span className="me-1">{lang.flag}</span>
+                        <span>{lang.label}</span>
                       </button>
                     </li>
                   ))}
@@ -130,7 +108,7 @@ export default function Header({openSignIn, openSignUp}) {
         <Navbar toggleDropdown={toggleDropdown} isLoggedIn={!isLoggedIn()} logout={logout} user={user} />
         <Categoriesfullpagedropdown isOpen={isDropdownOpen} closeDropdown={closeDropdown} />
 
-        
+
 
       </div>
     </>
