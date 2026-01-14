@@ -21,6 +21,7 @@ import { Placeholder } from 'react-bootstrap';
 import { useAuth } from "../Context/AuthContext";
 import { convertPrice } from '../services/Helpers/currencyConverter';
 import AlertToast from '../components/alerttoast';
+import { useLanguage } from "../Context/LanguageContext";
 
 
 
@@ -114,7 +115,9 @@ export default function Itempage() {
     //store filter
     const [storeOrder, setStoreOrder] = useState('Recommended');
     const [activeStorefilter, setActiveStorefilter] = useState([])
-    const [activeCurrency, setActiveCurrency] = useState('SEK')
+    const { activeCurrency } = useLanguage();
+    const [activeCurrencyItem, setActiveCurrency] = useState(activeCurrency)
+    
 
     const storeOrderChange = (value) => setStoreOrder(value);
 
@@ -228,8 +231,8 @@ export default function Itempage() {
 
 
                                 <div ref={storesRef}>
-                                    <Productstorefilter countryOptions={countryOptions} storeOrder={storeOrder} activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrency} handleCurChange={handleCurChange} storeOrderChange={storeOrderChange} />
-                                    <Productstoreslist activeCurrency={activeCurrency} data={filteredAndSortedStores} handleModal={handleModal} setClickstore={setClickstore} />
+                                    <Productstorefilter countryOptions={countryOptions} storeOrder={storeOrder} activeStorefilter={activeStorefilter} toggleStoreFilter={toggleStoreFilter} removeFilter={removeFilter} activeCurrency={activeCurrencyItem} handleCurChange={handleCurChange} storeOrderChange={storeOrderChange} />
+                                    <Productstoreslist activeCurrency={activeCurrencyItem} data={filteredAndSortedStores} handleModal={handleModal} setClickstore={setClickstore} />
                                     <Modalstoreinfo show={show} handleModal={handleModal} storeId={clickstore} />
 
                                 </div>
