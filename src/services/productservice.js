@@ -181,7 +181,7 @@ class AuthService {
     token = null;
 
     async login(credentials) {
-        const res = await fetch("https://localhost:7020/api/User/Login", {
+        const res = await fetch("https://joby-api-dev-gzejf4ewg7fygad4.swedencentral-01.azurewebsites.net/api/User/Login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(credentials)
@@ -193,7 +193,7 @@ class AuthService {
     }
 
     async register(credentials) {
-        const res = await fetch("https://localhost:7020/api/User/Register", {
+        const res = await fetch("https://joby-api-dev-gzejf4ewg7fygad4.swedencentral-01.azurewebsites.net/api/User/Register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(credentials),
