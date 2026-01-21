@@ -5,7 +5,9 @@ import  ProductService  from "./productservice";
 const ServiceContext = createContext(null);
 
 export const ServiceProvider = ({ children }) => {
-  const service = new ProductService("http://localhost:7020/api"); // ✅ Adjust URL as needed
+  // const service = new ProductService("http://localhost:7020/api"); // ✅ Adjust URL as needed
+  const service = new ProductService("https://joby-api-dev-gzejf4ewg7fygad4.swedencentral-01.azurewebsites.net/api"); // ✅ Adjust URL as needed
+
 
   return (
     <ServiceContext.Provider value={{ service }}>
