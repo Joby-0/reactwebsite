@@ -172,7 +172,9 @@ export default ProductService;
 
 
 
-export const _productService = new ProductService("https://localhost:7020/api");
+// export const _productService = new ProductService("https://localhost:7020/api");
+export const _productService = new ProductService("https://joby-api-dev-gzejf4ewg7fygad4.swedencentral-01.azurewebsites.net/api");
+
 
 
 class AuthService {
