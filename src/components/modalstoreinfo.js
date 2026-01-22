@@ -59,7 +59,7 @@ export default function Modalstoreinfo(props) {
         </Modal.Header>
 
         <Modal.Body>
-          {!storeInfo ? (
+          {!loading ? (
             <>
               <PlaceholderRow label="Buy alternatives" />
               <PlaceholderRow label="Shipping" />

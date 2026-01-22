@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Newletterpart() {
     const [email, setEmail] = useState('');
@@ -42,7 +43,7 @@ export default function Newletterpart() {
           </button>
           <hr className="my-4" />
           <small className="text-body-secondary">
-            By clicking Sign up, you agree to the <a href="#">terms of use.</a>
+            By clicking Sign up, you agree to the <Link href="#">terms of use.</Link>
           </small>
         </form>
       </div>

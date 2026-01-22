@@ -59,7 +59,7 @@ export default function Header({ openSignIn, openSignUp }) {
     if (isDropdownOpen) {
       closeDropdown();
     }
-  }, [location]); // only runs when route changes
+  }, [location,isDropdownOpen]); // only runs when route changes
 
   return (
     <>

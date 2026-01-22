@@ -61,11 +61,7 @@ export default function Categoryfilter(props) {
             [index]: value
         }));
     };
-    const onFilterClick = (filterType, id) => {
-        // filterType = "store" | "attribute"
-        // id = the ID of the store or attribute
-        props.toggleFilter(filterType, id);
-    };
+
 
 
     useEffect(() => {
