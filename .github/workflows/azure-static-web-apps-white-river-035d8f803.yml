@@ -14,7 +14,11 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
+    
     steps:
+      - name: Set CI to false
+        run: echo "CI=false" >> $GITHUB_ENV
+
       # 1️⃣ Checkout repository
       - uses: actions/checkout@v3
         with:
@@ -60,3 +64,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_RIVER_035D8F803 }}
           action: "close"
+
