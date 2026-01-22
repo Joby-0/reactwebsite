@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Itemscarusal from '../components/itemscarusal';
 import Divider from '../components/divider';
 import Breadcome from '../components/breadcome';

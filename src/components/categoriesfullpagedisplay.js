@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import SubCategoryCard from './subCategoryCard';
 
 export default function Categoriesfullpagedisplay({ category }) {

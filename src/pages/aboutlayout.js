@@ -1,6 +1,6 @@
 import React from 'react'
 import Aboutsidebar from '../components/aboutsidebar'
-import { Outlet } from 'react-router'
+import { Outlet } from 'react-router-dom'
 import Divider from '../components/divider'
 
 export default function Aboutlayout() {

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import { CategoriesContext } from "../Context/CategoriesContext";
 import { Placeholder } from 'react-bootstrap';

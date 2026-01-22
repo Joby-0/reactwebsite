@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { _productService } from "../services/productservice";
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Breadcome({ id }) {
     const location = useLocation();

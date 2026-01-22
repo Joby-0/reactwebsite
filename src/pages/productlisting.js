@@ -5,7 +5,7 @@ import Categoryfilter from '../components/categoryfilter'
 import Categoriesfilterdisplay from '../components/categoriesfilterdisplay';
 import Categoriesproducts from '../components/categoriesproducts';
 import Breadcome from '../components/breadcome';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 import { _productService } from "../services/productservice";
 

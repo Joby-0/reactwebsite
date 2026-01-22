@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Navbar from '../routers/navbar';
 
 import Categoriesfullpagedropdown from './categoriesfullpagedropdown';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 
 import { useAuth } from "../Context/AuthContext";

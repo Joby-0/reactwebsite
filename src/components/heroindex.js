@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Data from '../services/data'
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import '../css/heroindex.css'
 export default function Heroindex() {
   const mockData = new Data()
