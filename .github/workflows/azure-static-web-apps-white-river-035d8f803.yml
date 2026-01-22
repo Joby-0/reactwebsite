@@ -18,11 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # ✅ FORCE Node 18 (CRITICAL)
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+     
 
       # ✅ Install dependencies
       - name: Install dependencies
@@ -52,4 +48,5 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_RIVER_035D8F803 }}
           action: "close"
+
 
