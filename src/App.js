@@ -17,7 +17,7 @@ import ScrollToTop from './components/scrolltotop';
 
 import { useUI } from "./Context/UiContext";
 import Signinmodal from './components/signinmodal';
-import Signupmodal from './components/signupmodeal';
+import Signupmodal from './components/signupmodeal'; 
 
 function App() {
   const { showSignIn, showSignUp, closeAll } = useUI();
