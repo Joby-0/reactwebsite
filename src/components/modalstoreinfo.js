@@ -42,11 +42,12 @@ export default function Modalstoreinfo(props) {
       try {
         const info = await _productService.readStoreInfoAsync(props.storeId);
         setStoreInfo(info);
+        setLoading(false);
       } catch (err) {
         console.error("Failed to load store info:", err);
       }
       finally {
-        setLoading(false);
+        // setLoading(false);
       }
     })();
   }, [props.show, props.storeId]);
@@ -59,7 +60,7 @@ export default function Modalstoreinfo(props) {
         </Modal.Header>
 
         <Modal.Body>
-          {!loading ? (
+          {loading ? (
             <>
               <PlaceholderRow label="Buy alternatives" />
               <PlaceholderRow label="Shipping" />
@@ -71,7 +72,7 @@ export default function Modalstoreinfo(props) {
               <InfoRow
                 label="Buy alternatives"
                 value={
-                  storeInfo.payMethods?.length > 0
+                  storeInfo?.payMethods?.length > 0
                     ? storeInfo.payMethods.map(p => p.payMethodName).join(", ")
                     : "N/A"
                 }
@@ -79,7 +80,7 @@ export default function Modalstoreinfo(props) {
               <InfoRow
                 label="Shipping"
                 value={
-                  storeInfo.delivery?.length > 0
+                  storeInfo?.delivery?.length > 0
                     ? storeInfo.delivery.map(d => d.deliveryName).join(", ")
                     : "N/A"
                 }
@@ -87,14 +88,14 @@ export default function Modalstoreinfo(props) {
               <InfoRow
                 label="Shipping alternatives"
                 value={
-                  storeInfo.delivery?.length > 0
+                  storeInfo?.delivery?.length > 0
                     ? storeInfo.delivery.map(d => `${d.estimatedDays} days`).join(", ")
                     : "N/A"
                 }
               />
               <InfoRow
                 label="Subscription"
-                value={storeInfo.subscriptionAvailable ? "Yes" : "No"}
+                value={storeInfo?.subscriptionAvailable ? "Yes" : "No"}
               />
             </>
           )}

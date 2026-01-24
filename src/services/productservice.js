@@ -173,15 +173,21 @@ export default ProductService;
 
 
 // export const _productService = new ProductService("https://localhost:7020/api");
-export const _productService = new ProductService("https://joby-api-dev-gzejf4ewg7fygad4.swedencentral-01.azurewebsites.net/api");
+export const _productService = new ProductService(process.env.BASE_API_URL);
 
 
 
 class AuthService {
     token = null;
 
+    #baseUrl = '';
+    
+    constructor(url,) {
+        this.#baseUrl = url;
+    }
+
     async login(credentials) {
-        const res = await fetch("https://joby-api-dev-gzejf4ewg7fygad4.swedencentral-01.azurewebsites.net/api/User/Login", {
+        const res = await fetch(`${this.#baseUrl}/User/Login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(credentials)
@@ -193,7 +199,7 @@ class AuthService {
     }
 
     async register(credentials) {
-        const res = await fetch("https://joby-api-dev-gzejf4ewg7fygad4.swedencentral-01.azurewebsites.net/api/User/Register", {
+        const res = await fetch(`${this.#baseUrl}/api/User/Register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(credentials),
@@ -227,4 +233,4 @@ class AuthService {
     }
 }
 
-export const authService = new AuthService();
+export const authService = new AuthService(process.env.BASE_API_URL);
