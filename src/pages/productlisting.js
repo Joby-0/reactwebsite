@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router";
 
 import Categoryfilter from '../components/categoryfilter'
@@ -79,7 +79,9 @@ export default function Productlisting() {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const result = await _productService.readProductsByCategory(subsubSlug, 0, 20, activeFilter, activeOrder);
+        const result = await _productService.readProductsWithFilters(subsubSlug, 0, 20, activeFilter, activeOrder);
+        
+                
         setProducts(result);
       } catch (err) {
         console.error(err);
@@ -89,8 +91,8 @@ export default function Productlisting() {
     };
     if (subsubSlug) fetchProducts();
   }, [subsubSlug, activeFilter, activeOrder]);
-  console.log(products);
-  
+
+
 
   return (
     <>
@@ -102,9 +104,9 @@ export default function Productlisting() {
             <div className='row'>
               <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={filtersdata} />
               <div className="col scrollarea">
-                
-                    <Categoriesfilterdisplay loading={loading} nrOfProduct={products} activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} activeOrder={activeOrder}/>
-                    <Categoriesproducts loading={loading} products={products} />
+
+                <Categoriesfilterdisplay loading={loading} nrOfProduct={products} activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} activeOrder={activeOrder} />
+                <Categoriesproducts loading={loading} products={products} />
 
               </div>
 

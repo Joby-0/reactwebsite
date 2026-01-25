@@ -3,29 +3,44 @@ import { Link } from 'react-router-dom'
 
 export default function Itemcolbox(props) {
   let name = props.product.productName;
-  
+
+
+
   return (
-    <div className="col"  key={props.product.ProductId}>
+    <div className="col" key={props.product.ProductId}>
       <Link className="text-decoration-none" to={`../${props.product.shortKey}/${name}`} >
-        <div id="productBox" style={{ width: '14rem', height:'' }} className="card h-100">
-          <div id='imgbox' className=' rounded'>
-            <div id='imgcontainer' className='pt-2 pb-3 px-2  d-flex'>
+        <div id='productBox' className="card h-100 product-card">
+          <div className="p-3 pb-0">
+            {/* Image box */}
+            <div style={{ aspectRatio: "5 / 4" }} className="ratio ratio-1x1 mb-2  d-flex align-items-center justify-content-center">
               <img
                 src={props.product.thumbnailImage}
-                height="140px" width="150px" 
-                className="card-img-top img-thumbnail" alt={props.product.productName}
+                alt={props.product.productName}
+                className="img-fluid"
+                style={{
+                  
+                  objectFit: "contain",
+                  
+                }}
               />
             </div>
 
-          </div>
-          <div className="pt-2 pb-2 px-3 d-flex flex-column h-100">
-            <p className="text-muted mb-1">{props.product.categoryName}</p>
-
-            <h6 className="card-title mb-1" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', }}>
+            {/* Text */}
+            <h6 id='product-title' className="mb-2 fs-5">
               {props.product.productName}
             </h6>
+            <p className="text-muted small">
+              {props.product.categoryName}
+            </p>
+
             
-            <div className="mt-auto">
+          </div>
+
+
+          <div className="p-3 pt-0 d-flex flex-column">
+
+
+            <div className="">
               <p className="text-warning mb-1">
                 {(() => {
                   const rating = props.product.avgRating;
@@ -44,12 +59,14 @@ export default function Itemcolbox(props) {
                   return stars;
                 })()} ({props.product.reviewCount})
               </p>
-              <p className="fw-bold fs-5 mb-0">{props.product.productPrice}</p>
+
+              <p className="fw-bold fs-5 mb-0">
+                {props.product.productPrice}
+              </p>
             </div>
           </div>
-
-
         </div>
+
       </Link>
     </div>
   )

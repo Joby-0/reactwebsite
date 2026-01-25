@@ -37,7 +37,17 @@
 
 #productBox {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
 }
+#product-title {
+  line-height: 1.2;
+  min-height: 2.4em;      /* reserves space = 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;  /* max 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 
 #productBox:hover {
   transform: scale(1.01);

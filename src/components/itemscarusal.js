@@ -90,7 +90,9 @@ export default function Itemscarusal(props) {
             ))
           ) : (
             products.map(product => (
-              <Itemcolbox key={product.productId} product={product} />
+              <div style={{width: "260px"}}>
+                <Itemcolbox key={product.productId} product={product} />
+              </div>
             ))
           )}
 

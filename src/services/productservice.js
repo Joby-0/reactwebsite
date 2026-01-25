@@ -20,6 +20,7 @@ class ProductService {
                 ? { Authorization: `Bearer ${token}` }
                 : {}
         });
+        console.log(`${url}?${query}`);
 
         if (!response.ok) throw new Error(response.statusText);
         return await response.json();
@@ -27,9 +28,14 @@ class ProductService {
 
     // Private helper for POST requests
     async #_postAsync(url, params = {}, body = {}) {
+        const query = new URLSearchParams(
+            Object.fromEntries(
+                Object.entries(params).filter(([_, v]) => v !== undefined)
+            )
+        ).toString();
         const token = authService.getToken();
 
-        const response = await fetch(url, {
+        const response = await fetch(`${url}?${query}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -37,6 +43,8 @@ class ProductService {
             },
             body: JSON.stringify(body)
         });
+
+        console.log(`${url}?${query}`);
 
         if (!response.ok) throw new Error(response.statusText);
         return await response.json();
@@ -102,7 +110,7 @@ class ProductService {
         });
     }
 
-    async readProductsByCategory(categorySlug = '', pageNr = 0, pageSize = 40, filters = { storeIds: [], attributeValueIds: [], minRating: 0 }, sort = "Recomended", search = "", minPrice = null, maxPrice = null) {
+    async readProductsWithFilters(categorySlug = '', pageNr = 0, pageSize = 0, filters = { storeIds: [], attributeValueIds: [], minRating: 0 }, sort = "Recomended", search = "", minPrice = null, maxPrice = null) {
 
         const queryParams = {
             categorySlug,
@@ -172,8 +180,8 @@ export default ProductService;
 
 
 
-// export const _productService = new ProductService("https://localhost:7020/api");
-export const _productService = new ProductService(process.env.BASE_API_URL);
+export const _productService = new ProductService("https://localhost:7020/api");
+// export const _productService = new ProductService(process.env.BASE_API_URL);
 
 
 
@@ -181,7 +189,7 @@ class AuthService {
     token = null;
 
     #baseUrl = '';
-    
+
     constructor(url,) {
         this.#baseUrl = url;
     }
