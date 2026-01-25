@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../css/categoriesfilter.css'
-import { Form } from 'react-bootstrap';
 
-//change to api sen
-const PRICE_OPTIONS = [
-    { id: 'upTo3000', label: 'upp till 3000 kr', value: '0-3000', filter: 'Price: 0-3000 kr' },
-    { id: '3000to4000', label: '3000 till 4000 kr', value: '3000-4000', filter: 'Price: 3000-4000 kr' },
-    { id: 'above4000', label: 'över 4000 kr', value: '4000+', filter: 'Price: 4000+ kr' },
-];
+
+
 
 export default function Categoryfilter(props) {
     const [minPrice, setMinPrice] = useState('');
@@ -24,34 +19,11 @@ export default function Categoryfilter(props) {
     const toggleShowAll = () => setShowAll(!showAll);
 
     const handleRangeChange = (event) => {
-        props.activeFilter.forEach(filter => {
-            if (filter.startsWith('Price')) {
-                props.removeFilter(filter)
-            }
-        });
-        const newMax = Number(event.target.value);  // slider returns a string → number
-        const newMin = 0;                           // change this if you add a 2nd handle
-        // Update min and max price based on range slider
-        setMinPrice(() => newMin);
-        setMaxPrice(() => newMax);
-
-        const label = `Price: ${newMin}-${newMax} kr`;
-
-
-        props.toggleFilter(label);
+        console.log(event);
     };
 
     const handleRadioChange = (pricefilter) => {
-        props.activeFilter.forEach(filter => {
-            if (filter.startsWith('Price')) {
-                props.removeFilter(filter)
-            }
-        });
-        const priceChoise = pricefilter.target.value;
-        setSelectedPriceRange(priceChoise)
-        const { filter } = PRICE_OPTIONS.find(opt => opt.value === priceChoise);
-        props.toggleFilter(filter);
-
+        console.log(pricefilter);
 
     };
 
@@ -62,6 +34,8 @@ export default function Categoryfilter(props) {
         }));
     };
 
+    const priceFilter = props.filtersdata.find(f => f.filterTitle === "Price");
+    const otherFilters = props.filtersdata.filter(f => f.filterTitle !== "Price");
 
 
     useEffect(() => {
@@ -81,174 +55,141 @@ export default function Categoryfilter(props) {
 
             <div className="row mt-4 scrollarea">
                 <div className="accordion" id="filterAccordion">
-                    <div className="accordion-item">
-                        <h2 className="accordion-header">
-                            <button
-                                className="accordion-button"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-price"
-                                aria-expanded="true"
-                                aria-controls="panelsStayOpen-price"
-                            >
-                                Price
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-price" className="accordion-collapse collapse show">
-                            <div className="accordion-body">
-                                <div>
+
+                    {priceFilter && (
+                        <div className="accordion-item">
+                            <h2 className="accordion-header">
+                                <button
+                                    className="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#filter-price"
+                                >
+                                    Price
+                                </button>
+                            </h2>
+
+                            <div id="filter-price" className="accordion-collapse collapse show">
+                                <div className="accordion-body">
+
+                                    {/* Range slider */}
                                     <input
                                         type="range"
                                         className="form-range"
-                                        id="customRange1"
-                                        min="0"
-                                        max="5000"
-                                        value={maxPrice}
+                                        min={(priceFilter.minPrice)}
+                                        max={(priceFilter.maxPrice)}
                                         onChange={handleRangeChange}
                                     />
-                                </div>
-                                <div className="d-flex justify-content-between">
-                                    <div style={{ width: '40%' }}>
+
+                                    {/* Min / Max inputs */}
+                                    <div className="d-flex justify-content-between gap-2">
                                         <input
                                             className="form-control"
-                                            type="text"
-                                            placeholder="min"
-                                            aria-label="min"
+                                            type="number"
+                                            placeholder="Min"
                                             value={minPrice}
-                                            onChange={(e) => setMinPrice(e.target.value)}
+                                            onChange={e => setMinPrice(e.target.value)}
                                         />
-                                    </div>
 
-                                    <div style={{ width: '40%' }}>
                                         <input
                                             className="form-control"
-                                            type="text"
-                                            placeholder="max"
-                                            aria-label="max"
-                                            value={`${maxPrice}`}
-                                            onChange={(e) => setMaxPrice(e.target.value)}
+                                            type="number"
+                                            placeholder="Max"
+                                            value={maxPrice}
+                                            onChange={e => setMaxPrice(e.target.value)}
                                         />
                                     </div>
-                                </div>
-                                <div className="mt-2">
-                                    <Form>
-                                        {PRICE_OPTIONS.map(({ id, label, value }) => (
-                                            <div className="form-check" key={id}>
-                                                <input
-                                                    className="form-check-input"
-                                                    type="radio"
-                                                    name="priceRange"
-                                                    id={id}
-                                                    value={value}
 
-                                                    checked={selectedPriceRange === value}
-                                                    onChange={handleRadioChange}
-                                                />
-                                                <label className="form-check-label" htmlFor={id}>
-                                                    {label}
-                                                </label>
-                                            </div>
-                                        ))}
-                                    </Form>
+                                    <small className="text-muted">
+                                        {priceFilter.minPrice.toFixed(0)} – {priceFilter.maxPrice.toFixed(0)} kr
+                                    </small>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    )}
 
-                    {props.filtersdata.map((filter, index) => {
-                        const searchTerm = searchTerms[index] || '';
-                        const filteredOptions = filter.options.filter(option =>
-                            option.name.toLowerCase()
-                            // .includes(searchTerm.toLowerCase())
+
+                    {otherFilters.map((filter, index) => {
+                        const searchTerm = searchTerms[index] || "";
+                        const filteredOptions = filter.filterOptions.filter(o =>
+                            o.name.toLowerCase().includes(searchTerm.toLowerCase())
                         );
 
                         return (
-                            <div className="accordion-item" key={index}>
-                                <h2 className="accordion-header" id={`heading-${index}`}>
+                            <div className="accordion-item" key={filter.filterTitle}>
+                                <h2 className="accordion-header">
                                     <button
-                                        className="accordion-button collapse show"
-                                        type="button"
+                                        className="accordion-button collapsed"
                                         data-bs-toggle="collapse"
-                                        data-bs-target={`#collapse-${index}`}
-                                        aria-expanded="false"
-                                        aria-controls={`collapse-${index}`}
+                                        data-bs-target={`#filter-${index}`}
                                     >
-                                        {filter.title}
+                                        {filter.filterTitle}
                                     </button>
                                 </h2>
-                                <div
-                                    id={`collapse-${index}`}
-                                    className="accordion-collapse collapse show"
-                                    aria-labelledby={`heading-${index}`}
-                                >
+
+                                <div id={`filter-${index}`} className="accordion-collapse collapse">
                                     <div className="accordion-body">
+
+                                        {/* Search */}
                                         <input
                                             className="form-control mb-2"
-                                            type="search"
-                                            placeholder={`Search ${filter.title.toLowerCase()}...`}
+                                            placeholder={`Search ${filter.filterTitle}`}
                                             value={searchTerm}
-                                            onChange={(e) => handleSearchChange(index, e.target.value)}
+                                            onChange={e => handleSearchChange(index, e.target.value)}
                                         />
 
-                                        <ul className="list-group" style={{ listStyleType: 'none', paddingLeft: '0' }}>
-                                            {/* Show only the first 5 items */}
-                                            {filteredOptions.map((option, optIdx) => (
-                                                <li key={optIdx} style={{ height: '30px' }}>
-                                                    <div className="form-check h-100 pt-1">
-                                                        <input
-                                                            className="form-check-input p-2"
-                                                            type="checkbox"
-                                                            checked={
-                                                                filter.title.toLowerCase() === 'store'
-                                                                    ? props.activeFilter.storeIds.includes(option.id)
-                                                                    : props.activeFilter.attributeValueIds.includes(option.id)
-                                                            }
-                                                            id={`${filter.title}-${optIdx}`}
-                                                            onChange={() => {
-                                                                if (filter.title.toLowerCase() === 'store') {
-                                                                    props.toggleFilter('store', option.id);
-                                                                } else {
-                                                                    props.toggleFilter('attribute', option.id);
-                                                                }
-                                                            }}
-                                                        />
-                                                        <label className="form-check-label w-100" htmlFor={`${filter.title}-${optIdx}`}>
-                                                            <span className="d-flex w-100">
-                                                                <p className="text-start mb-0">{option.name}</p>
-                                                                <p className="text-muted ms-auto mb-0">{option.count}</p>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                            ))}
+                                        {/* Options */}
+                                        <ul className="list-group list-group-flush">
+                                            {filteredOptions
+                                                .slice(0, showAll ? filteredOptions.length : 5)
+                                                .map(option => {
+                                                    const isStore = filter.filterTitle.toLowerCase() === "stores";
+                                                    const isChecked = isStore
+                                                        ? props.activeFilter.storeIds.includes(option.value)
+                                                        : props.activeFilter.attributeValueIds.includes(option.value);
 
-                                            {/* Show the "Show All" button only if there are more than 5 items */}
-                                            {filteredOptions.length > 5 && !showAll && (
-                                                <button
-                                                    className="btn btn-link mt-2"
-                                                    onClick={toggleShowAll}
-                                                >
-                                                    Show All
-                                                </button>
-                                            )}
+                                                    return (
+                                                        <li key={option.value} className="list-group-item px-0">
+                                                            <div className="form-check">
+                                                                <input
+                                                                    className="form-check-input"
+                                                                    type="checkbox"
+                                                                    checked={isChecked}
+                                                                    onChange={() => {
+                                                                        props.toggleFilter(
+                                                                            isStore ? "store" : "attribute",
+                                                                            option.value,
+                                                                            option.name
+                                                                        );
+                                                                    }}
+                                                                />
 
-                                            {/* Show the "Show Less" button when all items are displayed */}
-                                            {showAll && filteredOptions.length > 5 && (
-                                                <button
-                                                    className="btn btn-link mt-2"
-                                                    onClick={toggleShowAll}
-                                                >
-                                                    Show Less
-                                                </button>
-                                            )}
-
-
+                                                                <label className="form-check-label d-flex w-100">
+                                                                    <span>{option.name}</span>
+                                                                    <span className="text-muted ms-auto">{option.count}</span>
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                    );
+                                                })}
                                         </ul>
+
+
+
+                                        {/* Show more / less */}
+                                        {filteredOptions.length > 5 && (
+                                            <button className="btn btn-link p-0 mt-2" onClick={toggleShowAll}>
+                                                {showAll ? "Show Less" : "Show All"}
+                                            </button>
+                                        )}
+
                                     </div>
                                 </div>
                             </div>
                         );
                     })}
+
                 </div>
             </div>
         </div >

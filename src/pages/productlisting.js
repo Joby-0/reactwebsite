@@ -13,34 +13,10 @@ import { _productService } from "../services/productservice";
 export default function Productlisting() {
   const { subsubSlug } = useParams();
 
-  //change to api later
-  //data
-  const filtersdata = [
-    {
-      title: 'Store',
-      options: [
-        { name: 'Amazon', count: 12 },
-        { name: 'eBay', count: 8 },
-        { name: 'Walmart', count: 4 },
-        { name: 'Elgiganten', count: 1 },
-        { name: 'NetOnNet', count: 1 },
-        { name: 'Komplett', count: 1 },
-        { name: 'Rusta', count: 1 },
-        { name: 'Jula', count: 1 }
-      ]
-    },
-    {
-      title: 'Brand',
-      options: [
-        { name: 'Apple', count: 6 },
-        { name: 'Samsung', count: 5 },
-        { name: 'Sony', count: 3 }
-      ]
-    }
-  ];
+
 
   //filter
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState({ filters: [], pageResult: [] });
   const [activeFilter, setActiveFilter] = useState({ storeIds: [], attributeValueIds: [] });
   const [activeOrder, setActiveOrder] = useState('price_desc');
   const [loading, setLoading] = useState(true);
@@ -51,23 +27,56 @@ export default function Productlisting() {
     console.log(filterName);
     setActiveFilter()
   }
-  const toggleFilter = (filterKey) => {
-    // setActiveFilter((prev) => {
-    //   const next = prev.includes(filterKey)
-    //     ? prev.filter((k) => k !== filterKey)
-    //     : [...prev, filterKey];
-    //   return next;
-    // });
+  const toggleFilter = (filterKey, value) => {
+    setActiveFilter(prev => {
+      const key =
+        filterKey === "store"
+          ? "storeIds"
+          : "attributeValueIds";
+
+      const current = Array.isArray(prev[key]) ? prev[key] : [];
+
+      let updated;
+
+      if (current.includes(value)) {
+        updated = current.filter(v => v !== value);
+      } else {
+        updated = [...current, value];
+      }
+
+      return {
+        ...prev,
+        [key]: updated
+      };
+    });
   };
 
 
-  const removeFilter = (filterKey) => setActiveFilter((prev) => prev.filter((k) => k !== filterKey));
 
 
 
-  const OrderChange = (newOrder) => {
-    setActiveOrder(newOrder); // triggers useEffect automatically
+  const removeFilter = (filterKey, value) => {
+    console.log(filterKey, value);
+
+    setActiveFilter(prev => {
+      const key = filterKey === "store" ? "storeIds" : "attributeValueIds";
+      const current = Array.isArray(prev[key]) ? prev[key] : [];
+      return {
+        ...prev,
+        [key]: current.filter(v => v !== value)
+      };
+    });
   };
+
+
+
+
+
+
+  const OrderChange = (apiValue) => {
+    setActiveOrder(apiValue);
+  };
+
 
 
   const location = useLocation();
@@ -80,8 +89,9 @@ export default function Productlisting() {
       setLoading(true);
       try {
         const result = await _productService.readProductsWithFilters(subsubSlug, 0, 20, activeFilter, activeOrder);
-        
-                
+
+        console.log(result);
+
         setProducts(result);
       } catch (err) {
         console.error(err);
@@ -102,11 +112,11 @@ export default function Productlisting() {
         <div className="row">
           <div className="col-10">
             <div className='row'>
-              <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={filtersdata} />
+              <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={products.filters} />
               <div className="col scrollarea">
 
-                <Categoriesfilterdisplay loading={loading} nrOfProduct={products} activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} activeOrder={activeOrder} />
-                <Categoriesproducts loading={loading} products={products} />
+                <Categoriesfilterdisplay loading={loading} nrOfProduct={products} activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} filtersdata={products.filters} activeOrder={activeOrder} />
+                <Categoriesproducts loading={loading} products={products.pageResult} />
 
               </div>
 

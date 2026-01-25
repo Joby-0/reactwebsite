@@ -11,18 +11,46 @@ export default function Categoriesfilterdisplay(props) {
     };
 
     // Flatten storeIds and attributeValueIds into display names
-    const activeFilterLabels = [
-        ...(props.activeFilter.storeIds?.map(id => `Store: ${id}`) || []),
-        ...(props.activeFilter.attributeValueIds?.map(id => `Attr: ${id}`) || [])
-    ];
+    const activeFilterLabels = [];
 
-    const removeFilter = (filterKey) => {
-        props.removeFilter(filterKey)
+    // Store filters
+    props.activeFilter.storeIds.forEach(id => {
+        // Find label if exists, else fallback to id
+        const option = props.filtersdata
+            .find(f => f.filterTitle.toLowerCase() === "stores")
+            ?.filterOptions.find(o => o.value === id);
+
+        activeFilterLabels.push({
+            label: option?.name || id,
+            type: "store",
+            value: id
+        });
+    });
+
+    // Attribute filters
+    props.activeFilter.attributeValueIds.forEach(id => {
+        const option = props.filtersdata
+            .flatMap(f => f.filterOptions)
+            .find(o => o.value === id);
+
+        activeFilterLabels.push({
+            label: option?.name || id,
+            type: "attribute",
+            value: id
+        });
+    });
+
+
+
+    const removeFilter = (filterKey, value) => {
+        props.removeFilter(filterKey, value)
     }
     const OrderChange = (option) => {
         const mappedValue = sortMapping[option];
         props.OrderChange(mappedValue);
     };
+
+    console.log(activeFilterLabels);
 
     return (
         <>
@@ -40,7 +68,7 @@ export default function Categoriesfilterdisplay(props) {
                     {/* Product count + sort */}
                     <div className="p-1 d-flex justify-content-between border-bottom">
                         <div>
-                            <p className="m-0">{props.nrOfProduct.dbItemsCount} products</p>    
+                            <p className="m-0">{props.nrOfProduct.dbItemsCount} products</p>
                         </div>
                         <div>
                             <div className="dropdown">
@@ -54,6 +82,7 @@ export default function Categoriesfilterdisplay(props) {
                                 </button>
                                 <ul className="dropdown-menu">
                                     {['Recommended', 'Trending', 'Price ascending', 'Price descending', 'Name', 'Rating'].map((option) => (
+                                        
                                         <li key={option}>
                                             <button
                                                 onClick={() => OrderChange(option)}
@@ -69,19 +98,23 @@ export default function Categoriesfilterdisplay(props) {
                     </div>
 
                     {/* Active filters */}
-                    <div className='row'>
-                        <div className="mb-4 d-flex rounded-3 flex-wrap">
-                            {activeFilterLabels.map(label => (
-                                <span key={label} style={{ width: 'fit-content' }} className="badge d-flex align-items-center p-1 pe-2 mx-1 my-3 text-light-emphasis bg-light-subtle border border-dark-subtle rounded-pill">
-                                    {label}
-                                    <span className="vr mx-2"></span>
-                                    <button className='btn btn-sm p-0 border-0 bg-transparent text-light-emphasis' style={{ lineHeight: 0 }} onClick={() => removeFilter(label)} aria-label={`Remove ${label}`}>
-                                        <i className="bi bi-x-lg"></i>
-                                    </button>
-                                </span>
-                            ))}
-                        </div>
+                    <div className="mb-4 d-flex flex-wrap">
+                        {activeFilterLabels.map(({ label, type, value }) => (
+                            <span key={value} className="badge d-flex align-items-center p-1 pe-2 mx-1 my-2 bg-light-subtle border rounded-pill">
+                                {label}
+                                <span className="vr mx-2"></span>
+                                <button
+                                    className="btn btn-sm p-0 border-0 bg-transparent"
+                                    onClick={() => removeFilter(type, value)}
+                                    aria-label={`Remove ${label}`}
+                                >
+                                    <i className="bi bi-x-lg"></i>
+                                </button>
+                            </span>
+                        ))}
                     </div>
+
+
                 </>
             )}
         </>

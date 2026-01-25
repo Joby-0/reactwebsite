@@ -16,7 +16,7 @@ export default function Categoriesproducts(props) {
         ? [...Array(20)].map((_, i) => (
           <ItemcolboxPlaceholder key={i} />
         ))
-        : props.products.pageResult.pageItems.map((product, index) => {
+        : props.products.pageItems.map((product, index) => {
           // Insert ads every 5 products
           const items = [
             <Itemcolbox key={product.productId} product={product} />
