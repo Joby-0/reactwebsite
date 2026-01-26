@@ -79,7 +79,6 @@ export default function Productlisting() {
 
 
 
-  const location = useLocation();
   const [activeCat, setActiveCat] = useState([]);
 
 

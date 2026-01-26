@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { slugify } from '../services/Helpers/slugify';
 export default function Itemcolbox(props) {
-  let name = props.product.productName;
 
 
 
   return (
     <div className="col" key={props.product.ProductId}>
-      <Link className="text-decoration-none" to={`../${props.product.shortKey}/${name}`} >
+      <Link className="text-decoration-none" to={`/${props.product.shortKey}/${slugify(props.product.productName)}`} >
         <div id='productBox' className="card h-100 product-card">
           <div className="p-3 pb-0">
             {/* Image box */}

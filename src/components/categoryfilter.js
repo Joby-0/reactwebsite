@@ -120,7 +120,7 @@ export default function Categoryfilter(props) {
                             <div className="accordion-item" key={filter.filterTitle}>
                                 <h2 className="accordion-header">
                                     <button
-                                        className="accordion-button collapsed"
+                                        className="accordion-button "
                                         data-bs-toggle="collapse"
                                         data-bs-target={`#filter-${index}`}
                                     >
@@ -128,7 +128,7 @@ export default function Categoryfilter(props) {
                                     </button>
                                 </h2>
 
-                                <div id={`filter-${index}`} className="accordion-collapse collapse">
+                                <div id={`filter-${index}`} className="accordion-collapse collapse show">
                                     <div className="accordion-body">
 
                                         {/* Search */}
