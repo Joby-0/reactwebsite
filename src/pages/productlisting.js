@@ -6,13 +6,13 @@ import Categoriesfilterdisplay from '../components/categoriesfilterdisplay';
 import Categoriesproducts from '../components/categoriesproducts';
 import Breadcome from '../components/breadcome';
 import { useLocation } from 'react-router-dom';
-
+import { useLanguage } from "../Context/LanguageContext";
 import { _productService } from "../services/productservice";
 
 
 export default function Productlisting() {
   const { subsubSlug } = useParams();
-
+  const { activeCode, activeCurrency } = useLanguage();
 
 
   //filter
@@ -20,6 +20,8 @@ export default function Productlisting() {
   const [activeFilter, setActiveFilter] = useState({ storeIds: [], attributeValueIds: [] });
   const [activeOrder, setActiveOrder] = useState('price_desc');
   const [loading, setLoading] = useState(true);
+  const [countryCode, setCountryCode] = useState(activeCode);
+  const [currency, setCurrency] = useState(activeCurrency);
 
 
 
@@ -80,14 +82,17 @@ export default function Productlisting() {
 
 
   const [activeCat, setActiveCat] = useState([]);
-
+  useEffect(() => {
+    setCountryCode(activeCode);
+    setCurrency(activeCurrency)
+  }, [activeCode,currency]);
 
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const result = await _productService.readProductsWithFilters(subsubSlug, 0, 20, activeFilter, activeOrder);
+        const result = await _productService.readProductsWithFilters(subsubSlug, countryCode, 0, 20, activeFilter, activeOrder);
 
         console.log(result);
 
@@ -99,7 +104,7 @@ export default function Productlisting() {
       }
     };
     if (subsubSlug) fetchProducts();
-  }, [subsubSlug, activeFilter, activeOrder]);
+  }, [subsubSlug, activeFilter, activeOrder,countryCode]);
 
 
 
@@ -111,11 +116,11 @@ export default function Productlisting() {
         <div className="row">
           <div className="col-10">
             <div className='row'>
-              <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={products.filters} />
+              {/* <Categoryfilter activeCat={activeCat} toggleFilter={toggleFilter} removeFilter={removeFilter} activeFilter={activeFilter} filtersdata={products.filters} /> */}
               <div className="col scrollarea">
 
                 <Categoriesfilterdisplay loading={loading} nrOfProduct={products} activeFilter={activeFilter} removeFilter={removeFilter} OrderChange={OrderChange} filtersdata={products.filters} activeOrder={activeOrder} />
-                <Categoriesproducts loading={loading} products={products.pageResult} />
+                <Categoriesproducts loading={loading} products={products.pageResult} currency={currency}/>
 
               </div>
 

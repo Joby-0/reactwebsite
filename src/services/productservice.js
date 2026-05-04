@@ -110,14 +110,16 @@ class ProductService {
         });
     }
 
-    async readProductsWithFilters(categorySlug = '', pageNr = 0, pageSize = 0, filters = { storeIds: [], attributeValueIds: [], minRating: 0 }, sort = "Recomended", search = "", minPrice = null, maxPrice = null) {
+    async readProductsWithFilters(categorySlug = '',countryCode='', pageNr = 0, pageSize = 0, filters = { storeIds: [], attributeValueIds: [], minRating: 0 }, sort = "Recomended", search = "", minPrice = null, maxPrice = null) {
 
         const queryParams = {
             categorySlug,
+            countryCode,
             search: search || undefined,
             sort: sort || undefined,
             minPrice: minPrice ?? undefined,
             maxPrice: maxPrice ?? undefined,
+            minRating: filters.minRating ?? undefined,
             pageNumber: pageNr,
             pageSize
         };
@@ -125,7 +127,6 @@ class ProductService {
         const body = {
             storeIds: filters.storeIds,
             attributeValueIds: filters.attributeValueIds,
-            minRating: filters.minRating ?? 0
         };
 
         return await this.#_postAsync(`${this.#baseUrl}/Product/search`, queryParams, body);

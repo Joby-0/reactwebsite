@@ -19,7 +19,7 @@ export default function Categoriesproducts(props) {
         : props.products.pageItems.map((product, index) => {
           // Insert ads every 5 products
           const items = [
-            <Itemcolbox key={product.productId} product={product} />
+            <Itemcolbox key={product.productId} product={product} currency={props.currency} />
           ];
 
           // if ((index + 1) % 5 === 0) {

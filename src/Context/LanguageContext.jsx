@@ -3,13 +3,13 @@ import { createContext, useContext, useState } from "react";
 const LanguageContext = createContext();
 
 export const languages = [
-    { code: 'en', label: 'ENG', flag: '🇬🇧', currency: 'GBP' },
-    { code: 'us', label: 'USA', flag: '🇺🇸', currency: 'USD' },
-    { code: 'sv', label: 'SWE', flag: '🇸🇪', currency: 'SEK' },
-    { code: 'es', label: 'ESP', flag: '🇪🇸', currency: 'EUR' },
-    { code: 'fr', label: 'FRE', flag: '🇫🇷', currency: 'EUR' },
-    { code: 'de', label: 'GER', flag: '🇩🇪', currency: 'EUR' },
-    { code: 'pt', label: 'POR', flag: '🇵🇹', currency: 'EUR' }
+    { code: 'EN', label: 'ENG', flag: '🇬🇧', currency: 'GBP' },
+    { code: 'US', label: 'USA', flag: '🇺🇸', currency: 'USD' },
+    { code: 'SE', label: 'SWE', flag: '🇸🇪', currency: 'SEK' },
+    { code: 'ES', label: 'ESP', flag: '🇪🇸', currency: 'EUR' },
+    { code: 'FR', label: 'FRE', flag: '🇫🇷', currency: 'EUR' },
+    { code: 'DE', label: 'GER', flag: '🇩🇪', currency: 'EUR' },
+    { code: 'PT', label: 'POR', flag: '🇵🇹', currency: 'EUR' }
 ];
 
 export function LanguageProvider({ children }) {
@@ -26,10 +26,13 @@ export function LanguageProvider({ children }) {
     const [activeCurrency, setActiveCurrency] = useState(
         getInitialLang().currency
     );
+    const [activeCode, setActiveCang] = useState(getInitialLang().code);
+
 
     const changeLanguage = (lang) => {
         setActiveLang(lang);
         setActiveCurrency(lang.currency);
+        setActiveCang(lang.code)
         localStorage.setItem("lang", JSON.stringify(lang));
     };
 
@@ -39,6 +42,7 @@ export function LanguageProvider({ children }) {
                 languages,
                 activeLang,
                 activeCurrency,
+                activeCode,
                 changeLanguage
             }}
         >

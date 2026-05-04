@@ -60,7 +60,7 @@ export default function Itemcolbox(props) {
               </p>
 
               <p className="fw-bold fs-5 mb-0">
-                {props.product.productPrice}
+                {props.product.productPrice} {props.currency}
               </p>
             </div>
           </div>
